@@ -1,0 +1,4516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+
+<title>SIGNAL MASTER LK — Elite Crypto Intelligence</title>
+
+<meta name="description"
+content="SIGNAL MASTER LK — premium crypto market intelligence, signals, analytics and educational tools.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* =========================================================
+   DESIGN SYSTEM
+========================================================= */
+
+:root{
+    --bg:#030303;
+    --bg2:#070707;
+    --bg3:#0b0b0b;
+    --panel:#101010;
+    --panel2:#151515;
+
+    --gold:#d5aa45;
+    --gold2:#f2d477;
+    --gold3:#9a7020;
+
+    --white:#fff;
+    --text:#e9e9e9;
+    --muted:#858585;
+    --dim:#555;
+
+    --green:#20d88a;
+    --red:#ff5d65;
+    --blue:#28a9ff;
+    --purple:#a77cff;
+
+    --border:rgba(255,255,255,.07);
+    --gold-border:rgba(213,170,69,.25);
+
+    --radius:18px;
+
+    --shadow:
+        0 25px 80px rgba(0,0,0,.5);
+
+    --ease:cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(
+            circle at 80% 0%,
+            rgba(213,170,69,.07),
+            transparent 25%
+        ),
+        var(--bg);
+
+    color:var(--text);
+
+    font-family:Inter,Arial,sans-serif;
+
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+img{
+    max-width:100%;
+}
+
+::selection{
+    background:var(--gold);
+    color:#000;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.container{
+    width:min(1180px,calc(100% - 30px));
+    margin:auto;
+}
+
+.section{
+    padding:100px 0;
+    position:relative;
+}
+
+.section-title{
+    font-family:Montserrat,sans-serif;
+    font-size:clamp(32px,5vw,58px);
+    line-height:1;
+    letter-spacing:-2px;
+}
+
+.gold{
+    color:var(--gold2);
+}
+
+.muted{
+    color:var(--muted);
+}
+
+.center{
+    text-align:center;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    color:var(--gold2);
+
+    font-size:11px;
+    font-weight:800;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    margin-bottom:18px;
+}
+
+.eyebrow i{
+    font-size:8px;
+}
+
+.grid-background{
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.22;
+
+    background-image:
+        linear-gradient(
+            rgba(213,170,69,.05) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(213,170,69,.05) 1px,
+            transparent 1px
+        );
+
+    background-size:50px 50px;
+
+    mask-image:
+        linear-gradient(
+            black,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+    height:34px;
+
+    display:flex;
+    align-items:center;
+
+    overflow:hidden;
+
+    border-bottom:1px solid var(--border);
+
+    background:#020202;
+
+    color:#777;
+
+    font-size:10px;
+}
+
+.topbar-track{
+    display:flex;
+    gap:50px;
+
+    white-space:nowrap;
+
+    animation:
+        marquee 28s linear infinite;
+}
+
+.topbar-item{
+    display:flex;
+    gap:7px;
+    align-items:center;
+}
+
+.topbar-item b{
+    color:#ccc;
+}
+
+@keyframes marquee{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    height:72px;
+
+    border-bottom:1px solid var(--border);
+
+    background:rgba(3,3,3,.78);
+
+    backdrop-filter:blur(20px);
+
+    transition:.3s;
+}
+
+.nav{
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-mark{
+    width:40px;
+    height:40px;
+
+    border-radius:11px;
+
+    display:grid;
+    place-items:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--gold2),
+            var(--gold3)
+        );
+
+    color:#000;
+
+    box-shadow:
+        0 0 30px rgba(213,170,69,.2);
+}
+
+.brand-name{
+    font-family:Montserrat;
+    font-weight:900;
+    font-size:14px;
+}
+
+.brand-sub{
+    color:var(--gold2);
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:none;
+
+    list-style:none;
+}
+
+.nav-links a{
+    color:#999;
+    font-size:12px;
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--gold2);
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#0b0b0b;
+
+    color:#aaa;
+
+    display:grid;
+    place-items:center;
+
+    transition:.25s;
+}
+
+.icon-btn:hover{
+    color:var(--gold2);
+    border-color:var(--gold-border);
+}
+
+.menu-btn{
+    display:grid;
+}
+
+@media(min-width:900px){
+
+    .nav-links{
+        display:flex;
+        align-items:center;
+        gap:27px;
+    }
+
+    .menu-btn{
+        display:none;
+    }
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn{
+    min-height:46px;
+
+    padding:0 18px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    border-radius:10px;
+
+    border:1px solid transparent;
+
+    font-size:12px;
+    font-weight:800;
+
+    transition:.3s var(--ease);
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-gold{
+    color:#000;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f4db85,
+            #ae7e25
+        );
+
+    box-shadow:
+        0 10px 35px rgba(213,170,69,.15);
+}
+
+.btn-outline{
+    color:var(--gold2);
+
+    border-color:var(--gold-border);
+
+    background:rgba(213,170,69,.04);
+}
+
+.btn-blue{
+    background:#168fe3;
+    color:#fff;
+}
+
+.btn-danger{
+    background:rgba(255,93,101,.08);
+    border-color:rgba(255,93,101,.2);
+    color:#ff747b;
+}
+
+.full{
+    width:100%;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:calc(100vh - 106px);
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3,3,3,.98),
+            rgba(3,3,3,.82),
+            rgba(3,3,3,.4)
+        ),
+        url(
+            "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=2200&q=85"
+        )
+        center/cover;
+}
+
+.hero-content{
+    max-width:760px;
+
+    position:relative;
+    z-index:2;
+}
+
+.live{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:8px 12px;
+
+    border:1px solid var(--gold-border);
+
+    border-radius:50px;
+
+    background:rgba(213,170,69,.05);
+
+    color:var(--gold2);
+
+    font-size:10px;
+    font-weight:800;
+}
+
+.live-dot{
+    width:7px;
+    height:7px;
+
+    background:var(--green);
+
+    border-radius:50%;
+
+    box-shadow:0 0 12px var(--green);
+
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.5);
+        opacity:.5;
+    }
+}
+
+.hero h1{
+    font-family:Montserrat;
+
+    font-size:clamp(43px,7vw,88px);
+
+    line-height:.94;
+
+    letter-spacing:-4px;
+
+    margin:25px 0;
+}
+
+.gradient-text{
+    background:
+        linear-gradient(
+            120deg,
+            #fff3ba,
+            var(--gold2),
+            #a87924
+        );
+
+    color:transparent;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+}
+
+.hero-copy{
+    max-width:680px;
+
+    color:#aaa;
+
+    font-size:16px;
+
+    line-height:1.8;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:30px;
+}
+
+.hero-metrics{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    max-width:700px;
+
+    margin-top:50px;
+
+    border-top:1px solid var(--border);
+
+    padding-top:22px;
+}
+
+.metric strong{
+    display:block;
+
+    font-family:Montserrat;
+
+    font-size:20px;
+
+    color:#fff;
+}
+
+.metric span{
+    color:#666;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   MARKET TERMINAL
+========================================================= */
+
+.market-strip{
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+
+    background:#060606;
+
+    overflow:hidden;
+}
+
+.market-track{
+    display:flex;
+
+    width:max-content;
+
+    animation:
+        marketMove 35s linear infinite;
+}
+
+.market{
+    min-width:180px;
+
+    padding:14px 20px;
+
+    border-right:1px solid var(--border);
+}
+
+.market-top{
+    display:flex;
+    justify-content:space-between;
+
+    font-size:10px;
+}
+
+.market-symbol{
+    color:#fff;
+    font-weight:800;
+}
+
+.market-price{
+    margin-top:4px;
+
+    font-family:Montserrat;
+
+    font-size:15px;
+}
+
+.market-change{
+    font-size:10px;
+}
+
+.positive{
+    color:var(--green);
+}
+
+.negative{
+    color:var(--red);
+}
+
+@keyframes marketMove{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+
+    margin-top:45px;
+}
+
+.dashboard-card{
+    padding:20px;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.01)
+        );
+
+    box-shadow:var(--shadow);
+}
+
+.dashboard-card.large{
+    grid-column:span 2;
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:18px;
+}
+
+.card-title{
+    font-size:12px;
+    font-weight:800;
+}
+
+.card-title small{
+    display:block;
+
+    color:#555;
+
+    font-size:9px;
+
+    margin-top:3px;
+}
+
+.status{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+
+    padding:5px 8px;
+
+    border-radius:30px;
+
+    background:rgba(32,216,138,.08);
+
+    color:var(--green);
+
+    font-size:9px;
+}
+
+.status::before{
+    content:"";
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:currentColor;
+}
+
+
+/* =========================================================
+   SIGNAL TERMINAL
+========================================================= */
+
+.signal-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.signal{
+    padding:13px;
+
+    display:grid;
+
+    grid-template-columns:1fr auto;
+
+    gap:10px;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:12px;
+
+    background:#0b0b0b;
+}
+
+.signal-symbol{
+    font-weight:800;
+    font-size:12px;
+}
+
+.signal-meta{
+    color:#777;
+    font-size:9px;
+}
+
+.signal-side{
+    font-size:9px;
+    font-weight:900;
+
+    padding:5px 7px;
+
+    border-radius:6px;
+}
+
+.long{
+    color:var(--green);
+    background:rgba(32,216,138,.08);
+}
+
+.short{
+    color:var(--red);
+    background:rgba(255,93,101,.08);
+}
+
+.signal-progress{
+    height:3px;
+
+    margin-top:9px;
+
+    border-radius:10px;
+
+    background:#1c1c1c;
+
+    overflow:hidden;
+}
+
+.signal-progress span{
+    display:block;
+
+    width:var(--progress);
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold3),
+            var(--gold2)
+        );
+}
+
+
+/* =========================================================
+   CHART
+========================================================= */
+
+.chart{
+    height:250px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            rgba(213,170,69,.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(213,170,69,.03) 1px,
+            transparent 1px
+        );
+
+    background-size:40px 40px;
+}
+
+.chart svg{
+    width:100%;
+    height:100%;
+}
+
+.chart-line{
+    fill:none;
+
+    stroke:var(--gold2);
+
+    stroke-width:2;
+
+    vector-effect:non-scaling-stroke;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(213,170,69,.5)
+        );
+}
+
+.chart-area{
+    fill:
+        url(#goldGradient);
+
+    opacity:.15;
+}
+
+
+/* =========================================================
+   REVIEWS ENGINE
+========================================================= */
+
+.review-engine{
+    margin-top:45px;
+
+    border:1px solid var(--gold-border);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(213,170,69,.08),
+            transparent 55%
+        ),
+        #090909;
+}
+
+.review-head{
+    padding:25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.review-count{
+    font-family:Montserrat;
+
+    font-size:27px;
+
+    color:var(--gold2);
+}
+
+.review-source{
+    color:#666;
+    font-size:9px;
+}
+
+.review-window{
+    min-height:145px;
+
+    display:flex;
+    align-items:center;
+
+    padding:30px;
+}
+
+.review{
+    width:100%;
+
+    animation:
+        reviewIn .5s var(--ease);
+}
+
+@keyframes reviewIn{
+    from{
+        opacity:0;
+        transform:translateX(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.review-stars{
+    color:var(--gold2);
+
+    letter-spacing:2px;
+
+    font-size:12px;
+
+    margin-bottom:12px;
+}
+
+.review-text{
+    font-size:15px;
+
+    line-height:1.7;
+
+    color:#ddd;
+}
+
+.review-user{
+    margin-top:12px;
+
+    color:#666;
+
+    font-size:10px;
+}
+
+.review-disclaimer{
+    padding:10px 20px;
+
+    border-top:1px solid var(--border);
+
+    color:#555;
+
+    font-size:9px;
+
+    text-align:center;
+}
+
+
+/* =========================================================
+   P2P TERMINAL
+========================================================= */
+
+.p2p-layout{
+    display:grid;
+    gap:15px;
+
+    margin-top:45px;
+}
+
+.p2p-panel{
+    padding:20px;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    background:#0b0b0b;
+}
+
+.p2p-tabs{
+    display:flex;
+    gap:5px;
+
+    margin-bottom:20px;
+}
+
+.p2p-tab{
+    flex:1;
+
+    min-height:40px;
+
+    border:1px solid var(--border);
+
+    background:#101010;
+
+    color:#777;
+
+    border-radius:8px;
+
+    font-size:11px;
+    font-weight:800;
+}
+
+.p2p-tab.active{
+    color:#000;
+
+    background:var(--gold2);
+
+    border-color:var(--gold2);
+}
+
+.orderbook{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.order-row{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr auto;
+
+    gap:8px;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    background:#101010;
+
+    font-size:10px;
+}
+
+.order-row b{
+    color:#ddd;
+}
+
+.order-row .action{
+    padding:5px 8px;
+
+    border-radius:6px;
+
+    font-size:9px;
+    font-weight:800;
+}
+
+.buy{
+    color:var(--green);
+
+    background:rgba(32,216,138,.08);
+
+    border:1px solid rgba(32,216,138,.15);
+}
+
+.sell{
+    color:var(--red);
+
+    background:rgba(255,93,101,.08);
+
+    border:1px solid rgba(255,93,101,.15);
+}
+
+.trade-box{
+    margin-top:20px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+}
+
+.field{
+    margin-bottom:12px;
+}
+
+.field label{
+    display:block;
+
+    color:#666;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    margin-bottom:6px;
+}
+
+.field input,
+.field select{
+    width:100%;
+
+    height:43px;
+
+    padding:0 12px;
+
+    border:1px solid var(--border);
+
+    border-radius:9px;
+
+    outline:none;
+
+    background:#050505;
+
+    color:#ddd;
+}
+
+.field input:focus,
+.field select:focus{
+    border-color:var(--gold-border);
+}
+
+
+/* =========================================================
+   WALLET
+========================================================= */
+
+.wallet{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:17px;
+
+    border:1px solid var(--gold-border);
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(213,170,69,.07),
+            transparent
+        );
+}
+
+.wallet-balance{
+    font-family:Montserrat;
+
+    font-size:23px;
+}
+
+.wallet-label{
+    color:#666;
+    font-size:9px;
+}
+
+
+/* =========================================================
+   TOOLS
+========================================================= */
+
+.tools-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:12px;
+
+    margin-top:40px;
+}
+
+.tool{
+    padding:20px;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    background:#0b0b0b;
+}
+
+.tool-icon{
+    width:40px;
+    height:40px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:10px;
+
+    color:var(--gold2);
+
+    background:rgba(213,170,69,.08);
+
+    margin-bottom:14px;
+}
+
+.tool h3{
+    font-size:13px;
+
+    margin-bottom:6px;
+}
+
+.tool p{
+    color:#666;
+
+    font-size:10px;
+
+    line-height:1.6;
+}
+
+.calc-result{
+    margin-top:15px;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    background:#050505;
+
+    color:var(--gold2);
+
+    font-family:Montserrat;
+}
+
+
+/* =========================================================
+   ABOUT DEEP
+========================================================= */
+
+.about-grid{
+    display:grid;
+
+    gap:30px;
+
+    margin-top:45px;
+}
+
+.about-image{
+    min-height:400px;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+    background:
+        linear-gradient(
+            rgba(3,3,3,.25),
+            rgba(3,3,3,.8)
+        ),
+        url(
+            "https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&w=1400&q=85"
+        )
+        center/cover;
+}
+
+.about-content{
+    display:grid;
+
+    gap:12px;
+}
+
+.about-feature{
+    padding:20px;
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    background:#0b0b0b;
+}
+
+.about-feature i{
+    color:var(--gold2);
+
+    margin-bottom:10px;
+}
+
+.about-feature h3{
+    font-size:14px;
+
+    margin-bottom:5px;
+}
+
+.about-feature p{
+    color:#777;
+
+    font-size:11px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   SUPPORT CHAT
+========================================================= */
+
+.chat-button{
+    position:fixed;
+
+    right:18px;
+    bottom:18px;
+
+    width:55px;
+    height:55px;
+
+    border:none;
+
+    border-radius:17px;
+
+    display:grid;
+    place-items:center;
+
+    color:#000;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--gold2),
+            var(--gold3)
+        );
+
+    box-shadow:
+        0 15px 45px
+        rgba(0,0,0,.6);
+
+    z-index:1500;
+
+    font-size:20px;
+}
+
+.chat-box{
+    position:fixed;
+
+    right:18px;
+    bottom:85px;
+
+    width:min(350px,calc(100% - 36px));
+
+    border:1px solid var(--gold-border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:#0b0b0b;
+
+    box-shadow:var(--shadow);
+
+    z-index:1499;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:
+        translateY(20px)
+        scale(.97);
+
+    transition:.3s var(--ease);
+}
+
+.chat-box.open{
+    opacity:1;
+    visibility:visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.chat-head{
+    padding:16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--border);
+
+    background:#101010;
+}
+
+.chat-agent{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.agent-avatar{
+    width:35px;
+    height:35px;
+
+    border-radius:10px;
+
+    display:grid;
+    place-items:center;
+
+    background:var(--gold2);
+
+    color:#000;
+}
+
+.chat-agent strong{
+    display:block;
+    font-size:11px;
+}
+
+.chat-agent span{
+    color:var(--green);
+    font-size:8px;
+}
+
+.chat-body{
+    padding:16px;
+
+    min-height:180px;
+
+    max-height:250px;
+
+    overflow:auto;
+}
+
+.message{
+    max-width:85%;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    margin-bottom:8px;
+
+    font-size:10px;
+
+    line-height:1.5;
+}
+
+.message.bot{
+    background:#151515;
+    color:#aaa;
+}
+
+.message.user{
+    margin-left:auto;
+
+    color:#000;
+
+    background:var(--gold2);
+}
+
+.chat-input{
+    padding:12px;
+
+    display:flex;
+    gap:7px;
+
+    border-top:1px solid var(--border);
+}
+
+.chat-input input{
+    flex:1;
+
+    min-width:0;
+
+    height:38px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    background:#050505;
+
+    color:white;
+
+    padding:0 10px;
+
+    outline:none;
+}
+
+.chat-send{
+    width:38px;
+    height:38px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:var(--gold2);
+
+    color:#000;
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+========================================================= */
+
+.notification{
+    position:fixed;
+
+    top:90px;
+    right:18px;
+
+    width:min(330px,calc(100% - 36px));
+
+    padding:14px;
+
+    display:flex;
+    gap:10px;
+
+    border:1px solid var(--border);
+
+    border-radius:13px;
+
+    background:#0b0b0b;
+
+    box-shadow:var(--shadow);
+
+    z-index:2000;
+
+    transform:translateX(120%);
+
+    transition:.5s var(--ease);
+}
+
+.notification.show{
+    transform:translateX(0);
+}
+
+.notification i{
+    color:var(--gold2);
+}
+
+.notification strong{
+    display:block;
+    font-size:11px;
+}
+
+.notification span{
+    color:#666;
+    font-size:9px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    display:grid;
+    place-items:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(8px);
+
+    z-index:3000;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+}
+
+.modal.open{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal-card{
+    width:min(500px,100%);
+
+    padding:25px;
+
+    border:1px solid var(--gold-border);
+
+    border-radius:20px;
+
+    background:#0b0b0b;
+
+    box-shadow:var(--shadow);
+
+    transform:translateY(20px);
+
+    transition:.3s;
+}
+
+.modal.open .modal-card{
+    transform:translateY(0);
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:20px;
+}
+
+.modal-header h2{
+    font-family:Montserrat;
+    font-size:20px;
+}
+
+.close-modal{
+    background:none;
+    border:none;
+    color:#777;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:30px 0;
+
+    border-top:1px solid var(--border);
+
+    background:#020202;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+}
+
+.footer-copy{
+    color:#555;
+    font-size:10px;
+}
+
+.socials{
+    display:flex;
+    gap:7px;
+}
+
+.socials a{
+    width:34px;
+    height:34px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid var(--border);
+
+    border-radius:9px;
+
+    color:#777;
+
+    transition:.25s;
+}
+
+.socials a:hover{
+    color:var(--gold2);
+    border-color:var(--gold-border);
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media(min-width:800px){
+
+    .dashboard-grid{
+        grid-template-columns:
+            1.2fr .8fr;
+    }
+
+    .dashboard-card.large{
+        grid-column:span 1;
+    }
+
+    .p2p-layout{
+        grid-template-columns:
+            1.3fr .7fr;
+    }
+
+    .tools-grid{
+        grid-template-columns:
+            repeat(4,1fr);
+    }
+
+    .about-grid{
+        grid-template-columns:
+            1fr 1fr;
+        align-items:stretch;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     TOP MARKET BAR
+========================================================= -->
+
+<div class="topbar">
+
+<div class="topbar-track">
+
+    <div class="topbar-item">
+        <i class="fa-solid fa-circle positive"></i>
+        <b>MARKET ENGINE</b>
+        ONLINE
+    </div>
+
+    <div class="topbar-item">
+        BTC
+        <span class="positive">+2.41%</span>
+    </div>
+
+    <div class="topbar-item">
+        ETH
+        <span class="positive">+1.87%</span>
+    </div>
+
+    <div class="topbar-item">
+        SIGNAL ENGINE
+        <span class="gold">ACTIVE</span>
+    </div>
+
+    <div class="topbar-item">
+        AI ANALYTICS
+        <span class="positive">ONLINE</span>
+    </div>
+
+    <div class="topbar-item">
+        VIP CHANNEL
+        <span class="gold">PREMIUM</span>
+    </div>
+
+    <!-- duplicate -->
+
+    <div class="topbar-item">
+        <i class="fa-solid fa-circle positive"></i>
+        <b>MARKET ENGINE</b>
+        ONLINE
+    </div>
+
+    <div class="topbar-item">
+        BTC
+        <span class="positive">+2.41%</span>
+    </div>
+
+    <div class="topbar-item">
+        ETH
+        <span class="positive">+1.87%</span>
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+<div class="container nav">
+
+<a class="brand" href="#home">
+
+    <div class="brand-mark">
+        <i class="fa-solid fa-chart-line"></i>
+    </div>
+
+    <div>
+        <div class="brand-name">
+            SIGNAL MASTER LK
+        </div>
+
+        <div class="brand-sub">
+            CRYPTO INTELLIGENCE
+        </div>
+    </div>
+
+</a>
+
+
+<ul class="nav-links">
+
+    <li><a href="#home">Home</a></li>
+
+    <li><a href="#terminal">Terminal</a></li>
+
+    <li><a href="#p2p">P2P</a></li>
+
+    <li><a href="#about">About</a></li>
+
+    <li><a href="#tools">Tools</a></li>
+
+    <li><a href="#contact">Support</a></li>
+
+</ul>
+
+
+<div class="nav-actions">
+
+    <button class="icon-btn"
+            onclick="openModal('walletModal')">
+        <i class="fa-solid fa-wallet"></i>
+    </button>
+
+    <button class="icon-btn menu-btn"
+            onclick="mobileMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- =========================================================
+     MOBILE MENU
+========================================================= -->
+
+<div id="mobileMenu"
+style="
+position:fixed;
+top:106px;
+left:15px;
+right:15px;
+z-index:999;
+padding:20px;
+border:1px solid rgba(213,170,69,.25);
+border-radius:15px;
+background:#0a0a0a;
+display:none;
+">
+
+<a href="#home"
+style="display:block;padding:12px;color:#aaa;"
+onclick="mobileMenu()">
+Home
+</a>
+
+<a href="#terminal"
+style="display:block;padding:12px;color:#aaa;"
+onclick="mobileMenu()">
+Terminal
+</a>
+
+<a href="#p2p"
+style="display:block;padding:12px;color:#aaa;"
+onclick="mobileMenu()">
+P2P Trading
+</a>
+
+<a href="#about"
+style="display:block;padding:12px;color:#aaa;"
+onclick="mobileMenu()">
+About
+</a>
+
+<a href="#tools"
+style="display:block;padding:12px;color:#aaa;"
+onclick="mobileMenu()">
+Tools
+</a>
+
+<a href="#contact"
+style="display:block;padding:12px;color:#aaa;"
+onclick="mobileMenu()">
+Support
+</a>
+
+</div>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+<div class="grid-background"></div>
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="live">
+
+<span class="live-dot"></span>
+
+LIVE MARKET INTELLIGENCE
+
+</div>
+
+
+<h1>
+
+Trade With
+
+<span class="gradient-text">
+More Intelligence.
+</span>
+
+</h1>
+
+
+<p class="hero-copy">
+
+SIGNAL MASTER LK brings together market analysis,
+structured crypto signals, automated monitoring,
+educational resources and premium community tools
+inside one futuristic trading ecosystem.
+
+</p>
+
+
+<div class="hero-buttons">
+
+<a
+href="https://t.me/SignalMaster_Free"
+target="_blank"
+rel="noopener"
+class="btn btn-blue">
+
+<i class="fa-brands fa-telegram"></i>
+
+Join Free Channel
+
+</a>
+
+
+<a
+href="https://t.me/Ceylon_VIP_bot"
+target="_blank"
+rel="noopener"
+class="btn btn-gold">
+
+<i class="fa-solid fa-crown"></i>
+
+Explore VIP
+
+</a>
+
+
+<a
+href="https://shorturl.at/g85UV"
+target="_blank"
+rel="noopener"
+class="btn btn-outline">
+
+Official Website
+
+<i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+</a>
+
+</div>
+
+
+<div class="hero-metrics">
+
+<div class="metric">
+
+<strong id="reviewCounter">
+100,000+
+</strong>
+
+<span>
+Simulated Community Reviews
+</span>
+
+</div>
+
+
+<div class="metric">
+
+<strong>
+24/7
+</strong>
+
+<span>
+Market Monitoring
+</span>
+
+</div>
+
+
+<div class="metric">
+
+<strong>
+AI + DATA
+</strong>
+
+<span>
+Analytics Workflow
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     MARKET STRIP
+========================================================= -->
+
+<div class="market-strip">
+
+<div class="market-track" id="marketTrack">
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     TERMINAL
+========================================================= -->
+
+<section class="section" id="terminal">
+
+<div class="container">
+
+<div class="eyebrow">
+<i class="fa-solid fa-bolt"></i>
+LIVE TERMINAL
+</div>
+
+<h2 class="section-title">
+Market
+<span class="gold">Command Center.</span>
+</h2>
+
+
+<div class="dashboard-grid">
+
+
+<!-- CHART -->
+
+<div class="dashboard-card large">
+
+<div class="card-header">
+
+<div class="card-title">
+
+BTC/USDT
+
+<small>
+SIMULATED MARKET DATA
+</small>
+
+</div>
+
+<div class="status">
+LIVE
+</div>
+
+</div>
+
+
+<div class="chart">
+
+<svg viewBox="0 0 1000 300"
+preserveAspectRatio="none">
+
+<defs>
+
+<linearGradient id="goldGradient"
+x1="0" y1="0"
+x2="0" y2="1">
+
+<stop offset="0"
+stop-color="#f2d477"/>
+
+<stop offset="1"
+stop-color="#f2d477"
+stop-opacity="0"/>
+
+</linearGradient>
+
+</defs>
+
+
+<path
+id="chartArea"
+class="chart-area"
+d=""/>
+
+<path
+id="chartLine"
+class="chart-line"
+d=""/>
+
+</svg>
+
+</div>
+
+</div>
+
+
+<!-- SIGNALS -->
+
+<div class="dashboard-card">
+
+<div class="card-header">
+
+<div class="card-title">
+
+SIGNAL FEED
+
+<small>
+DEMO SIGNAL ENGINE
+</small>
+
+</div>
+
+<div class="status">
+ACTIVE
+</div>
+
+</div>
+
+
+<div class="signal-list">
+
+
+<div class="signal">
+
+<div>
+
+<div class="signal-symbol">
+BTC/USDT
+</div>
+
+<div class="signal-meta">
+Entry 64,820
+• TP 66,100
+</div>
+
+<div class="signal-progress">
+<span style="--progress:74%"></span>
+</div>
+
+</div>
+
+<div class="signal-side long">
+LONG
+</div>
+
+</div>
+
+
+<div class="signal">
+
+<div>
+
+<div class="signal-symbol">
+ETH/USDT
+</div>
+
+<div class="signal-meta">
+Entry 3,120
+• TP 3,240
+</div>
+
+<div class="signal-progress">
+<span style="--progress:51%"></span>
+</div>
+
+</div>
+
+<div class="signal-side long">
+LONG
+</div>
+
+</div>
+
+
+<div class="signal">
+
+<div>
+
+<div class="signal-symbol">
+SOL/USDT
+</div>
+
+<div class="signal-meta">
+Entry 145
+• TP 151
+</div>
+
+<div class="signal-progress">
+<span style="--progress:32%"></span>
+</div>
+
+</div>
+
+<div class="signal-side short">
+SHORT
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- MARKET STATS -->
+
+<div class="dashboard-card">
+
+<div class="card-header">
+
+<div class="card-title">
+MARKET OVERVIEW
+</div>
+
+</div>
+
+<div id="marketStats">
+
+</div>
+
+</div>
+
+
+<!-- AI STATUS -->
+
+<div class="dashboard-card">
+
+<div class="card-header">
+
+<div class="card-title">
+AI ANALYTICS
+</div>
+
+<div class="status">
+ONLINE
+</div>
+
+</div>
+
+<div style="
+font-family:Montserrat;
+font-size:30px;
+color:#f2d477;
+">
+94.8%
+</div>
+
+<div class="muted"
+style="font-size:10px;margin-top:5px;">
+SIMULATED MARKET CONFIDENCE INDEX
+</div>
+
+<div style="
+height:5px;
+background:#1b1b1b;
+margin-top:20px;
+border-radius:20px;
+overflow:hidden;
+">
+
+<div style="
+height:100%;
+width:94.8%;
+background:linear-gradient(90deg,#9a7020,#f2d477);
+"></div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     REVIEWS
+========================================================= -->
+
+<section class="section"
+style="background:#070707;">
+
+<div class="container">
+
+<div class="center">
+
+<div class="eyebrow">
+<i class="fa-solid fa-star"></i>
+COMMUNITY ENGINE
+</div>
+
+<h2 class="section-title">
+Community
+<span class="gold">Voice.</span>
+</h2>
+
+<p class="muted"
+style="max-width:650px;margin:20px auto 0;font-size:13px;line-height:1.8;">
+
+A continuously rotating demonstration of how a
+large-scale review aggregation interface could work.
+
+</p>
+
+</div>
+
+
+<div class="review-engine">
+
+
+<div class="review-head">
+
+<div>
+
+<div class="review-count">
+100,000+
+</div>
+
+<div class="review-source">
+SIMULATED AGGREGATED REVIEW DATA
+</div>
+
+</div>
+
+<div class="status">
+ENGINE ACTIVE
+</div>
+
+</div>
+
+
+<div class="review-window">
+
+<div id="reviewContainer"
+class="review">
+
+</div>
+
+</div>
+
+
+<div class="review-disclaimer">
+
+Demo interface — these testimonials are generated
+simulation data and are not represented as verified
+customer testimonials.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     P2P
+========================================================= -->
+
+<section class="section" id="p2p">
+
+<div class="container">
+
+<div class="eyebrow">
+<i class="fa-solid fa-arrows-left-right"></i>
+P2P TERMINAL
+</div>
+
+<h2 class="section-title">
+USDT
+<span class="gold">P2P Marketplace.</span>
+</h2>
+
+<p class="muted"
+style="max-width:650px;margin-top:18px;font-size:13px;line-height:1.8;">
+
+Production-ready visual architecture for a P2P
+marketplace. Current implementation is a frontend
+simulation and does not execute cryptocurrency
+transactions.
+
+</p>
+
+
+<div class="p2p-layout">
+
+
+<!-- ORDER BOOK -->
+
+<div class="p2p-panel">
+
+<div class="p2p-tabs">
+
+<button
+class="p2p-tab active"
+onclick="switchP2P('buy',this)">
+BUY USDT
+</button>
+
+<button
+class="p2p-tab"
+onclick="switchP2P('sell',this)">
+SELL USDT
+</button>
+
+</div>
+
+
+<div class="orderbook"
+id="orderBook">
+
+</div>
+
+</div>
+
+
+<!-- TRADE -->
+
+<div class="p2p-panel">
+
+<div class="card-header">
+
+<div class="card-title">
+ORDER
+</div>
+
+<div class="status">
+DEMO
+</div>
+
+</div>
+
+
+<div class="wallet">
+
+<div>
+
+<div class="wallet-label">
+DEMO WALLET BALANCE
+</div>
+
+<div class="wallet-balance">
+$<span id="walletBalance">
+5,000
+</span>
+</div>
+
+</div>
+
+<button
+class="btn btn-outline"
+onclick="openModal('walletModal')">
+
+Connect
+
+</button>
+
+</div>
+
+
+<div class="trade-box">
+
+<div class="field">
+
+<label>
+USDT Amount
+</label>
+
+<input
+id="usdtAmount"
+type="number"
+placeholder="100"
+value="100"
+oninput="calculateP2P()">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Price / USDT
+</label>
+
+<input
+id="usdtPrice"
+value="300"
+type="number"
+oninput="calculateP2P()">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Estimated Total
+</label>
+
+<input
+id="p2pTotal"
+readonly
+value="30,000">
+
+</div>
+
+
+<button
+class="btn btn-gold full"
+onclick="demoOrder()">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+Create Demo Order
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section class="section" id="about">
+
+<div class="container">
+
+<div class="eyebrow">
+<i class="fa-solid fa-layer-group"></i>
+THE ECOSYSTEM
+</div>
+
+<h2 class="section-title">
+Inside
+<span class="gold">SIGNAL MASTER LK.</span>
+</h2>
+
+
+<div class="about-grid">
+
+
+<div class="about-image"></div>
+
+
+<div class="about-content">
+
+
+<div class="about-feature">
+
+<i class="fa-solid fa-robot"></i>
+
+<h3>
+Automated Signal Infrastructure
+</h3>
+
+<p>
+The platform architecture can connect market-data
+feeds, signal-processing services, notifications
+and analytics into one centralized workflow.
+</p>
+
+</div>
+
+
+<div class="about-feature">
+
+<i class="fa-solid fa-brain"></i>
+
+<h3>
+AI-Assisted Market Intelligence
+</h3>
+
+<p>
+Advanced production systems can use machine-learning
+services to classify market conditions, detect patterns
+and organize large volumes of market information.
+</p>
+
+</div>
+
+
+<div class="about-feature">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h3>
+Structured Trading Intelligence
+</h3>
+
+<p>
+Signal interfaces can present entry zones, targets,
+risk levels, market context and status information
+in a consistent format.
+</p>
+
+</div>
+
+
+<div class="about-feature">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<h3>
+Risk-First Architecture
+</h3>
+
+<p>
+A professional trading platform should emphasize
+position sizing, risk controls, transparent reporting
+and responsible decision-making rather than guaranteed
+returns.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     TOOLS
+========================================================= -->
+
+<section class="section"
+id="tools"
+style="background:#070707;">
+
+<div class="container">
+
+<div class="eyebrow">
+<i class="fa-solid fa-toolbox"></i>
+TRADER TOOLKIT
+</div>
+
+<h2 class="section-title">
+Advanced
+<span class="gold">Trading Tools.</span>
+</h2>
+
+
+<div class="tools-grid">
+
+
+<!-- PROFIT -->
+
+<div class="tool">
+
+<div class="tool-icon">
+<i class="fa-solid fa-calculator"></i>
+</div>
+
+<h3>
+Profit Calculator
+</h3>
+
+<p>
+Estimate hypothetical P&L from entry,
+exit and position size.
+</p>
+
+
+<div class="field"
+style="margin-top:15px;">
+
+<label>
+Entry
+</label>
+
+<input
+id="calcEntry"
+type="number"
+value="100">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Exit
+</label>
+
+<input
+id="calcExit"
+type="number"
+value="120">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Capital
+</label>
+
+<input
+id="calcCapital"
+type="number"
+value="1000">
+
+</div>
+
+
+<button
+class="btn btn-outline full"
+onclick="profitCalculator()">
+
+Calculate
+
+</button>
+
+
+<div
+id="calcResult"
+class="calc-result">
+
+Estimated: $200
+
+</div>
+
+</div>
+
+
+<!-- COUNTDOWN -->
+
+<div class="tool">
+
+<div class="tool-icon">
+<i class="fa-solid fa-stopwatch"></i>
+</div>
+
+<h3>
+Signal Countdown
+</h3>
+
+<p>
+Simulated countdown for the next
+market analysis cycle.
+</p>
+
+<div
+id="countdown"
+style="
+font-family:Montserrat;
+font-size:36px;
+color:#f2d477;
+margin:25px 0;
+">
+
+05:00
+
+</div>
+
+<button
+class="btn btn-outline full"
+onclick="resetCountdown()">
+
+Reset Timer
+
+</button>
+
+</div>
+
+
+<!-- DOMINANCE -->
+
+<div class="tool">
+
+<div class="tool-icon">
+<i class="fa-solid fa-chart-pie"></i>
+</div>
+
+<h3>
+Market Dominance
+</h3>
+
+<p>
+Visual demonstration of market-share
+analytics components.
+</p>
+
+<div style="margin-top:20px;">
+
+<div style="display:flex;justify-content:space-between;font-size:10px;">
+<span>BTC</span>
+<span>52.4%</span>
+</div>
+
+<div style="height:5px;background:#1b1b1b;margin:7px 0 14px;border-radius:10px;">
+<div style="height:100%;width:52.4%;background:#f2d477;border-radius:10px;"></div>
+</div>
+
+
+<div style="display:flex;justify-content:space-between;font-size:10px;">
+<span>ETH</span>
+<span>17.8%</span>
+</div>
+
+<div style="height:5px;background:#1b1b1b;margin:7px 0 14px;border-radius:10px;">
+<div style="height:100%;width:17.8%;background:#a77cff;border-radius:10px;"></div>
+</div>
+
+
+<div style="display:flex;justify-content:space-between;font-size:10px;">
+<span>ALT</span>
+<span>29.8%</span>
+</div>
+
+<div style="height:5px;background:#1b1b1b;margin-top:7px;border-radius:10px;">
+<div style="height:100%;width:29.8%;background:#28a9ff;border-radius:10px;"></div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RISK -->
+
+<div class="tool">
+
+<div class="tool-icon">
+<i class="fa-solid fa-shield"></i>
+</div>
+
+<h3>
+Risk Calculator
+</h3>
+
+<p>
+Hypothetical position sizing calculator.
+</p>
+
+<div class="field"
+style="margin-top:15px;">
+
+<label>
+Account Balance
+</label>
+
+<input
+id="riskBalance"
+type="number"
+value="1000">
+
+</div>
+
+<div class="field">
+
+<label>
+Risk %
+</label>
+
+<input
+id="riskPercent"
+type="number"
+value="1">
+
+</div>
+
+<button
+class="btn btn-outline full"
+onclick="riskCalculator()">
+
+Calculate Risk
+
+</button>
+
+<div
+id="riskResult"
+class="calc-result">
+
+Risk Amount: $10
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     PAYMENT
+========================================================= -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="center">
+
+<div class="eyebrow">
+<i class="fa-solid fa-lock"></i>
+SECURE CHECKOUT UI
+</div>
+
+<h2 class="section-title">
+VIP
+<span class="gold">Checkout.</span>
+</h2>
+
+<p class="muted"
+style="max-width:650px;margin:20px auto;font-size:13px;line-height:1.8;">
+
+Frontend checkout demonstration. No card information
+is transmitted or stored by this page.
+
+</p>
+
+</div>
+
+
+<div
+style="
+max-width:700px;
+margin:40px auto 0;
+padding:25px;
+border:1px solid var(--border);
+border-radius:18px;
+background:#0b0b0b;
+">
+
+
+<div class="field">
+
+<label>
+Membership
+</label>
+
+<select id="membership">
+
+<option value="VIP Monthly">
+VIP Monthly
+</option>
+
+<option value="VIP Lifetime">
+VIP Lifetime
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Payment Method
+</label>
+
+<select id="paymentMethod">
+
+<option>
+Card Payment — Demo
+</option>
+
+<option>
+USDT — Demo
+</option>
+
+<option>
+Telegram Payment Flow
+</option>
+
+</select>
+
+</div>
+
+
+<div
+style="
+padding:15px;
+border:1px solid rgba(213,170,69,.2);
+border-radius:10px;
+background:rgba(213,170,69,.04);
+font-size:10px;
+color:#777;
+margin-bottom:15px;
+">
+
+<i
+class="fa-solid fa-shield-halved"
+style="color:#f2d477;margin-right:5px;">
+</i>
+
+Production card processing should be handled by
+a PCI-compliant payment provider. Never process raw
+card data directly inside this static page.
+
+</div>
+
+
+<button
+class="btn btn-gold full"
+onclick="demoCheckout()">
+
+<i class="fa-solid fa-lock"></i>
+
+Continue to Secure Checkout
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section class="section" id="contact">
+
+<div class="container">
+
+<div
+style="
+padding:50px 25px;
+border:1px solid var(--gold-border);
+border-radius:25px;
+text-align:center;
+background:
+radial-gradient(circle at 50% 0%,rgba(213,170,69,.1),transparent 50%),
+#090909;
+">
+
+<div class="eyebrow">
+<i class="fa-brands fa-telegram"></i>
+TELEGRAM NETWORK
+</div>
+
+<h2 class="section-title">
+Connect With
+<span class="gold">The Team.</span>
+</h2>
+
+<p class="muted"
+style="
+max-width:650px;
+margin:20px auto;
+font-size:13px;
+line-height:1.8;
+">
+
+Use the official Telegram channels and support
+accounts below for community information,
+VIP assistance and administration.
+
+</p>
+
+
+<div
+style="
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-top:30px;
+">
+
+
+<a
+href="https://t.me/SignalMaster_Free"
+target="_blank"
+rel="noopener"
+class="btn btn-blue">
+
+<i class="fa-brands fa-telegram"></i>
+
+Free Channel
+
+</a>
+
+
+<a
+href="https://t.me/Ceylon_VIP_bot"
+target="_blank"
+rel="noopener"
+class="btn btn-gold">
+
+<i class="fa-solid fa-crown"></i>
+
+VIP Buy Bot
+
+</a>
+
+
+<a
+href="https://t.me/SMLK_AssistantBot"
+target="_blank"
+rel="noopener"
+class="btn btn-outline">
+
+<i class="fa-solid fa-headset"></i>
+
+VIP Assistant
+
+</a>
+
+
+<a
+href="https://t.me/SignalMaster_Owner"
+target="_blank"
+rel="noopener"
+class="btn btn-outline">
+
+<i class="fa-solid fa-user-shield"></i>
+
+Owner / Receipts
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="container footer">
+
+<div class="footer-copy">
+
+© <span id="year"></span>
+SIGNAL MASTER LK.
+All rights reserved.
+
+<br>
+
+<span style="color:#333;">
+Crypto markets involve substantial risk.
+Nothing on this website constitutes financial advice.
+</span>
+
+</div>
+
+
+<div class="socials">
+
+<a href="https://t.me/SignalMaster_Free"
+target="_blank"
+rel="noopener">
+
+<i class="fa-brands fa-telegram"></i>
+
+</a>
+
+<a href="https://t.me/Ceylon_VIP_bot"
+target="_blank"
+rel="noopener">
+
+<i class="fa-solid fa-crown"></i>
+
+</a>
+
+<a href="https://t.me/SMLK_AssistantBot"
+target="_blank"
+rel="noopener">
+
+<i class="fa-solid fa-headset"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =========================================================
+     SUPPORT CHAT
+========================================================= -->
+
+<button
+class="chat-button"
+onclick="toggleChat()">
+
+<i class="fa-solid fa-comments"></i>
+
+</button>
+
+
+<div
+class="chat-box"
+id="chatBox">
+
+
+<div class="chat-head">
+
+<div class="chat-agent">
+
+<div class="agent-avatar">
+<i class="fa-solid fa-headset"></i>
+</div>
+
+<div>
+
+<strong>
+SIGNAL MASTER SUPPORT
+</strong>
+
+<span>
+● ONLINE
+</span>
+
+</div>
+
+</div>
+
+
+<button
+onclick="toggleChat()"
+style="
+background:none;
+border:none;
+color:#666;
+">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+
+<div
+class="chat-body"
+id="chatBody">
+
+<div class="message bot">
+
+Hello 👋 Welcome to SIGNAL MASTER LK.
+
+How can we help you?
+
+</div>
+
+<div class="message bot">
+
+For official VIP information,
+please use our Telegram assistant.
+
+</div>
+
+</div>
+
+
+<div class="chat-input">
+
+<input
+id="chatInput"
+placeholder="Type a message..."
+onkeydown="
+if(event.key==='Enter')sendMessage()
+">
+
+<button
+class="chat-send"
+onclick="sendMessage()">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     NOTIFICATION
+========================================================= -->
+
+<div
+class="notification"
+id="notification">
+
+<i class="fa-solid fa-bell"></i>
+
+<div>
+
+<strong id="notificationTitle">
+System Update
+</strong>
+
+<span id="notificationText">
+New market data available.
+</span>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     WALLET MODAL
+========================================================= -->
+
+<div
+class="modal"
+id="walletModal"
+onclick="
+if(event.target===this)closeModal('walletModal')
+">
+
+<div class="modal-card">
+
+<div class="modal-header">
+
+<h2>
+Connect Wallet
+</h2>
+
+<button
+class="close-modal"
+onclick="closeModal('walletModal')">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</div>
+
+
+<p class="muted"
+style="font-size:11px;line-height:1.7;margin-bottom:20px;">
+
+Demo wallet connection interface. No blockchain
+transaction is performed by this static demo.
+
+</p>
+
+
+<button
+class="btn btn-outline full"
+onclick="demoWallet('MetaMask')">
+
+<i class="fa-solid fa-wallet"></i>
+
+MetaMask
+
+</button>
+
+
+<button
+class="btn btn-outline full"
+style="margin-top:8px;"
+onclick="demoWallet('WalletConnect')">
+
+<i class="fa-solid fa-link"></i>
+
+WalletConnect
+
+</button>
+
+
+<button
+class="btn btn-outline full"
+style="margin-top:8px;"
+onclick="demoWallet('Coinbase Wallet')">
+
+<i class="fa-solid fa-wallet"></i>
+
+Coinbase Wallet
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const CONFIG = {
+
+    brand:"SIGNAL MASTER LK",
+
+    telegram:{
+        free:"https://t.me/SignalMaster_Free",
+        vip:"https://t.me/Ceylon_VIP_bot",
+        assistant:"https://t.me/SMLK_AssistantBot",
+        owner:"https://t.me/SignalMaster_Owner"
+    },
+
+    official:"https://shorturl.at/g85UV"
+
+};
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   MARKET DATA
+========================================================= */
+
+const coins = [
+
+    {
+        symbol:"BTC/USDT",
+        price:64820
+    },
+
+    {
+        symbol:"ETH/USDT",
+        price:3120
+    },
+
+    {
+        symbol:"BNB/USDT",
+        price:585
+    },
+
+    {
+        symbol:"SOL/USDT",
+        price:145
+    },
+
+    {
+        symbol:"XRP/USDT",
+        price:.58
+    },
+
+    {
+        symbol:"DOGE/USDT",
+        price:.14
+    },
+
+    {
+        symbol:"ADA/USDT",
+        price:.39
+    },
+
+    {
+        symbol:"AVAX/USDT",
+        price:34.2
+    }
+
+];
+
+
+function formatPrice(value){
+
+    if(value < 1)
+        return value.toFixed(4);
+
+    if(value < 100)
+        return value.toFixed(2);
+
+    return value.toLocaleString(
+        undefined,
+        {
+            maximumFractionDigits:2
+        }
+    );
+}
+
+
+function renderMarkets(){
+
+    const track =
+        document.getElementById(
+            "marketTrack"
+        );
+
+    const list =
+        [...coins,...coins];
+
+    track.innerHTML = list.map(
+        (coin,index)=>{
+
+            const change =
+                (
+                    Math.random()*5 - 1.5
+                ).toFixed(2);
+
+            const positive =
+                change >= 0;
+
+            return `
+
+            <div class="market">
+
+                <div class="market-top">
+
+                    <span class="market-symbol">
+                        ${coin.symbol}
+                    </span>
+
+                    <span class="market-change ${
+                        positive
+                        ? "positive"
+                        : "negative"
+                    }">
+
+                        ${positive ? "+" : ""}
+                        ${change}%
+
+                    </span>
+
+                </div>
+
+                <div class="market-price">
+
+                    ${formatPrice(coin.price)}
+
+                </div>
+
+            </div>
+
+            `;
+
+        }
+    ).join("");
+
+}
+
+
+renderMarkets();
+
+
+/* =========================================================
+   MARKET LIVE SIMULATION
+========================================================= */
+
+setInterval(()=>{
+
+    coins.forEach(coin=>{
+
+        const movement =
+            (Math.random()-.5)
+            *
+            coin.price
+            *
+            .0015;
+
+        coin.price += movement;
+
+    });
+
+    renderMarkets();
+
+},3000);
+
+
+/* =========================================================
+   MARKET STATS
+========================================================= */
+
+function renderMarketStats(){
+
+    const box =
+        document.getElementById(
+            "marketStats"
+        );
+
+    box.innerHTML = coins
+        .slice(0,5)
+        .map(coin=>{
+
+            const change =
+                (Math.random()*4-1).toFixed(2);
+
+            return `
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                padding:9px 0;
+                border-bottom:1px solid rgba(255,255,255,.04);
+                font-size:10px;
+            ">
+
+                <span>${coin.symbol}</span>
+
+                <span class="${
+                    change >= 0
+                    ? "positive"
+                    : "negative"
+                }">
+
+                    ${
+                        change >= 0
+                        ? "+"
+                        : ""
+                    }${change}%
+
+                </span>
+
+            </div>
+
+            `;
+
+        }).join("");
+
+}
+
+renderMarketStats();
+
+
+/* =========================================================
+   SIMULATED CHART
+========================================================= */
+
+function generateChart(){
+
+    let points = [];
+
+    let value = 150;
+
+    for(let i=0;i<=100;i++){
+
+        value +=
+            (Math.random()-.44)*12;
+
+        value =
+            Math.max(
+                40,
+                Math.min(260,value)
+            );
+
+        points.push({
+            x:i*10,
+            y:300-value
+        });
+
+    }
+
+    const line =
+        points
+        .map(
+            (p,i)=>
+                `${i===0?"M":"L"} ${p.x} ${p.y}`
+        )
+        .join(" ");
+
+    const area =
+        line +
+        " L 1000 300 L 0 300 Z";
+
+    document.getElementById(
+        "chartLine"
+    ).setAttribute(
+        "d",
+        line
+    );
+
+    document.getElementById(
+        "chartArea"
+    ).setAttribute(
+        "d",
+        area
+    );
+
+}
+
+generateChart();
+
+setInterval(
+    generateChart,
+    4000
+);
+
+
+/* =========================================================
+   REVIEW ENGINE
+========================================================= */
+
+const reviewNames = [
+
+    "Verified Community Member",
+    "Crypto Learner",
+    "Market Participant",
+    "Community Trader",
+    "VIP Community Member",
+    "Digital Asset Learner",
+    "Market Observer",
+    "Telegram Community Member"
+
+];
+
+
+const reviewMessages = [
+
+    "The dashboard interface makes market information much easier to organize.",
+
+    "I like having signals, market education and community tools in one place.",
+
+    "The market terminal concept is clean and easy to understand.",
+
+    "The educational resources are useful for understanding crypto concepts.",
+
+    "The VIP interface provides a much more structured experience.",
+
+    "The platform design feels modern and professional.",
+
+    "The signal feed is much easier to scan than a normal chat interface.",
+
+    "The risk tools are useful for thinking through hypothetical scenarios.",
+
+    "The Telegram integration makes community navigation simple.",
+
+    "The analytics interface gives the platform a professional trading-terminal feel."
+
+];
+
+
+let reviewIndex = 0;
+
+
+function updateReview(){
+
+    const container =
+        document.getElementById(
+            "reviewContainer"
+        );
+
+    const message =
+        reviewMessages[
+            reviewIndex %
+            reviewMessages.length
+        ];
+
+    const name =
+        reviewNames[
+            Math.floor(
+                Math.random()
+                *
+                reviewNames.length
+            )
+        ];
+
+    reviewIndex++;
+
+    container.innerHTML = `
+
+        <div class="review-stars">
+            ★★★★★
+        </div>
+
+        <div class="review-text">
+            “${message}”
+        </div>
+
+        <div class="review-user">
+            — ${name}
+            • Demo-generated feedback
+        </div>
+
+    `;
+
+}
+
+
+updateReview();
+
+setInterval(
+    updateReview,
+    5000
+);
+
+
+/* =========================================================
+   P2P ORDER BOOK
+========================================================= */
+
+let p2pMode = "buy";
+
+
+function generateOrders(){
+
+    const box =
+        document.getElementById(
+            "orderBook"
+        );
+
+    const base = 300;
+
+    let html = "";
+
+    for(let i=0;i<8;i++){
+
+        const price =
+            base +
+            (
+                Math.random()*8
+                -
+                4
+            );
+
+        const amount =
+            (
+                Math.random()*200
+                +
+                10
+            ).toFixed(2);
+
+        const total =
+            (
+                price*amount
+            ).toFixed(2);
+
+        html += `
+
+        <div class="order-row">
+
+            <b>
+                ${price.toFixed(2)}
+            </b>
+
+            <span>
+                ${amount}
+            </span>
+
+            <span>
+                ${total}
+            </span>
+
+            <button
+                class="action ${
+                    p2pMode === "buy"
+                    ? "buy"
+                    : "sell"
+                }"
+                onclick="selectOrder(
+                    ${price.toFixed(2)}
+                )">
+
+                ${p2pMode.toUpperCase()}
+
+            </button>
+
+        </div>
+
+        `;
+
+    }
+
+    box.innerHTML = html;
+
+}
+
+
+generateOrders();
+
+
+function switchP2P(mode,button){
+
+    p2pMode = mode;
+
+    document
+        .querySelectorAll(".p2p-tab")
+        .forEach(
+            tab =>
+                tab.classList.remove(
+                    "active"
+                )
+        );
+
+    button.classList.add("active");
+
+    generateOrders();
+
+}
+
+
+function selectOrder(price){
+
+    document.getElementById(
+        "usdtPrice"
+    ).value = price;
+
+    calculateP2P();
+
+    notify(
+        "Order Selected",
+        `Demo ${p2pMode} price selected.`
+    );
+
+}
+
+
+function calculateP2P(){
+
+    const amount =
+        parseFloat(
+            document.getElementById(
+                "usdtAmount"
+            ).value
+        ) || 0;
+
+    const price =
+        parseFloat(
+            document.getElementById(
+                "usdtPrice"
+            ).value
+        ) || 0;
+
+    document.getElementById(
+        "p2pTotal"
+    ).value =
+        (
+            amount*price
+        ).toLocaleString(
+            undefined,
+            {
+                minimumFractionDigits:2
+            }
+        );
+
+}
+
+
+function demoOrder(){
+
+    notify(
+        "Demo Order",
+        "This frontend demonstration does not execute P2P transactions."
+    );
+
+}
+
+
+/* =========================================================
+   WALLET
+========================================================= */
+
+function demoWallet(name){
+
+    closeModal("walletModal");
+
+    notify(
+        "Demo Wallet",
+        `${name} connection simulated successfully.`
+    );
+
+}
+
+
+/* =========================================================
+   PROFIT CALCULATOR
+========================================================= */
+
+function profitCalculator(){
+
+    const entry =
+        Number(
+            document.getElementById(
+                "calcEntry"
+            ).value
+        );
+
+    const exit =
+        Number(
+            document.getElementById(
+                "calcExit"
+            ).value
+        );
+
+    const capital =
+        Number(
+            document.getElementById(
+                "calcCapital"
+            ).value
+        );
+
+    if(
+        !entry ||
+        !exit ||
+        !capital
+    ){
+
+        return;
+
+    }
+
+    const result =
+        capital *
+        (
+            (exit-entry)
+            /
+            entry
+        );
+
+    document.getElementById(
+        "calcResult"
+    ).textContent =
+        `Hypothetical P&L: $${result.toFixed(2)}`;
+
+}
+
+
+/* =========================================================
+   RISK CALCULATOR
+========================================================= */
+
+function riskCalculator(){
+
+    const balance =
+        Number(
+            document.getElementById(
+                "riskBalance"
+            ).value
+        );
+
+    const percent =
+        Number(
+            document.getElementById(
+                "riskPercent"
+            ).value
+        );
+
+    const risk =
+        balance *
+        percent /
+        100;
+
+    document.getElementById(
+        "riskResult"
+    ).textContent =
+        `Hypothetical Risk Amount: $${risk.toFixed(2)}`;
+
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+let countdownSeconds = 300;
+
+
+function updateCountdown(){
+
+    const minutes =
+        Math.floor(
+            countdownSeconds/60
+        );
+
+    const seconds =
+        countdownSeconds % 60;
+
+    document.getElementById(
+        "countdown"
+    ).textContent =
+        `${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+
+    if(
+        countdownSeconds > 0
+    ){
+
+        countdownSeconds--;
+
+    }else{
+
+        countdownSeconds = 300;
+
+        notify(
+            "Signal Cycle",
+            "New simulated analysis cycle started."
+        );
+
+    }
+
+}
+
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+function resetCountdown(){
+
+    countdownSeconds = 300;
+
+    updateCountdown();
+
+}
+
+
+/* =========================================================
+   CHAT
+========================================================= */
+
+function toggleChat(){
+
+    document
+        .getElementById("chatBox")
+        .classList.toggle("open");
+
+}
+
+
+function sendMessage(){
+
+    const input =
+        document.getElementById(
+            "chatInput"
+        );
+
+    const body =
+        document.getElementById(
+            "chatBody"
+        );
+
+    const message =
+        input.value.trim();
+
+    if(!message)
+        return;
+
+    body.insertAdjacentHTML(
+        "beforeend",
+        `
+        <div class="message user">
+            ${escapeHTML(message)}
+        </div>
+        `
+    );
+
+    input.value = "";
+
+    body.scrollTop =
+        body.scrollHeight;
+
+
+    setTimeout(()=>{
+
+        body.insertAdjacentHTML(
+            "beforeend",
+            `
+            <div class="message bot">
+                Thanks for your message.
+                For official assistance,
+                please contact our Telegram
+                support account.
+            </div>
+            `
+        );
+
+        body.scrollTop =
+            body.scrollHeight;
+
+    },700);
+
+}
+
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+========================================================= */
+
+let notificationTimer;
+
+
+function notify(title,text){
+
+    const notification =
+        document.getElementById(
+            "notification"
+        );
+
+    document.getElementById(
+        "notificationTitle"
+    ).textContent = title;
+
+    document.getElementById(
+        "notificationText"
+    ).textContent = text;
+
+    notification.classList.add(
+        "show"
+    );
+
+    clearTimeout(
+        notificationTimer
+    );
+
+    notificationTimer =
+        setTimeout(
+            ()=>{
+                notification.classList.remove(
+                    "show"
+                );
+            },
+            3500
+        );
+
+}
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+function openModal(id){
+
+    document
+        .getElementById(id)
+        .classList.add("open");
+
+}
+
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("open");
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function demoCheckout(){
+
+    const membership =
+        document.getElementById(
+            "membership"
+        ).value;
+
+    const payment =
+        document.getElementById(
+            "paymentMethod"
+        ).value;
+
+    notify(
+        "Checkout Demo",
+        `${membership} selected via ${payment}.`
+    );
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function mobileMenu(){
+
+    const menu =
+        document.getElementById(
+            "mobileMenu"
+        );
+
+    menu.style.display =
+        menu.style.display === "block"
+        ? "none"
+        : "block";
+
+}
+
+
+/* =========================================================
+   RANDOM SYSTEM NOTIFICATIONS
+========================================================= */
+
+const systemMessages = [
+
+    [
+        "Market Engine",
+        "Simulated market feed refreshed."
+    ],
+
+    [
+        "Analytics",
+        "Technical analysis module updated."
+    ],
+
+    [
+        "Signal Engine",
+        "New demo signal cycle initialized."
+    ],
+
+    [
+        "Community",
+        "Review aggregation engine refreshed."
+    ]
+
+];
+
+
+setInterval(()=>{
+
+    const item =
+        systemMessages[
+            Math.floor(
+                Math.random()
+                *
+                systemMessages.length
+            )
+        ];
+
+    notify(
+        item[0],
+        item[1]
+    );
+
+},15000);
+
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "/" &&
+            document.activeElement.tagName !== "INPUT"
+        ){
+
+            event.preventDefault();
+
+            document.getElementById(
+                "chatInput"
+            ).focus();
+
+            document
+                .getElementById(
+                    "chatBox"
+                )
+                .classList.add("open");
+
+        }
+
+        if(event.key === "Escape"){
+
+            document
+                .querySelectorAll(".modal.open")
+                .forEach(
+                    modal =>
+                        modal.classList.remove(
+                            "open"
+                        )
+                );
+
+            document
+                .getElementById(
+                    "chatBox"
+                )
+                .classList.remove("open");
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+calculateP2P();
+
+profitCalculator();
+
+riskCalculator();
+
+</script>
+
+</body>
+</html>
