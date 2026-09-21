@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#050505">
 
-<title>SIGNAL MASTER LK | Premium Crypto Intelligence</title>
-    <meta name="google-adsense-account" content="ca-pub-2673648603990608">
+<title>Me — SIGNAL MASTER LK | Profile & Information</title>
+<meta name="google-adsense-account" content="ca-pub-2673648603990608">
 
-<meta name="description" content="SIGNAL MASTER LK — premium cryptocurrency market intelligence, trading signals, P2P rates, trading tools and community platform.">
+<meta name="description" content="Personal Profile and Information Page — SIGNAL MASTER LK.">
 <meta name="robots" content="index,follow">
 <meta name="author" content="SIGNAL MASTER LK">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="SIGNAL MASTER LK">
-<meta property="og:description" content="Premium Crypto Signals & Market Intelligence Platform">
+<meta property="og:title" content="Me — SIGNAL MASTER LK">
+<meta property="og:description" content="Personal Profile & Market Intelligence Platform Integration">
 <meta property="og:url" content="https://shorturl.at/g85UV">
 <meta property="og:image" content="https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&w=1600&q=85">
 
@@ -25,8 +25,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -49,10 +48,9 @@ tailwind.config={
 <script type="application/ld+json">
 {
  "@context":"https://schema.org",
- "@type":"Organization",
- "name":"SIGNAL MASTER LK",
+ "@type":"Person",
+ "name":"SIGNAL MASTER LK Admin",
  "url":"https://shorturl.at/g85UV",
- "description":"Cryptocurrency market intelligence, trading signals, education and community platform.",
  "sameAs":[
    "https://t.me/SignalMaster_Free",
    "https://t.me/Ceylon_VIP_bot",
@@ -64,10 +62,7 @@ tailwind.config={
 
 <style>
 
-/* =========================================================
-   ROOT
-========================================================= */
-
+/* ROOT & GLOBAL STYLES */
 :root{
     --black:#050505;
     --black2:#080809;
@@ -154,10 +149,7 @@ button{
     color:var(--red);
 }
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
+/* NAVIGATION */
 .navbar{
     position:fixed;
     top:0;
@@ -201,7 +193,7 @@ button{
     transition:.25s;
 }
 
-.nav-links a:hover{
+.nav-links a:hover, .nav-links a.active{
     color:var(--gold2);
     background:rgba(255,255,255,.04);
 }
@@ -225,10 +217,7 @@ button{
     padding:10px 13px;
 }
 
-/* =========================================================
-   TICKER
-========================================================= */
-
+/* TICKER */
 .ticker{
     position:fixed;
     top:74px;
@@ -277,12 +266,9 @@ button{
     }
 }
 
-/* =========================================================
-   HERO
-========================================================= */
-
+/* HERO / PROFILE SECTION */
 .hero{
-    min-height:100vh;
+    min-height:80vh;
     padding-top:155px;
     display:flex;
     align-items:center;
@@ -304,7 +290,7 @@ button{
 
 .hero-grid{
     display:grid;
-    grid-template-columns:1.1fr .9fr;
+    grid-template-columns:1fr 1fr;
     gap:50px;
     align-items:center;
 }
@@ -318,11 +304,11 @@ button{
 }
 
 .hero h1{
-    font-size:clamp(42px,7vw,82px);
-    line-height:.95;
+    font-size:clamp(36px,6vw,64px);
+    line-height:1.05;
     margin:18px 0;
     font-weight:900;
-    letter-spacing:-.05em;
+    letter-spacing:-.03em;
 }
 
 .hero h1 span{
@@ -333,7 +319,7 @@ button{
     max-width:680px;
     color:var(--muted);
     line-height:1.8;
-    font-size:17px;
+    font-size:16px;
 }
 
 .hero-buttons{
@@ -373,63 +359,32 @@ button{
     );
 }
 
-.btn-danger{
-    background:rgba(255,100,117,.1);
-    border-color:rgba(255,100,117,.3);
-    color:#ff8795;
-}
-
-.hero-visual{
-    height:500px;
-    border-radius:25px;
+.profile-card{
+    background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01));
     border:1px solid var(--border);
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,.05),
-            rgba(0,0,0,.88)
-        ),
-        url("https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&w=1200&q=85")
-        center/cover;
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.5),
-        0 0 80px rgba(214,173,69,.08);
-    position:relative;
-    overflow:hidden;
+    border-radius:24px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 30px 100px rgba(0,0,0,.5), 0 0 80px rgba(214,173,69,.08);
 }
 
-.chart-overlay{
-    position:absolute;
-    left:20px;
-    right:20px;
-    bottom:20px;
-    padding:18px;
-    border-radius:16px;
-    background:rgba(8,8,9,.82);
-    backdrop-filter:blur(14px);
-    border:1px solid rgba(255,255,255,.1);
-}
-
-.fake-chart{
+.profile-avatar{
+    width:120px;
     height:120px;
-    display:flex;
-    align-items:center;
-    gap:4px;
+    border-radius:50%;
+    margin:0 auto 20px;
+    background:linear-gradient(135deg, var(--gold2), var(--gold));
+    display:grid;
+    place-items:center;
+    font-size:48px;
+    color:#111;
+    font-weight:900;
+    border:4px solid var(--panel);
 }
 
-.candle{
-    width:5px;
-    border-radius:5px;
-    background:var(--gold2);
-    box-shadow:0 0 12px rgba(241,210,116,.3);
-}
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
+/* SECTIONS & CARDS */
 section{
-    padding:95px 0;
+    padding:80px 0;
 }
 
 .section-header{
@@ -441,21 +396,10 @@ section{
 }
 
 .section-title{
-    font-size:clamp(30px,4vw,46px);
+    font-size:clamp(28px,4vw,40px);
     font-weight:900;
     margin-top:8px;
 }
-
-.section-description{
-    max-width:650px;
-    color:var(--muted);
-    line-height:1.7;
-    margin-top:10px;
-}
-
-/* =========================================================
-   CARDS
-========================================================= */
 
 .grid-2{
     display:grid;
@@ -476,12 +420,7 @@ section{
 }
 
 .card{
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.01)
-        );
+    background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01));
     border:1px solid var(--border);
     border-radius:17px;
     padding:21px;
@@ -516,222 +455,13 @@ section{
     line-height:1.7;
 }
 
-.stat-number{
-    font-size:29px;
-    font-weight:900;
-    margin-top:8px;
+.divider{
+    height:1px;
+    background:var(--border);
+    margin:25px 0;
 }
 
-/* =========================================================
-   MARKET TABLE
-========================================================= */
-
-.table-wrapper{
-    overflow:auto;
-    border:1px solid var(--border);
-    border-radius:16px;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:850px;
-}
-
-th,
-td{
-    padding:14px 16px;
-    border-bottom:1px solid var(--border);
-    text-align:left;
-    font-size:12px;
-}
-
-th{
-    color:#88888f;
-    font-size:10px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-}
-
-tr:hover td{
-    background:rgba(255,255,255,.018);
-}
-
-.coin{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.coin-icon{
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    background:#171719;
-    color:var(--gold2);
-    font-weight:900;
-}
-
-/* =========================================================
-   SIGNAL CARDS
-========================================================= */
-
-.signal-card{
-    position:relative;
-    overflow:hidden;
-}
-
-.signal-card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:2px;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        var(--gold2),
-        transparent
-    );
-}
-
-.badge{
-    display:inline-flex;
-    padding:5px 9px;
-    border-radius:999px;
-    background:#18181b;
-    color:#aaa;
-    font-size:9px;
-    font-weight:900;
-    letter-spacing:.08em;
-}
-
-.badge-active{
-    background:rgba(62,227,138,.1);
-    color:var(--green);
-}
-
-.badge-vip{
-    background:rgba(241,210,116,.13);
-    color:var(--gold2);
-}
-
-.signal-pair{
-    font-size:21px;
-    font-weight:900;
-    margin:15px 0;
-}
-
-.signal-row{
-    display:flex;
-    justify-content:space-between;
-    padding:10px 0;
-    border-bottom:1px solid var(--border);
-    font-size:12px;
-}
-
-.signal-row:last-child{
-    border-bottom:0;
-}
-
-/* =========================================================
-   P2P
-========================================================= */
-
-.rate-card{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-}
-
-.rate{
-    font-size:27px;
-    font-weight:900;
-    color:var(--gold2);
-}
-
-.merchant-rating{
-    color:var(--gold2);
-}
-
-/* =========================================================
-   TOOLS
-========================================================= */
-
-.input-group{
-    margin-bottom:15px;
-}
-
-.input-group label{
-    display:block;
-    color:#aaa;
-    font-size:11px;
-    margin-bottom:7px;
-}
-
-input,
-select,
-textarea{
-    width:100%;
-    border:1px solid var(--border);
-    background:#080809;
-    color:#fff;
-    border-radius:9px;
-    padding:12px;
-    outline:none;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    border-color:var(--gold);
-}
-
-/* =========================================================
-   TABS
-========================================================= */
-
-.tabs{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-bottom:18px;
-}
-
-.tab{
-    border:1px solid var(--border);
-    background:#0b0b0d;
-    color:#999;
-    border-radius:8px;
-    padding:9px 13px;
-    font-size:11px;
-    font-weight:800;
-}
-
-.tab.active{
-    background:var(--gold2);
-    color:#111;
-}
-
-/* =========================================================
-   COMMUNITY
-========================================================= */
-
-.telegram-card{
-    min-height:210px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-}
-
-/* =========================================================
-   SUPPORT CHAT
-========================================================= */
-
+/* SUPPORT CHAT */
 .support{
     position:fixed;
     right:20px;
@@ -744,11 +474,7 @@ textarea:focus{
     height:58px;
     border-radius:50%;
     border:0;
-    background:linear-gradient(
-        135deg,
-        var(--gold2),
-        var(--gold)
-    );
+    background:linear-gradient(135deg, var(--gold2), var(--gold));
     color:#111;
     font-size:20px;
     box-shadow:0 10px 35px rgba(214,173,69,.25);
@@ -808,12 +534,14 @@ textarea:focus{
 
 .support-form input{
     min-width:0;
+    background:#080809;
+    border:1px solid var(--border);
+    color:#fff;
+    border-radius:8px;
+    padding:8px;
 }
 
-/* =========================================================
-   COOKIE
-========================================================= */
-
+/* COOKIE BANNER */
 .cookie{
     position:fixed;
     left:0;
@@ -837,10 +565,11 @@ textarea:focus{
     font-size:11px;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+.hidden{
+    display:none !important;
+}
 
+/* FOOTER */
 footer{
     border-top:1px solid var(--border);
     padding:50px 0;
@@ -870,76 +599,8 @@ footer{
     color:var(--gold2);
 }
 
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-    z-index:2000;
-    background:rgba(0,0,0,.75);
-    backdrop-filter:blur(8px);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.modal.open{
-    display:flex;
-}
-
-.modal-content{
-    width:min(550px,100%);
-    background:#0d0d0f;
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:25px;
-}
-
-.close-modal{
-    float:right;
-    background:none;
-    border:0;
-    color:#aaa;
-    font-size:20px;
-}
-
-/* =========================================================
-   UTILITIES
-========================================================= */
-
-.hidden{
-    display:none !important;
-}
-
-.text-center{
-    text-align:center;
-}
-
-.notice{
-    padding:14px;
-    border-radius:11px;
-    border:1px solid #4a3d1c;
-    background:#171307;
-    color:#d8c98e;
-    font-size:11px;
-    line-height:1.7;
-}
-
-.divider{
-    height:1px;
-    background:var(--border);
-    margin:25px 0;
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
+/* RESPONSIVE */
 @media(max-width:1000px){
-
     .nav-links{
         display:none;
         position:absolute;
@@ -952,92 +613,16 @@ footer{
         flex-direction:column;
         align-items:stretch;
     }
-
-    .nav-links.open{
-        display:flex;
-    }
-
-    .nav-links a{
-        padding:13px;
-    }
-
-    .mobile-menu{
-        display:block;
-    }
-
-    .hero-grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero-visual{
-        height:390px;
-    }
-
-    .grid-4{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .footer-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+    .nav-links.open{ display:flex; }
+    .mobile-menu{ display:block; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .grid-4{ grid-template-columns:repeat(2,1fr); }
+    .footer-grid{ grid-template-columns:repeat(2,1fr); }
 }
 
 @media(max-width:650px){
-
-    .container{
-        width:92%;
-    }
-
-    .ticker{
-        top:74px;
-    }
-
-    .hero{
-        padding-top:145px;
-    }
-
-    .hero h1{
-        font-size:45px;
-    }
-
-    section{
-        padding:65px 0;
-    }
-
-    .grid-2,
-    .grid-3,
-    .grid-4{
-        grid-template-columns:1fr;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-    }
-
-    .hero-buttons .btn{
-        width:100%;
-    }
-
-    .section-header{
-        display:block;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-    .cookie-inner{
-        display:block;
-    }
-
-    .cookie-inner .btn{
-        margin-top:10px;
-    }
-
-    .support-window{
-        width:calc(100vw - 40px);
-    }
-
+    .grid-2, .grid-3, .grid-4{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr; }
 }
 
 </style>
@@ -1045,3013 +630,291 @@ footer{
 
 <body>
 
-<!-- =========================================================
-     NAVIGATION
-========================================================= -->
-
+<!-- NAVIGATION -->
 <header class="navbar">
-
 <div class="container nav-inner">
-
-<a href="#home" class="logo">
+<a href="index.html" class="logo">
 SIGNAL <span>MASTER LK</span>
 </a>
 
-<button
-class="mobile-menu"
-id="mobileMenu"
-aria-label="Open navigation"
->
+<button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">
 <i class="fa-solid fa-bars"></i>
 </button>
 
 <nav class="nav-links" id="navLinks">
+<a href="index.html">Home</a>
+<a href="index.html#markets">Markets</a>
+<a href="index.html#p2p">P2P</a>
+<a href="index.html#signals">Signals</a>
+<a href="index.html#bots">Bots</a>
+<a href="me.html" class="active">Me Page</a>
+<a href="index.html#community">Community</a>
+<a href="index.html#contact">Contact</a>
 
-<a href="#home">Home</a>
-
-<a href="#markets">Markets</a>
-
-<a href="#p2p">P2P</a>
-
-<a href="#signals">Signals</a>
-
-<a href="#bots">Bots</a>
-
-<a href="#account">Account</a>
-
-<a href="#community">Community</a>
-
-<a href="#about">About</a>
-
-<a href="#contact">Contact</a>
-
-<a
-class="official-btn"
-href="https://shorturl.at/g85UV"
-target="_blank"
-rel="noopener noreferrer"
->
-<i class="fa-solid fa-globe"></i>
-Official Website
+<a class="official-btn" href="https://shorturl.at/g85UV" target="_blank" rel="noopener noreferrer">
+<i class="fa-solid fa-globe"></i> Official Website
 </a>
-
 </nav>
-
 </div>
-
 </header>
 
-
-<!-- =========================================================
-     TICKER
-========================================================= -->
-
+<!-- TICKER -->
 <div class="ticker">
-
 <div class="ticker-track" id="tickerTrack">
-
-<span class="ticker-item">
-<i class="fa-brands fa-bitcoin"></i>
-BTC
-<strong>$--</strong>
-<span>--%</span>
-</span>
-
-<span class="ticker-item">
-ETH
-<strong>$--</strong>
-<span>--%</span>
-</span>
-
-<span class="ticker-item">
-BNB
-<strong>$--</strong>
-<span>--%</span>
-</span>
-
-<span class="ticker-item">
-SOL
-<strong>$--</strong>
-<span>--%</span>
-</span>
-
+<span class="ticker-item"><i class="fa-brands fa-bitcoin"></i> BTC <strong>$--</strong> <span>--%</span></span>
+<span class="ticker-item">ETH <strong>$--</strong> <span>--%</span></span>
+<span class="ticker-item">BNB <strong>$--</strong> <span>--%</span></span>
+<span class="ticker-item">SOL <strong>$--</strong> <span>--%</span></span>
 </div>
-
 </div>
-
 
 <main>
 
-<!-- =========================================================
-     HOME
-========================================================= -->
-
-<section id="home" class="hero">
-
+<!-- ME / PROFILE HERO -->
+<section class="hero">
 <div class="container hero-grid">
 
 <div>
-
-<div class="eyebrow">
-Premium Crypto Intelligence Platform
-</div>
-
-<h1>
-Trade With
-<span>Better Context.</span>
-</h1>
-
+<div class="eyebrow">Personal Profile & Intelligence</div>
+<h1>Welcome To <span>My Page.</span></h1>
 <p class="hero-description">
-
-SIGNAL MASTER LK brings cryptocurrency market
-monitoring, signal research, P2P rate discovery,
-automation tools and community resources into
-one premium black-and-gold experience.
-
+Hi, I am the lead trader & admin behind <strong>SIGNAL MASTER LK</strong>. I specialize in cryptocurrency market analysis, automated trading signal forwarding, risk management frameworks, and building active trading communities.
 </p>
 
 <div class="hero-buttons">
-
-<a
-class="btn btn-gold"
-href="https://t.me/SignalMaster_Free"
-target="_blank"
-rel="noopener noreferrer"
->
-<i class="fa-brands fa-telegram"></i>
-Join Free Channel
+<a class="btn btn-gold" href="https://t.me/SignalMaster_Owner" target="_blank" rel="noopener noreferrer">
+<i class="fa-brands fa-telegram"></i> Direct Telegram
 </a>
-
-<a
-class="btn"
-href="https://shorturl.at/g85UV"
-target="_blank"
-rel="noopener noreferrer"
->
-<i class="fa-solid fa-globe"></i>
-Official Website
+<a class="btn" href="https://t.me/Ceylon_VIP_bot" target="_blank" rel="noopener noreferrer">
+<i class="fa-solid fa-crown"></i> Access VIP Bot
 </a>
-
-<a
-class="btn"
-href="https://t.me/Ceylon_VIP_bot"
-target="_blank"
-rel="noopener noreferrer"
->
-<i class="fa-solid fa-crown"></i>
-VIP Access
-</a>
-
+</div>
 </div>
 
+<div class="profile-card">
+<div class="profile-avatar">
+<i class="fa-solid fa-user-ninja"></i>
 </div>
-
-
-<div class="hero-visual">
-
-<div class="chart-overlay">
-
-<div style="
-display:flex;
-justify-content:space-between;
-margin-bottom:12px;
-">
-
+<h2 style="font-size:22px; font-weight:900;">SIGNAL MASTER ADMIN</h2>
+<p class="gold-text" style="font-size:12px; font-weight:700; margin-top:4px;">Cryptocurrency Specialist & Developer</p>
+<div class="divider"></div>
+<div style="display:flex; justify-content:space-around; text-align:center;">
 <div>
-
-<div class="muted" style="font-size:10px">
-BTC / USDT
+<div style="font-weight:900; font-size:18px;">5+</div>
+<div class="muted" style="font-size:11px;">Years Exp.</div>
 </div>
-
-<strong style="font-size:22px">
-$65,420.00
-</strong>
-
+<div>
+<div style="font-weight:900; font-size:18px; color:var(--green)">99%</div>
+<div class="muted" style="font-size:11px;">Uptime</div>
 </div>
-
-<div class="green">
-+2.84%
+<div>
+<div style="font-weight:900; font-size:18px;" class="gold-text">VIP</div>
+<div class="muted" style="font-size:11px;">Access</div>
 </div>
-
 </div>
-
-<div class="fake-chart" id="fakeChart"></div>
-
 </div>
 
 </div>
-
-</div>
-
 </section>
 
-
-<!-- =========================================================
-     PLATFORM STATS
-========================================================= -->
-
+<!-- ME DETAILS / CAPABILITIES -->
 <section>
-
 <div class="container">
-
-<div class="grid-4">
-
-<div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-bolt"></i>
-</div>
-
-<div class="stat-number">
-LIVE
-</div>
-
-<div class="muted">
-Market-data architecture
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-chart-line"></i>
-</div>
-
-<div class="stat-number">
-24/7
-</div>
-
-<div class="muted">
-Market monitoring
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-layer-group"></i>
-</div>
-
-<div class="stat-number">
-7
-</div>
-
-<div class="muted">
-Core modules
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-mobile-screen"></i>
-</div>
-
-<div class="stat-number">
-100%
-</div>
-
-<div class="muted">
-Responsive UI
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     MARKETS
-========================================================= -->
-
-<section id="markets">
-
-<div class="container">
-
 <div class="section-header">
-
 <div>
-
-<div class="eyebrow">
-LIVE MARKET DATA
+<div class="eyebrow">WHAT I DO</div>
+<h2 class="section-title">Core Expertise & Roles</h2>
 </div>
-
-<h2 class="section-title">
-Crypto Markets
-</h2>
-
-<p class="section-description">
-Monitor major assets, price changes and market
-activity through the platform's market-data layer.
-</p>
-
 </div>
-
-<button
-class="btn"
-onclick="refreshMarkets()"
->
-<i class="fa-solid fa-rotate"></i>
-Refresh
-</button>
-
-</div>
-
-
-<div class="grid-4" style="margin-bottom:20px">
-
-<div class="card">
-<div class="muted">Global Market Cap</div>
-<div class="stat-number">$2.4T</div>
-</div>
-
-<div class="card">
-<div class="muted">24h Volume</div>
-<div class="stat-number">$86B</div>
-</div>
-
-<div class="card">
-<div class="muted">BTC Dominance</div>
-<div class="stat-number">58.4%</div>
-</div>
-
-<div class="card">
-<div class="muted">Fear & Greed</div>
-<div class="stat-number gold-text">64</div>
-</div>
-
-</div>
-
-
-<div class="table-wrapper">
-
-<table>
-
-<thead>
-
-<tr>
-<th>#</th>
-<th>Asset</th>
-<th>Price</th>
-<th>24h</th>
-<th>Volume</th>
-<th>Action</th>
-</tr>
-
-</thead>
-
-<tbody id="marketTable">
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     P2P
-========================================================= -->
-
-<section id="p2p">
-
-<div class="container">
-
-<div class="section-header">
-
-<div>
-
-<div class="eyebrow">
-P2P MARKETPLACE
-</div>
-
-<h2 class="section-title">
-USDT / LKR Rates
-</h2>
-
-<p class="section-description">
-Discover indicative merchant rates. A real production
-P2P marketplace requires authenticated settlement,
-escrow and compliant payment infrastructure.
-</p>
-
-</div>
-
-<a
-href="https://t.me/SMLK_AssistantBot"
-target="_blank"
-rel="noopener noreferrer"
-class="btn btn-gold"
->
-<i class="fa-brands fa-telegram"></i>
-P2P Support
-</a>
-
-</div>
-
-
-<div class="notice" style="margin-bottom:20px">
-
-<i class="fa-solid fa-circle-info"></i>
-
-Rates shown here are frontend/demo market data.
-Do not send funds based solely on this interface.
-
-</div>
-
-
-<div class="grid-2" id="p2pList">
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     SIGNALS
-========================================================= -->
-
-<section id="signals">
-
-<div class="container">
-
-<div class="section-header">
-
-<div>
-
-<div class="eyebrow">
-VIP SIGNAL RESEARCH
-</div>
-
-<h2 class="section-title">
-Signals & Analysis
-</h2>
-
-<p class="section-description">
-Signal cards are informational research examples.
-Crypto markets are volatile and no result is guaranteed.
-</p>
-
-</div>
-
-<a
-class="btn btn-gold"
-href="https://t.me/Ceylon_VIP_bot"
-target="_blank"
-rel="noopener noreferrer"
->
-<i class="fa-solid fa-crown"></i>
-VIP Buy Bot
-</a>
-
-</div>
-
-
-<div class="grid-3">
-
-
-<!-- SIGNAL 1 -->
-
-<article class="card signal-card">
-
-<span class="badge badge-active">
-ACTIVE
-</span>
-
-<div class="signal-pair">
-BTC / USDT
-</div>
-
-<div class="muted">
-LONG · Market Structure
-</div>
-
-<div class="signal-row">
-<span>Entry</span>
-<strong>
-65,000 – 65,300
-</strong>
-</div>
-
-<div class="signal-row">
-<span>TP1</span>
-<strong class="green">
-65,900
-</strong>
-</div>
-
-<div class="signal-row">
-<span>TP2</span>
-<strong class="green">
-66,700
-</strong>
-</div>
-
-<div class="signal-row">
-<span>TP3</span>
-<strong class="green">
-67,500
-</strong>
-</div>
-
-<div class="signal-row">
-<span>SL</span>
-<strong class="red">
-64,200
-</strong>
-</div>
-
-</article>
-
-
-<!-- SIGNAL 2 -->
-
-<article class="card signal-card">
-
-<span class="badge badge-vip">
-VIP
-</span>
-
-<div class="signal-pair">
-ETH / USDT
-</div>
-
-<div class="muted">
-LONG · Support Retest
-</div>
-
-<div class="signal-row">
-<span>Entry</span>
-<strong>
-3,150 – 3,190
-</strong>
-</div>
-
-<div class="signal-row">
-<span>TP1</span>
-<strong class="green">
-3,240
-</strong>
-</div>
-
-<div class="signal-row">
-<span>TP2</span>
-<strong class="green">
-3,310
-</strong>
-</div>
-
-<div class="signal-row">
-<span>TP3</span>
-<strong class="green">
-3,400
-</strong>
-</div>
-
-<div class="signal-row">
-<span>SL</span>
-<strong class="red">
-3,080
-</strong>
-</div>
-
-</article>
-
-
-<!-- SIGNAL 3 -->
-
-<article class="card signal-card">
-
-<span class="badge">
-CLOSED
-</span>
-
-<div class="signal-pair">
-SOL / USDT
-</div>
-
-<div class="muted">
-SHORT · Resistance
-</div>
-
-<div class="signal-row">
-<span>Entry</span>
-<strong>
-148 – 151
-</strong>
-</div>
-
-<div class="signal-row">
-<span>TP1</span>
-<strong class="green">
-145
-</strong>
-</div>
-
-<div class="signal-row">
-<span>TP2</span>
-<strong class="green">
-141
-</strong>
-</div>
-
-<div class="signal-row">
-<span>TP3</span>
-<strong class="green">
-136
-</strong>
-</div>
-
-<div class="signal-row">
-<span>SL</span>
-<strong class="red">
-154
-</strong>
-</div>
-
-</article>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     BOTS
-========================================================= -->
-
-<section id="bots">
-
-<div class="container">
-
-<div class="section-header">
-
-<div>
-
-<div class="eyebrow">
-AUTOMATION LAB
-</div>
-
-<h2 class="section-title">
-Bots & Automation
-</h2>
-
-<p class="section-description">
-Configure strategy concepts, alerts and signal automation.
-Live execution should remain disabled until authenticated
-exchange integrations and risk controls are configured.
-</p>
-
-</div>
-
-</div>
-
 
 <div class="grid-3">
 
 <div class="card">
-
-<div class="icon-box">
-<i class="fa-brands fa-telegram"></i>
+<div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
+<h3>Market Intelligence</h3>
+<p>Analyzing BTC, ETH, and altcoin market structure to generate accurate technical analysis and high-probability trading signals.</p>
 </div>
-
-<h3>
-Telegram Signal Forwarding
-</h3>
-
-<p>
-Source → Parser → Validation →
-Destination pipeline architecture.
-</p>
-
-<br>
-
-<span class="badge badge-active">
-READY
-</span>
-
-</div>
-
 
 <div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-bell"></i>
+<div class="icon-box"><i class="fa-solid fa-code"></i></div>
+<h3>Automation & Bots</h3>
+<p>Developing custom Telegram bot integrations, automated signal forwarders, and real-time market notification systems.</p>
 </div>
-
-<h3>
-Price Alerts
-</h3>
-
-<p>
-Create price rules and notification
-workflows for supported assets.
-</p>
-
-<br>
-
-<span class="badge badge-vip">
-AUTOMATION
-</span>
-
-</div>
-
 
 <div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-robot"></i>
-</div>
-
-<h3>
-Trading Strategy Builder
-</h3>
-
-<p>
-Configure paper strategies before
-connecting any execution provider.
-</p>
-
-<br>
-
-<span class="badge">
-PAPER MODE
-</span>
-
+<div class="icon-box"><i class="fa-solid fa-users"></i></div>
+<h3>Community Lead</h3>
+<p>Managing the SIGNAL MASTER LK free and VIP channels, offering guidance, customer support, and education.</p>
 </div>
 
 </div>
+</div>
+</section>
 
-
-<div style="height:20px"></div>
-
-
-<div class="card">
-
-<h3 style="margin-bottom:20px">
-Strategy Configuration
-</h3>
+<!-- PERSONAL CONTACT / CONNECT -->
+<section style="background:rgba(255,255,255,.01); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+<div class="container">
+<div class="section-header">
+<div>
+<div class="eyebrow">DIRECT CONNECT</div>
+<h2 class="section-title">Get In Touch With Me</h2>
+<p class="muted">Need custom bot setup, VIP support, or business partnerships? Reach out directly.</p>
+</div>
+</div>
 
 <div class="grid-2">
-
-<div class="input-group">
-
-<label>
-Trading Pair
-</label>
-
-<select id="botPair">
-
-<option>BTC/USDT</option>
-<option>ETH/USDT</option>
-<option>BNB/USDT</option>
-<option>SOL/USDT</option>
-
-</select>
-
-</div>
-
-
-<div class="input-group">
-
-<label>
-Strategy
-</label>
-
-<select id="botStrategy">
-
-<option>Trend Following</option>
-<option>Breakout</option>
-<option>Range Trading</option>
-<option>Mean Reversion</option>
-
-</select>
-
-</div>
-
-
-<div class="input-group">
-
-<label>
-Risk %
-</label>
-
-<input
-id="botRisk"
-type="number"
-value="1"
-min="0"
-max="100"
-step=".1"
->
-
-</div>
-
-
-<div class="input-group">
-
-<label>
-Mode
-</label>
-
-<select>
-
-<option>Paper Trading</option>
-<option>Backtest</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<button
-class="btn btn-gold"
-onclick="saveStrategy()"
->
-<i class="fa-solid fa-floppy-disk"></i>
-Save Strategy
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     ACCOUNT
-========================================================= -->
-
-<section id="account">
-
-<div class="container">
-
-<div class="section-header">
-
-<div>
-
-<div class="eyebrow">
-ACCOUNT & SECURITY
-</div>
-
-<h2 class="section-title">
-Secure Workspace
-</h2>
-
-<p class="section-description">
-Production authentication requires a secure backend,
-session management, 2FA, recovery controls and audit logs.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="grid-3">
-
 <div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-user-plus"></i>
-</div>
-
-<h3>
-Sign Up / Login
-</h3>
-
-<p>
-User authentication architecture with
-secure server-side sessions.
-</p>
-
+<div class="icon-box"><i class="fa-brands fa-telegram"></i></div>
+<h3>Telegram Direct</h3>
+<p>Connect with me directly on Telegram for official receipts, VIP support, and business inquiries.</p>
 <br>
-
-<span class="badge">
-BACKEND REQUIRED
-</span>
-
+<a href="https://t.me/SignalMaster_Owner" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+<i class="fa-paper-plane fa-solid"></i> Chat on Telegram
+</a>
 </div>
-
 
 <div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-shield-halved"></i>
-</div>
-
-<h3>
-Two-Factor Authentication
-</h3>
-
-<p>
-TOTP, recovery codes and security
-verification workflow.
-</p>
-
+<div class="icon-box"><i class="fa-solid fa-robot"></i></div>
+<h3>Assistant Bot</h3>
+<p>Use our automated assistant bot to get instant answers regarding VIP pricing, rules, and setup.</p>
 <br>
-
-<span class="badge badge-active">
-SECURITY
-</span>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-key"></i>
-</div>
-
-<h3>
-API Management
-</h3>
-
-<p>
-Scoped keys, permissions,
-rotation and revocation.
-</p>
-
-<br>
-
-<span class="badge">
-SECURE API
-</span>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-clock-rotate-left"></i>
-</div>
-
-<h3>
-Login History
-</h3>
-
-<p>
-Monitor account sessions,
-devices and security events.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-id-card"></i>
-</div>
-
-<h3>
-KYC
-</h3>
-
-<p>
-Connect an approved verification
-provider when required.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-crown"></i>
-</div>
-
-<h3>
-VIP Tiers
-</h3>
-
-<p>
-Membership entitlement and
-subscription management architecture.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     TRADING TOOLS
-========================================================= -->
-
-<section id="tools">
-
-<div class="container">
-
-<div class="section-header">
-
-<div>
-
-<div class="eyebrow">
-TRADING TOOLS
-</div>
-
-<h2 class="section-title">
-Risk Calculator
-</h2>
-
-<p class="section-description">
-Educational position-size estimator.
-It does not execute trades.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="grid-2">
-
-<div class="card">
-
-<div class="input-group">
-
-<label>
-Account Capital (USD)
-</label>
-
-<input
-id="capital"
-type="number"
-value="1000"
-min="0"
->
-
-</div>
-
-
-<div class="input-group">
-
-<label>
-Risk Per Trade (%)
-</label>
-
-<input
-id="riskPercent"
-type="number"
-value="1"
-min="0"
-step=".1"
->
-
-</div>
-
-
-<div class="input-group">
-
-<label>
-Stop Distance (USD)
-</label>
-
-<input
-id="stopDistance"
-type="number"
-value="100"
-min="0"
->
-
-</div>
-
-
-<button
-class="btn btn-gold"
-onclick="calculateRisk()"
->
-Calculate
-</button>
-
-</div>
-
-
-<div class="card">
-
-<div class="eyebrow">
-CALCULATED RESULT
-</div>
-
-<div
-id="riskResult"
-style="
-font-size:34px;
-font-weight:900;
-margin:15px 0;
-"
->
-$10.00
-</div>
-
-<p class="muted">
-Estimated maximum risk amount based on
-the values entered above.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     COMMUNITY
-========================================================= -->
-
-<section id="community">
-
-<div class="container">
-
-<div class="section-header">
-
-<div>
-
-<div class="eyebrow">
-OFFICIAL COMMUNITY
-</div>
-
-<h2 class="section-title">
-Connect With Us
-</h2>
-
-<p class="section-description">
-Use only official links when accessing SIGNAL MASTER LK.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="grid-4">
-
-
-<div class="card telegram-card">
-
-<div>
-
-<div class="icon-box">
-<i class="fa-brands fa-telegram"></i>
-</div>
-
-<h3>
-Free Channel
-</h3>
-
-<p>
-Public crypto updates and community content.
-</p>
-
-</div>
-
-<a
-href="https://t.me/SignalMaster_Free"
-target="_blank"
-rel="noopener noreferrer"
-class="btn btn-gold"
->
-Open Channel
+<a href="https://t.me/SMLK_AssistantBot" target="_blank" rel="noopener noreferrer" class="btn">
+<i class="fa-solid fa-headset"></i> Open Assistant
 </a>
-
 </div>
-
-
-<div class="card telegram-card">
-
-<div>
-
-<div class="icon-box">
-<i class="fa-solid fa-crown"></i>
-</div>
-
-<h3>
-VIP Bot
-</h3>
-
-<p>
-Official VIP membership information.
-</p>
-
-</div>
-
-<a
-href="https://t.me/Ceylon_VIP_bot"
-target="_blank"
-rel="noopener noreferrer"
-class="btn btn-gold"
->
-Open VIP Bot
-</a>
-
-</div>
-
-
-<div class="card telegram-card">
-
-<div>
-
-<div class="icon-box">
-<i class="fa-solid fa-headset"></i>
-</div>
-
-<h3>
-VIP Assistant
-</h3>
-
-<p>
-Information and customer support.
-</p>
-
-</div>
-
-<a
-href="https://t.me/SMLK_AssistantBot"
-target="_blank"
-rel="noopener noreferrer"
-class="btn"
->
-Contact
-</a>
-
-</div>
-
-
-<div class="card telegram-card">
-
-<div>
-
-<div class="icon-box">
-<i class="fa-solid fa-user-shield"></i>
-</div>
-
-<h3>
-Admin / Receipts
-</h3>
-
-<p>
-Official admin contact channel.
-</p>
-
-</div>
-
-<a
-href="https://t.me/SignalMaster_Owner"
-target="_blank"
-rel="noopener noreferrer"
-class="btn"
->
-Contact Admin
-</a>
-
 </div>
 
 </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     ABOUT
-========================================================= -->
-
-<section id="about">
-
-<div class="container">
-
-<div class="section-header">
-
-<div>
-
-<div class="eyebrow">
-ABOUT SIGNAL MASTER LK
-</div>
-
-<h2 class="section-title">
-Technology for Better Market Workflows
-</h2>
-
-</div>
-
-</div>
-
-
-<div class="grid-2">
-
-<div class="card">
-
-<h3>
-Our Mission
-</h3>
-
-<p>
-
-SIGNAL MASTER LK is designed as a centralized
-cryptocurrency information and community ecosystem
-combining market monitoring, research workflows,
-educational tools and Telegram integrations.
-
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-AI & Automation
-</h3>
-
-<p>
-
-AI-assisted systems can help organize market
-information, detect patterns and automate workflows.
-AI outputs should always be independently verified
-before financial decisions are made.
-
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-Transparency
-</h3>
-
-<p>
-
-Market data, research, educational material and
-promotional content should remain clearly separated
-so users can evaluate information responsibly.
-
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-Risk First
-</h3>
-
-<p>
-
-Cryptocurrency markets can be extremely volatile.
-No signal provider, algorithm or AI system can
-guarantee future market performance.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     CONTACT
-========================================================= -->
-
-<section id="contact">
-
-<div class="container">
-
-<div class="section-header">
-
-<div>
-
-<div class="eyebrow">
-SUPPORT DESK
-</div>
-
-<h2 class="section-title">
-Contact SIGNAL MASTER LK
-</h2>
-
-<p class="section-description">
-Send an inquiry through the form or use the official
-Telegram support channels.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="grid-2">
-
-
-<div class="card">
-
-<form id="contactForm">
-
-<div class="input-group">
-
-<label>
-Name
-</label>
-
-<input
-name="name"
-required
-maxlength="100"
-placeholder="Your name"
->
-
-</div>
-
-
-<div class="input-group">
-
-<label>
-Email
-</label>
-
-<input
-name="email"
-type="email"
-required
-maxlength="160"
-placeholder="you@example.com"
->
-
-</div>
-
-
-<div class="input-group">
-
-<label>
-Telegram Username
-</label>
-
-<input
-name="telegram"
-maxlength="100"
-placeholder="@username"
->
-
-</div>
-
-
-<div class="input-group">
-
-<label>
-Subject
-</label>
-
-<input
-name="subject"
-maxlength="160"
-placeholder="How can we help?"
->
-
-</div>
-
-
-<div class="input-group">
-
-<label>
-Message
-</label>
-
-<textarea
-name="message"
-rows="6"
-maxlength="3000"
-required
-placeholder="Write your message..."
-></textarea>
-
-</div>
-
-
-<button
-class="btn btn-gold"
-type="submit"
->
-<i class="fa-solid fa-paper-plane"></i>
-Send Message
-</button>
-
-<div
-id="contactStatus"
-class="muted"
-style="margin-top:12px;font-size:11px"
-></div>
-
-</form>
-
-</div>
-
-
-<div>
-
-<div class="card" style="margin-bottom:15px">
-
-<div class="icon-box">
-<i class="fa-brands fa-telegram"></i>
-</div>
-
-<h3>
-VIP Information
-</h3>
-
-<p>
-For VIP information and assistance contact
-the official assistant.
-</p>
-
-<br>
-
-<a
-href="https://t.me/SMLK_AssistantBot"
-target="_blank"
-rel="noopener noreferrer"
-class="btn btn-gold"
->
-Open Assistant
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon-box">
-<i class="fa-solid fa-receipt"></i>
-</div>
-
-<h3>
-Admin / Receipts
-</h3>
-
-<p>
-Use the official owner/admin Telegram contact
-for receipt-related communication.
-</p>
-
-<br>
-
-<a
-href="https://t.me/SignalMaster_Owner"
-target="_blank"
-rel="noopener noreferrer"
-class="btn"
->
-Contact Admin
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     FINAL CTA
-========================================================= -->
-
-<section>
-
-<div class="container">
-
-<div
-class="card text-center"
-style="
-padding:60px 25px;
-background:
-radial-gradient(
-circle at center,
-rgba(214,173,69,.13),
-transparent 65%
-);
-"
->
-
-<div class="eyebrow">
-SIGNAL MASTER LK
-</div>
-
-<h2 class="section-title">
-Ready to Explore?
-</h2>
-
-<p
-class="muted"
-style="
-max-width:650px;
-margin:15px auto;
-line-height:1.8;
-"
->
-
-Explore the official SIGNAL MASTER LK ecosystem,
-follow the free community and access the available
-market intelligence tools.
-
-</p>
-
-
-<div
-class="hero-buttons"
-style="
-justify-content:center;
-"
->
-
-<a
-href="https://shorturl.at/g85UV"
-target="_blank"
-rel="noopener noreferrer"
-class="btn btn-gold"
->
-<i class="fa-solid fa-globe"></i>
-Official Website
-</a>
-
-<a
-href="https://t.me/SignalMaster_Free"
-target="_blank"
-rel="noopener noreferrer"
-class="btn"
->
-<i class="fa-brands fa-telegram"></i>
-Free Channel
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     DISCLAIMER
-========================================================= -->
-
-<section style="padding-top:20px">
-
-<div class="container">
-
-<div class="notice">
-
-<strong>Important Risk Disclaimer:</strong>
-
-Cryptocurrency trading involves substantial risk and
-may result in loss of capital. Information displayed by
-SIGNAL MASTER LK is intended for educational and
-informational purposes and does not constitute financial,
-investment or trading advice. Past performance is not
-indicative of future results. Always conduct independent
-research and consider your own risk tolerance.
-
-</div>
-
-</div>
-
 </section>
 
 </main>
 
-
-<!-- =========================================================
-     SUPPORT CHAT
-========================================================= -->
-
+<!-- SUPPORT CHAT -->
 <div class="support">
-
-<div
-class="support-window"
-id="supportWindow"
->
-
+<div class="support-window" id="supportWindow">
 <div class="support-header">
-
-<i class="fa-solid fa-headset"></i>
-
-SIGNAL MASTER LK Support
-
+<i class="fa-solid fa-headset"></i> SIGNAL MASTER LK Support
 </div>
-
-
-<div
-class="support-messages"
-id="supportMessages"
->
-
-<div class="message">
-👋 Welcome to SIGNAL MASTER LK.
+<div class="support-messages" id="supportMessages">
+<div class="message">👋 Welcome to Me Page.</div>
+<div class="message">How can I help you today?</div>
 </div>
-
-<div class="message">
-How can we help you?
-</div>
-
-</div>
-
-
-<form
-class="support-form"
-id="supportForm"
->
-
-<input
-type="text"
-id="supportInput"
-placeholder="Type a message..."
-autocomplete="off"
-required
->
-
-<button
-class="btn btn-gold"
-type="submit"
->
-Send
-</button>
-
+<form class="support-form" id="supportForm">
+<input type="text" id="supportInput" placeholder="Type a message..." autocomplete="off" required>
+<button class="btn btn-gold" type="submit">Send</button>
 </form>
-
 </div>
-
-
-<button
-class="support-button"
-id="supportButton"
-aria-label="Open support"
->
+<button class="support-button" id="supportButton" aria-label="Open support">
 <i class="fa-solid fa-comments"></i>
 </button>
-
 </div>
 
-
-<!-- =========================================================
-     COOKIE
-========================================================= -->
-
-<div
-class="cookie hidden"
-id="cookieBanner"
->
-
+<!-- COOKIE BANNER -->
+<div class="cookie hidden" id="cookieBanner">
 <div class="container cookie-inner">
-
-<p>
-
-This website may use essential browser storage
-for preferences. Review your privacy policy before
-adding analytics or advertising technologies.
-
-</p>
-
-<button
-class="btn btn-gold"
-id="cookieAccept"
->
-Accept
-</button>
-
+<p>This website uses essential browser storage for functional preferences.</p>
+<button class="btn btn-gold" id="cookieAccept">Accept</button>
+</div>
 </div>
 
-</div>
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
+<!-- FOOTER -->
 <footer>
-
 <div class="container">
-
 <div class="footer-grid">
+<div>
+<div class="logo">SIGNAL <span>MASTER LK</span></div>
+<p style="margin-top:12px;line-height:1.7">Personal profile page & premium cryptocurrency market intelligence platform.</p>
+</div>
 
 <div>
-
-<div class="logo">
-SIGNAL <span>MASTER LK</span>
-</div>
-
-<p style="margin-top:12px;line-height:1.7">
-
-Premium cryptocurrency market intelligence,
-signal research, P2P discovery, education and
-community platform.
-
-</p>
-
-</div>
-
-
-<div>
-
-<div class="footer-title">
-Platform
-</div>
-
+<div class="footer-title">Navigation</div>
 <div class="footer-links">
-
-<a href="#markets">
-Markets
-</a>
-
-<a href="#p2p">
-P2P
-</a>
-
-<a href="#signals">
-Signals
-</a>
-
-<a href="#bots">
-Bots
-</a>
-
-<a href="#tools">
-Tools
-</a>
-
+<a href="index.html">Home</a>
+<a href="index.html#markets">Markets</a>
+<a href="index.html#signals">Signals</a>
+<a href="me.html">Me Page</a>
 </div>
-
 </div>
-
 
 <div>
-
-<div class="footer-title">
-Community
-</div>
-
+<div class="footer-title">Community</div>
 <div class="footer-links">
-
-<a
-href="https://t.me/SignalMaster_Free"
-target="_blank"
-rel="noopener"
->
-Free Telegram
-</a>
-
-<a
-href="https://t.me/Ceylon_VIP_bot"
-target="_blank"
-rel="noopener"
->
-VIP Bot
-</a>
-
-<a
-href="https://t.me/SMLK_AssistantBot"
-target="_blank"
-rel="noopener"
->
-Assistant
-</a>
-
-<a
-href="https://t.me/SignalMaster_Owner"
-target="_blank"
-rel="noopener"
->
-Admin
-</a>
-
+<a href="https://t.me/SignalMaster_Free" target="_blank">Free Telegram</a>
+<a href="https://t.me/Ceylon_VIP_bot" target="_blank">VIP Bot</a>
+<a href="https://t.me/SignalMaster_Owner" target="_blank">Admin Direct</a>
 </div>
-
 </div>
-
 
 <div>
-
-<div class="footer-title">
-Official
-</div>
-
+<div class="footer-title">Official</div>
 <div class="footer-links">
-
-<a
-href="https://shorturl.at/g85UV"
-target="_blank"
-rel="noopener"
->
-Official Website ↗
-</a>
-
-<a href="#about">
-About Us
-</a>
-
-<a href="#contact">
-Contact
-</a>
-
+<a href="https://shorturl.at/g85UV" target="_blank">Official Website ↗</a>
 </div>
-
 </div>
-
 </div>
-
 
 <div class="divider"></div>
-
-
-<p>
-© 2026 SIGNAL MASTER LK. All rights reserved.
-</p>
-
-<p style="margin-top:8px">
-
-Crypto markets are volatile. No profit,
-accuracy or investment outcome is guaranteed.
-
-</p>
-
+<p>© 2026 SIGNAL MASTER LK. All rights reserved.</p>
 </div>
-
 </footer>
 
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
+<!-- JAVASCRIPT -->
 <script>
+// Mobile Menu
+const mobileMenu = document.getElementById("mobileMenu");
+const navLinks = document.getElementById("navLinks");
+mobileMenu.addEventListener("click", () => navLinks.classList.toggle("open"));
 
-/* =========================================================
-   CONFIG
-========================================================= */
-
-const API_BASE =
-    window.SMLK_API ||
-    localStorage.getItem("SMLK_API") ||
-    "";
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const mobileMenu =
-    document.getElementById("mobileMenu");
-
-const navLinks =
-    document.getElementById("navLinks");
-
-mobileMenu.addEventListener("click",()=>{
-
-    navLinks.classList.toggle("open");
-
-});
-
-
-document.querySelectorAll("#navLinks a")
-.forEach(link=>{
-
-    link.addEventListener("click",()=>{
-
-        navLinks.classList.remove("open");
-
-    });
-
-});
-
-
-/* =========================================================
-   DEMO MARKET DATA
-========================================================= */
-
-let marketData = [
-
-    {
-        symbol:"BTC",
-        name:"Bitcoin",
-        price:65420,
-        change:2.84,
-        volume:38500000000
-    },
-
-    {
-        symbol:"ETH",
-        name:"Ethereum",
-        price:3215,
-        change:1.73,
-        volume:18500000000
-    },
-
-    {
-        symbol:"BNB",
-        name:"BNB",
-        price:610,
-        change:-0.61,
-        volume:1300000000
-    },
-
-    {
-        symbol:"SOL",
-        name:"Solana",
-        price:145.7,
-        change:3.41,
-        volume:3400000000
-    },
-
-    {
-        symbol:"XRP",
-        name:"XRP",
-        price:.582,
-        change:-1.22,
-        volume:1400000000
-    },
-
-    {
-        symbol:"DOGE",
-        name:"Dogecoin",
-        price:.142,
-        change:4.21,
-        volume:980000000
-    },
-
-    {
-        symbol:"ADA",
-        name:"Cardano",
-        price:.43,
-        change:.87,
-        volume:380000000
-    },
-
-    {
-        symbol:"AVAX",
-        name:"Avalanche",
-        price:37.2,
-        change:2.11,
-        volume:420000000
-    }
-
+// Ticker Data Simulation
+const tickerTrack = document.getElementById("tickerTrack");
+const coins = [
+    { s: "BTC", p: "65,420.00", c: "+2.84%", up: true },
+    { s: "ETH", p: "3,215.00", c: "+1.73%", up: true },
+    { s: "BNB", p: "610.00", c: "-0.61%", up: false },
+    { s: "SOL", p: "145.70", c: "+3.41%", up: true }
 ];
 
-
-/* =========================================================
-   FORMAT MONEY
-========================================================= */
-
-function money(value){
-
-    if(value < 1){
-
-        return "$" + Number(value)
-        .toFixed(4);
-
-    }
-
-    return "$" + Number(value)
-    .toLocaleString(
-        "en-US",
-        {
-            minimumFractionDigits:2,
-            maximumFractionDigits:2
-        }
-    );
-
+function renderTicker() {
+    const list = [...coins, ...coins];
+    tickerTrack.innerHTML = list.map(c => `
+        <span class="ticker-item">
+            <i class="fa-solid fa-chart-line"></i>
+            <b>${c.s}</b>
+            <strong>$${c.p}</strong>
+            <span class="${c.up ? 'ticker-up' : 'ticker-down'}">${c.c}</span>
+        </span>
+    `).join('');
 }
-
-
-/* =========================================================
-   RENDER MARKETS
-========================================================= */
-
-function renderMarkets(){
-
-    const table =
-        document.getElementById("marketTable");
-
-    table.innerHTML =
-        marketData.map(
-            (coin,index)=>{
-
-                const changeClass =
-                    coin.change >= 0
-                    ? "green"
-                    : "red";
-
-                const sign =
-                    coin.change >= 0
-                    ? "+"
-                    : "";
-
-                return `
-
-                <tr>
-
-                    <td>
-                        ${index+1}
-                    </td>
-
-                    <td>
-
-                        <div class="coin">
-
-                            <div class="coin-icon">
-                                ${coin.symbol[0]}
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    ${coin.symbol}
-                                </strong>
-
-                                <div class="muted">
-                                    ${coin.name}
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </td>
-
-                    <td>
-                        ${money(coin.price)}
-                    </td>
-
-                    <td class="${changeClass}">
-                        ${sign}${coin.change.toFixed(2)}%
-                    </td>
-
-                    <td>
-                        ${money(coin.volume)}
-                    </td>
-
-                    <td>
-
-                        <button
-                            class="btn"
-                            style="padding:7px 10px"
-                            onclick="addWatchlist('${coin.symbol}')"
-                        >
-                            <i class="fa-regular fa-star"></i>
-                        </button>
-
-                    </td>
-
-                </tr>
-
-                `;
-
-            }
-        ).join("");
-
-}
-
-
-renderMarkets();
-
-
-/* =========================================================
-   TICKER
-========================================================= */
-
-function renderTicker(){
-
-    const ticker =
-        document.getElementById("tickerTrack");
-
-    const list =
-        [...marketData,...marketData];
-
-    ticker.innerHTML =
-        list.map(coin=>{
-
-            const cls =
-                coin.change >= 0
-                ? "ticker-up"
-                : "ticker-down";
-
-            const sign =
-                coin.change >= 0
-                ? "+"
-                : "";
-
-            return `
-
-            <span class="ticker-item">
-
-                <i class="fa-solid fa-chart-line"></i>
-
-                <b>
-                    ${coin.symbol}
-                </b>
-
-                <strong>
-                    ${money(coin.price)}
-                </strong>
-
-                <span class="${cls}">
-                    ${sign}${coin.change.toFixed(2)}%
-                </span>
-
-            </span>
-
-            `;
-
-        }).join("");
-
-}
-
-
 renderTicker();
 
+// Support Chat Toggle
+const supportButton = document.getElementById("supportButton");
+const supportWindow = document.getElementById("supportWindow");
+supportButton.addEventListener("click", () => supportWindow.classList.toggle("open"));
 
-/* =========================================================
-   MARKET REFRESH
-========================================================= */
+// Support Chat Submit
+document.getElementById("supportForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const input = document.getElementById("supportInput");
+    const val = input.value.trim();
+    if(!val) return;
 
-async function refreshMarkets(){
+    const msgs = document.getElementById("supportMessages");
+    msgs.innerHTML += `<div class="message user">${val}</div>`;
+    msgs.innerHTML += `<div class="message">Thanks for contacting. Reach me directly at <a href="https://t.me/SignalMaster_Owner" target="_blank" style="color:#f1d274">@SignalMaster_Owner</a>.</div>`;
+    input.value = "";
+    msgs.scrollTop = msgs.scrollHeight;
+});
 
-    try{
-
-        if(!API_BASE){
-
-            simulateMarketMovement();
-
-            return;
-
-        }
-
-        const response =
-            await fetch(
-                API_BASE +
-                "/market-data?limit=30"
-            );
-
-        if(!response.ok)
-            throw new Error("API error");
-
-        const data =
-            await response.json();
-
-        marketData =
-            data.map(item=>({
-
-                symbol:item.symbol,
-                name:item.name,
-                price:Number(item.price),
-                change:Number(item.change_24h),
-                volume:Number(item.volume)
-
-            }));
-
-        renderMarkets();
-        renderTicker();
-
-    }
-    catch(error){
-
-        console.log(
-            "API unavailable. Using demo data."
-        );
-
-        simulateMarketMovement();
-
-    }
-
+// Cookie Consent
+const cookieBanner = document.getElementById("cookieBanner");
+if(!localStorage.getItem("smlk_cookie")) {
+    cookieBanner.classList.remove("hidden");
 }
-
-
-/* =========================================================
-   DEMO PRICE MOVEMENT
-========================================================= */
-
-function simulateMarketMovement(){
-
-    marketData =
-        marketData.map(coin=>{
-
-            const movement =
-                (Math.random()-.5)*.004;
-
-            coin.price =
-                coin.price *
-                (1+movement);
-
-            coin.change +=
-                (Math.random()-.5)*.12;
-
-            return coin;
-
-        });
-
-    renderMarkets();
-    renderTicker();
-
-}
-
-
-setInterval(
-    refreshMarkets,
-    10000
-);
-
-
-/* =========================================================
-   P2P
-========================================================= */
-
-const p2pData = [
-
-    {
-        merchant:"SMLK Merchant 01",
-        buy:316.5,
-        sell:320,
-        limit:"10 – 1,000 USDT",
-        method:"Bank Transfer",
-        rating:"4.9"
-    },
-
-    {
-        merchant:"SMLK Merchant 02",
-        buy:315.9,
-        sell:319.5,
-        limit:"25 – 2,500 USDT",
-        method:"Bank Transfer",
-        rating:"4.8"
-    },
-
-    {
-        merchant:"SMLK Merchant 03",
-        buy:316.2,
-        sell:321,
-        limit:"50 – 5,000 USDT",
-        method:"Local Payment",
-        rating:"4.9"
-    },
-
-    {
-        merchant:"SMLK Merchant 04",
-        buy:315.7,
-        sell:318.9,
-        limit:"10 – 800 USDT",
-        method:"Bank Transfer",
-        rating:"4.7"
-    }
-
-];
-
-
-function renderP2P(){
-
-    const container =
-        document.getElementById("p2pList");
-
-    container.innerHTML =
-        p2pData.map(
-            merchant=>`
-
-            <article class="card">
-
-                <div class="rate-card">
-
-                    <div>
-
-                        <div class="muted">
-                            Merchant
-                        </div>
-
-                        <h3>
-                            ${merchant.merchant}
-                        </h3>
-
-                        <div class="merchant-rating">
-                            ★ ${merchant.rating}
-                        </div>
-
-                    </div>
-
-                    <div style="text-align:right">
-
-                        <div class="muted">
-                            Sell USDT
-                        </div>
-
-                        <div class="rate">
-                            LKR ${merchant.sell}
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="divider"></div>
-
-
-                <div class="signal-row">
-
-                    <span>
-                        Buy Rate
-                    </span>
-
-                    <strong>
-                        LKR ${merchant.buy}
-                    </strong>
-
-                </div>
-
-
-                <div class="signal-row">
-
-                    <span>
-                        Limit
-                    </span>
-
-                    <strong>
-                        ${merchant.limit}
-                    </strong>
-
-                </div>
-
-
-                <div class="signal-row">
-
-                    <span>
-                        Payment
-                    </span>
-
-                    <strong>
-                        ${merchant.method}
-                    </strong>
-
-                </div>
-
-
-                <br>
-
-
-                <button
-                    class="btn btn-gold"
-                    onclick="startP2POrder('${merchant.merchant}')"
-                >
-                    Start Order
-                </button>
-
-            </article>
-
-            `
-        ).join("");
-
-}
-
-
-renderP2P();
-
-
-function startP2POrder(merchant){
-
-    alert(
-        "Demo P2P order selected: " +
-        merchant +
-        "\\n\\nConnect a compliant payment and settlement provider before accepting real funds."
-    );
-
-}
-
-
-/* =========================================================
-   WATCHLIST
-========================================================= */
-
-let watchlist =
-    JSON.parse(
-        localStorage.getItem(
-            "smlk_watchlist"
-        ) || "[]"
-    );
-
-
-function addWatchlist(symbol){
-
-    if(
-        watchlist.includes(symbol)
-    ){
-
-        watchlist =
-            watchlist.filter(
-                x=>x!==symbol
-            );
-
-    }
-    else{
-
-        watchlist.push(symbol);
-
-    }
-
-    localStorage.setItem(
-        "smlk_watchlist",
-        JSON.stringify(watchlist)
-    );
-
-    alert(
-        watchlist.length
-        ? "Watchlist: " +
-          watchlist.join(", ")
-        : "Watchlist empty"
-    );
-
-}
-
-
-/* =========================================================
-   RISK CALCULATOR
-========================================================= */
-
-function calculateRisk(){
-
-    const capital =
-        Number(
-            document.getElementById(
-                "capital"
-            ).value
-        ) || 0;
-
-    const risk =
-        Number(
-            document.getElementById(
-                "riskPercent"
-            ).value
-        ) || 0;
-
-    const stop =
-        Number(
-            document.getElementById(
-                "stopDistance"
-            ).value
-        ) || 0;
-
-    const amount =
-        capital *
-        risk /
-        100;
-
-    const result =
-        document.getElementById(
-            "riskResult"
-        );
-
-    result.textContent =
-        "$" +
-        amount.toFixed(2);
-
-}
-
-
-/* =========================================================
-   STRATEGY
-========================================================= */
-
-function saveStrategy(){
-
-    const pair =
-        document.getElementById(
-            "botPair"
-        ).value;
-
-    const strategy =
-        document.getElementById(
-            "botStrategy"
-        ).value;
-
-    const risk =
-        document.getElementById(
-            "botRisk"
-        ).value;
-
-    localStorage.setItem(
-        "smlk_strategy",
-        JSON.stringify({
-            pair,
-            strategy,
-            risk
-        })
-    );
-
-    alert(
-        "Strategy saved locally in Paper Mode."
-    );
-
-}
-
-
-/* =========================================================
-   SUPPORT CHAT
-========================================================= */
-
-const supportButton =
-    document.getElementById(
-        "supportButton"
-    );
-
-const supportWindow =
-    document.getElementById(
-        "supportWindow"
-    );
-
-supportButton.addEventListener(
-    "click",
-    ()=>{
-
-        supportWindow.classList.toggle(
-            "open"
-        );
-
-    }
-);
-
-
-document
-.getElementById("supportForm")
-.addEventListener(
-    "submit",
-    event=>{
-
-        event.preventDefault();
-
-        const input =
-            document.getElementById(
-                "supportInput"
-            );
-
-        const message =
-            input.value.trim();
-
-        if(!message)
-            return;
-
-        const messages =
-            document.getElementById(
-                "supportMessages"
-            );
-
-        messages.innerHTML += `
-
-            <div class="message user">
-                ${escapeHTML(message)}
-            </div>
-
-            <div class="message">
-                Thanks for contacting SIGNAL MASTER LK.
-                For official assistance please use
-                <a
-                    href="https://t.me/SMLK_AssistantBot"
-                    target="_blank"
-                    style="color:#f1d274"
-                >
-                    @SMLK_AssistantBot
-                </a>.
-            </div>
-
-        `;
-
-        input.value="";
-
-        messages.scrollTop =
-            messages.scrollHeight;
-
-    }
-);
-
-
-/* =========================================================
-   CONTACT FORM
-========================================================= */
-
-document
-.getElementById("contactForm")
-.addEventListener(
-    "submit",
-    async event=>{
-
-        event.preventDefault();
-
-        const form =
-            event.target;
-
-        const status =
-            document.getElementById(
-                "contactStatus"
-            );
-
-        const data =
-            Object.fromEntries(
-                new FormData(form)
-            );
-
-        try{
-
-            if(!API_BASE){
-
-                status.textContent =
-                    "Demo mode: API is not connected. Please use the official Telegram support button.";
-
-                return;
-
-            }
-
-            const response =
-                await fetch(
-                    API_BASE + "/leads",
-                    {
-                        method:"POST",
-                        headers:{
-                            "Content-Type":
-                            "application/json"
-                        },
-                        body:
-                            JSON.stringify(data)
-                    }
-                );
-
-            if(!response.ok)
-                throw new Error();
-
-            status.textContent =
-                "Your message has been received.";
-
-            form.reset();
-
-        }
-        catch(error){
-
-            status.textContent =
-                "Unable to reach the support API. Please use official Telegram support.";
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   COOKIE CONSENT
-========================================================= */
-
-const cookieBanner =
-    document.getElementById(
-        "cookieBanner"
-    );
-
-if(
-    !localStorage.getItem(
-        "smlk_cookie"
-    )
-){
-
-    cookieBanner.classList.remove(
-        "hidden"
-    );
-
-}
-
-
-document
-.getElementById("cookieAccept")
-.addEventListener(
-    "click",
-    ()=>{
-
-        localStorage.setItem(
-            "smlk_cookie",
-            "accepted"
-        );
-
-        cookieBanner.classList.add(
-            "hidden"
-        );
-
-    }
-);
-
-
-/* =========================================================
-   FAKE CHART
-========================================================= */
-
-function generateChart(){
-
-    const chart =
-        document.getElementById(
-            "fakeChart"
-        );
-
-    let html="";
-
-    for(
-        let i=0;
-        i<55;
-        i++
-    ){
-
-        const height =
-            25 +
-            Math.random()*95;
-
-        html += `
-
-            <div
-                class="candle"
-                style="
-                    height:${height}px;
-                    opacity:${.35+
-                    Math.random()*.65};
-                "
-            ></div>
-
-        `;
-
-    }
-
-    chart.innerHTML=html;
-
-}
-
-generateChart();
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(value){
-
-    return String(value)
-    .replace(
-        /[&<>"']/g,
-        character=>({
-
-            "&":"&amp;",
-            "<":"&lt;",
-            ">":"&gt;",
-            '"':"&quot;",
-            "'":"&#039;"
-
-        })[character]
-    );
-
-}
-
-
-/* =========================================================
-   INITIAL CALCULATOR
-========================================================= */
-
-calculateRisk();
-
-
-/* =========================================================
-   KEYBOARD SHORTCUT
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event=>{
-
-        if(
-            event.key === "/" &&
-            document.activeElement.tagName !== "INPUT"
-        ){
-
-            document
-            .querySelector("#markets")
-            ?.scrollIntoView();
-
-        }
-
-        if(
-            event.key === "Escape"
-        ){
-
-            supportWindow.classList.remove(
-                "open"
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   INTERSECTION ANIMATION
-========================================================= */
-
-const observer =
-    new IntersectionObserver(
-        entries=>{
-
-            entries.forEach(
-                entry=>{
-
-                    if(
-                        entry.isIntersecting
-                    ){
-
-                        entry.target.style.opacity="1";
-                        entry.target.style.transform="translateY(0)";
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.08
-        }
-    );
-
-
-document
-.querySelectorAll(".card")
-.forEach(
-    card=>{
-
-        card.style.opacity="0";
-        card.style.transform="translateY(15px)";
-        card.style.transition="opacity .5s ease, transform .5s ease";
-
-        observer.observe(card);
-
-    }
-);
-
-
-/* =========================================================
-   BACKEND API READY
-=========================================================
-
-   To connect your FastAPI backend:
-
-   Open browser console and run:
-
-   window.SMLK_API =
-       "https://your-api-domain.com/api";
-
-   Expected endpoints:
-
-   GET  /market-data
-   GET  /p2p-rates
-   POST /leads
-
-========================================================= */
-
+document.getElementById("cookieAccept").addEventListener("click", () => {
+    localStorage.setItem("smlk_cookie", "accepted");
+    cookieBanner.classList.add("hidden");
+});
 </script>
 
 </body>
