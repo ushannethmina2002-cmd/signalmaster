@@ -2325,21 +2325,39 @@ footer{
       <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="modal-body">
-      <div class="payment-copy">
-        <strong>VIP LIFETIME ACCESS — $49 USD</strong>
+      
+      <div class="payment-copy" style="font-size: 0.95rem; line-height: 1.6;">
+        <strong style="color: #FFD700; font-size: 1.1rem; display: block; margin-bottom: 10px;">🚀 VIP LIFETIME ACCESS — 5000 LKR / $15 USD</strong>
         To activate your membership instantly, please transfer the equivalent amount via one of the methods below:
 
-        • **USDT (TRC20 Address):**
-        <code>T9yD14Nj9j7xAB4dGk...example...</code>
+        <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 10px;">
+          • **USDT (TRC20 Address):**<br>
+          <code>TBfwQqneeE7NEchqa1JCszUerdbjcafjQs1</code><br>
+          <img src="image (2)_2.jpg" alt="USDT TRC20 QR" style="width: 100px; height: 100px; margin-top: 5px; border-radius: 6px; border: 1px solid #fff;">
+        </div>
 
-        • **Binance Pay ID:**
-        <code>882939102 (CeylonCoinHub)</code>
+        <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 10px;">
+          • **USDT (BEP20 - BSC Address):**<br>
+          <code>0x012b6368629e4900497fa49dab73df1d50c3e305</code><br>
+          <img src="image (1)_2.jpg" alt="USDT BEP20 QR" style="width: 100px; height: 100px; margin-top: 5px; border-radius: 6px; border: 1px solid #fff;">
+        </div>
 
-        • **Sri Lankan Bank Transfer:**
-        Bank: Commercial Bank | Acc: 8000123456 | Branch: Colombo
+        <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 10px;">
+          • **Binance Pay ID:**<br>
+          <code>776930522</code> (SIGNAL MASTER LK)
+        </div>
+
+        <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 10px;">
+          • **Sri Lankan Bank Transfers:**<br>
+          - Bank: People's Bank | Acc: 133200190039741 | Name: SIGNAL MASTER LK<br>
+          <img src="image (3)_2.jpg" alt="People's Bank QR" style="width: 90px; height: 90px; margin-top: 5px; border-radius: 6px; border: 1px solid #fff;"><br><br>
+          - Bank: BOC (Bank of Ceylon) | Acc: 96707729 | Name: SIGNAL MASTER LK<br><br>
+          - LankaQR:<br>
+          <img src="image (4)_2.jpg" alt="LankaQR" style="width: 90px; height: 90px; margin-top: 5px; border-radius: 6px; border: 1px solid #fff;">
+        </div>
       </div>
 
-      <div class="receipt-box">
+      <div class="receipt-box" style="margin-top: 15px;">
         <label>Upload Payment Receipt / Screenshot</label>
         <input type="file" class="file-input" id="receiptFile" accept="image/*" onchange="handleFileSelect(event)">
         <div class="file-name" id="fileNameDisplay">No file selected</div>
@@ -2347,7 +2365,7 @@ footer{
 
       <div class="modal-status" id="modalStatus"></div>
 
-      <button class="cta submit-receipt" onclick="submitReceipt()">
+      <button class="cta submit-receipt" onclick="submitReceipt()" style="margin-top: 15px; width: 100%;">
         <i class="fa-solid fa-paper-plane"></i> SUBMIT PAYMENT RECEIPT FOR APPROVAL
       </button>
     </div>
