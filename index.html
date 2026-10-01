@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -11,9 +11,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <!-- Font Awesome -->
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,1422 +19,446 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#030504;
-  --panel:#080b09;
-  --panel2:#0c100d;
-  --line:rgba(255,255,255,.075);
-  --gold:#d7ad42;
-  --gold2:#f4d878;
-  --green:#36f28b;
-  --green2:#13b968;
-  --red:#ff526b;
-  --cyan:#40d9ff;
-  --text:#f3f6f4;
-  --muted:#8d9992;
-  --shadow:0 25px 80px rgba(0,0,0,.45);
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:
-    radial-gradient(circle at 10% 5%,rgba(54,242,139,.07),transparent 25%),
-    radial-gradient(circle at 90% 15%,rgba(215,173,66,.08),transparent 25%),
-    var(--bg);
-  color:var(--text);
-  font-family:Inter,Arial,sans-serif;
-  overflow-x:hidden;
-}
-
-body.modal-open{
-  overflow:hidden;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button,input,select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-::selection{
-  background:var(--green);
-  color:#00140a;
-}
-
-/* ---------------- BACKGROUND ---------------- */
-
-.market-bg{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:-5;
-}
-
-.market-grid{
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:60px 60px;
-  mask-image:linear-gradient(to bottom,black,transparent 80%);
-}
-
-.candle{
-  position:absolute;
-  width:4px;
-  opacity:.12;
-  animation:floatCandle linear infinite;
-}
-
-.candle::before{
-  content:"";
-  position:absolute;
-  left:1px;
-  width:2px;
-  top:-18px;
-  height:80px;
-  background:currentColor;
-}
-
-.candle.green{
-  color:var(--green);
-}
-
-.candle.red{
-  color:var(--red);
-}
-
-@keyframes floatCandle{
-  from{
-    transform:translateY(110vh);
+  :root {
+    --bg: #050706;
+    --surface: #0a0d0b;
+    --surface-hover: #131815;
+    --border: #1a221d;
+    --border-glow: #283a2f;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --brand: #eab308;
+    --brand-dark: #ca8a04;
+    --up: #10b981;
+    --up-bg: rgba(16, 185, 129, 0.1);
+    --down: #ef4444;
+    --down-bg: rgba(239, 68, 68, 0.1);
   }
-  to{
-    transform:translateY(-120px);
-  }
-}
-
-/* ---------------- HEADER ---------------- */
-
-header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:100;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  background:rgba(3,5,4,.72);
-  backdrop-filter:blur(18px);
-}
-
-.navbar{
-  max-width:1450px;
-  margin:auto;
-  height:76px;
-  padding:0 24px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo{
-  width:42px;
-  height:42px;
-  border-radius:12px;
-  display:grid;
-  place-items:center;
-  background:
-    linear-gradient(145deg,#f3d779,#9c7621);
-  color:#080904;
-  box-shadow:0 0 30px rgba(215,173,66,.22);
-  font-weight:900;
-}
-
-.brand-name{
-  font-size:15px;
-  letter-spacing:.12em;
-  font-weight:900;
-}
-
-.brand-sub{
-  display:block;
-  color:var(--muted);
-  font-size:9px;
-  letter-spacing:.16em;
-  margin-top:2px;
-}
-
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:22px;
-}
-
-.nav-links a{
-  color:#aeb7b1;
-  font-size:12px;
-  font-weight:700;
-  transition:.2s;
-}
-
-.nav-links a:hover{
-  color:var(--gold2);
-}
-
-.nav-cta{
-  border:0;
-  border-radius:10px;
-  padding:11px 17px;
-  color:#061008;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:.04em;
-}
-
-.mobile-menu{
-  display:none;
-  border:1px solid var(--line);
-  background:#0b100d;
-  color:white;
-  width:42px;
-  height:42px;
-  border-radius:10px;
-}
-
-/* ---------------- GENERAL ---------------- */
-.container{
-  width:min(1420px,calc(100% - 36px));
-  margin:auto;
-}
-
-section{
-  position:relative;
-  padding:105px 0;
-}
-
-.section-head{
-  max-width:850px;
-  margin-bottom:45px;
-}
-
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  color:var(--green);
-  border:1px solid rgba(54,242,139,.2);
-  background:rgba(54,242,139,.045);
-  border-radius:100px;
-  padding:7px 12px;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  margin-bottom:18px;
-}
-
-.section-head h2{
-  font-size:clamp(32px,5vw,65px);
-  line-height:.98;
-  letter-spacing:-.055em;
-  margin-bottom:18px;
-}
-
-.section-head p{
-  color:var(--muted);
-  line-height:1.8;
-  max-width:760px;
-}
-
-.gold{
-  color:var(--gold2);
-}
-
-.green{
-  color:var(--green);
-}
-
-.mono{
-  font-family:"JetBrains Mono",monospace;
-}
-
-.panel{
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.008)),
-    var(--panel);
-  border:1px solid var(--line);
-  border-radius:20px;
-  box-shadow:var(--shadow);
-}
-
-.reveal{
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity .8s ease,transform .8s ease;
-}
-
-.reveal.visible{
-  opacity:1;
-  transform:none;
-}
-
-/* ---------------- BUTTONS ---------------- */
-
-.cta{
-  border:1px solid rgba(215,173,66,.4);
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  color:#080a06;
-  border-radius:12px;
-  padding:14px 20px;
-  font-size:12px;
-  font-weight:900;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  box-shadow:0 10px 35px rgba(215,173,66,.13);
-  transition:.25s;
-}
-
-.cta:hover{
-  transform:translateY(-2px);
-  box-shadow:0 15px 45px rgba(215,173,66,.23);
-}
-
-.cta.secondary{
-  color:#dce4df;
-  background:#0b100d;
-  border-color:var(--line);
-  box-shadow:none;
-}
-
-/* ---------------- HERO ---------------- */
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding-top:130px;
-  overflow:hidden;
-}
-
-.hero-layout{
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:50px;
-  align-items:center;
-}
-
-.hero h1{
-  font-size:clamp(48px,7vw,105px);
-  line-height:.88;
-  letter-spacing:-.075em;
-  max-width:900px;
-}
-
-.hero h1 span{
-  display:block;
-}
-
-.hero-copy{
-  margin:28px 0;
-  color:#9da8a1;
-  max-width:680px;
-  font-size:15px;
-  line-height:1.9;
-}
-
-.hero-actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.hero-stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:42px;
-  max-width:650px;
-}
-
-.stat{
-  padding:17px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.018);
-  border-radius:14px;
-}
-
-.stat strong{
-  display:block;
-  font-size:21px;
-}
-
-.stat span{
-  display:block;
-  margin-top:5px;
-  color:#69736e;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-}
-
-/* Hero terminal */
-
-.terminal{
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:24px;
-  background:#070a08;
-  overflow:hidden;
-  box-shadow:0 35px 100px rgba(0,0,0,.6);
-  transform:perspective(1200px) rotateY(-3deg) rotateX(2deg);
-}
-
-.terminal-top{
-  height:50px;
-  padding:0 15px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid var(--line);
-}
-
-.terminal-dots{
-  display:flex;
-  gap:6px;
-}
-
-.terminal-dots i{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:#36403a;
-}
-
-.terminal-title{
-  font:10px "JetBrains Mono",monospace;
-  color:#68736c;
-}
-
-.mini-market{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border-bottom:1px solid var(--line);
-}
-
-.mini-coin{
-  padding:13px;
-  border-right:1px solid var(--line);
-}
-
-.mini-coin:last-child{
-  border:0;
-}
-
-.mini-coin small{
-  display:block;
-  color:#68736c;
-  font-size:8px;
-}
-
-.mini-price{
-  font:700 14px "JetBrains Mono",monospace;
-  margin-top:5px;
-}
-
-.mini-change{
-  font-size:9px;
-  color:var(--green);
-}
-
-.fake-chart{
-  height:330px;
-  position:relative;
-  overflow:hidden;
-  background:
-    linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
-  background-size:48px 48px;
-}
-
-.fake-line{
-  position:absolute;
-  left:0;
-  right:0;
-  top:48%;
-  height:2px;
-  background:var(--green);
-  box-shadow:0 0 14px var(--green);
-  clip-path:polygon(
-    0 80%,4% 65%,8% 72%,12% 50%,17% 58%,22% 35%,
-    26% 47%,31% 22%,36% 39%,41% 20%,45% 27%,50% 10%,
-    55% 30%,60% 17%,65% 40%,70% 31%,75% 50%,80% 32%,
-    85% 42%,90% 25%,95% 34%,100% 8%,100% 100%,0 100%
-  );
-}
-
-.terminal-bottom{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--line);
-}
-
-.t-metric{
-  padding:13px;
-  border-right:1px solid var(--line);
-}
-
-.t-metric:last-child{
-  border:0;
-}
-
-.t-metric small{
-  color:#657068;
-  font-size:8px;
-}
-
-.t-metric strong{
-  display:block;
-  font:600 12px "JetBrains Mono",monospace;
-  margin-top:4px;
-}
-
-/* ---------------- LIVE TICKER ---------------- */
-.ticker{
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  overflow:hidden;
-  background:#050705;
-}
-
-.ticker-track{
-  display:flex;
-  width:max-content;
-  animation:ticker 35s linear infinite;
-}
-
-.ticker-item{
-  min-width:180px;
-  padding:13px 20px;
-  border-right:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  font:10px "JetBrains Mono",monospace;
-}
-
-.ticker-item .up{
-  color:var(--green);
-}
-
-.ticker-item .down{
-  color:var(--red);
-}
-
-@keyframes ticker{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
-
-/* ---------------- DASHBOARD ---------------- */
-.dashboard-layout{
-  display:grid;
-  grid-template-columns:1.5fr .7fr;
-  gap:18px;
-}
-
-.chart-panel{
-  min-height:650px;
-  overflow:hidden;
-}
-
-.panel-head{
-  min-height:58px;
-  padding:15px 18px;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-}
-
-.panel-title{
-  font-size:12px;
-  font-weight:900;
-}
-
-.panel-sub{
-  display:block;
-  color:#68736c;
-  font-size:9px;
-  margin-top:4px;
-}
-
-.chart-area{
-  height:590px;
-}
-
-.chart-area .tradingview-widget-container,
-.chart-area .tradingview-widget-container__widget{
-  width:100%!important;
-  height:100%!important;
-}
-
-.chart-area iframe{
-  border:0!important;
-}
-
-.side-stack{
-  display:grid;
-  gap:18px;
-}
-
-.market-list{
-  padding:8px;
-}
-
-.market-row{
-  display:grid;
-  grid-template-columns:1.2fr 1fr .7fr;
-  align-items:center;
-  padding:12px;
-  border-bottom:1px solid rgba(255,255,255,.04);
-}
-
-.market-row:last-child{
-  border:0;
-}
-
-.coin-name{
-  display:flex;
-  align-items:center;
-  gap:9px;
-}
-
-.coin-icon{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:#121914;
-  font-size:11px;
-  color:var(--gold2);
-}
-
-.coin-name strong{
-  display:block;
-  font-size:10px;
-}
-
-.coin-name small{
-  color:#69736d;
-  font-size:8px;
-}
-
-.market-value{
-  text-align:right;
-  font:10px "JetBrains Mono",monospace;
-}
-
-.market-change{
-  text-align:right;
-  font:9px "JetBrains Mono",monospace;
-  color:var(--green);
-}
-
-/* ---------------- WIDGETS ---------------- */
-.widget-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-
-.widget-box{
-  min-height:390px;
-  overflow:hidden;
-}
-
-.widget-frame{
-  width:100%;
-  height:330px;
-  border:0;
-  background:#080b09;
-}
-
-.widget-note{
-  padding:13px 16px;
-  color:#69736d;
-  font-size:9px;
-  border-top:1px solid var(--line);
-}
-
-/* ---------------- FEATURE GRID ---------------- */
-
-.feature-toolbar{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-bottom:22px;
-}
-
-.filter-btn{
-  border:1px solid var(--line);
-  background:#080c09;
-  color:#87918b;
-  border-radius:9px;
-  padding:9px 12px;
-  font-size:10px;
-  font-weight:800;
-}
-
-.filter-btn.active{
-  color:#061008;
-  background:var(--green);
-  border-color:var(--green);
-}
-
-.feature-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-}
-
-.feature-card{
-  min-height:150px;
-  padding:18px;
-  border:1px solid var(--line);
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.025),transparent),
-    #070a08;
-  border-radius:15px;
-  transition:.25s;
-  position:relative;
-  overflow:hidden;
-}
-
-.feature-card::after{
-  content:"";
-  position:absolute;
-  width:80px;
-  height:80px;
-  right:-35px;
-  bottom:-35px;
-  background:var(--green);
-  opacity:.035;
-  filter:blur(15px);
-  border-radius:50%;
-}
-
-.feature-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(54,242,139,.25);
-  box-shadow:0 15px 45px rgba(0,0,0,.3);
-}
-
-.feature-icon{
-  width:36px;
-  height:36px;
-  display:grid;
-  place-items:center;
-  border-radius:10px;
-  background:rgba(54,242,139,.07);
-  color:var(--green);
-  margin-bottom:13px;
-}
-
-.feature-card h3{
-  font-size:11px;
-  margin-bottom:7px;
-}
-
-.feature-card p{
-  color:#67716c;
-  font-size:9px;
-  line-height:1.55;
-}
-
-.feature-card .tag{
-  position:absolute;
-  top:12px;
-  right:12px;
-  color:#5f6a64;
-  font:7px "JetBrains Mono",monospace;
-}
-
-/* ---------------- TOOLS ---------------- */
-.tools-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.tool-card{
-  padding:22px;
-}
-
-.tool-card h3{
-  font-size:13px;
-  margin-bottom:6px;
-}
-
-.tool-card p{
-  color:#68736c;
-  font-size:10px;
-  line-height:1.6;
-  margin-bottom:18px;
-}
-
-.input-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-.field{
-  margin-bottom:9px;
-}
-
-.field label{
-  display:block;
-  color:#78827c;
-  font-size:8px;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  margin-bottom:5px;
-}
-
-.field input,
-.field select{
-  width:100%;
-  border:1px solid var(--line);
-  background:#050705;
-  color:white;
-  border-radius:8px;
-  padding:10px;
-  outline:none;
-  font:10px "JetBrains Mono",monospace;
-}
-
-.field input:focus,
-.field select:focus{
-  border-color:rgba(54,242,139,.45);
-}
-
-.tool-result{
-  padding:12px;
-  border:1px solid rgba(54,242,139,.12);
-  background:rgba(54,242,139,.035);
-  border-radius:9px;
-  color:var(--green);
-  font:10px "JetBrains Mono",monospace;
-  min-height:40px;
-  display: flex;
-  align-items: center;
-}
-
-/* ---------------- PNL CANVAS ---------------- */
-
-.pnl-layout{
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:18px;
-}
-
-.pnl-card{
-  padding:24px;
-}
-
-.pnl-big{
-  font:800 45px "JetBrains Mono",monospace;
-  color:var(--green);
-  margin:12px 0;
-}
-
-.pnl-bars{
-  height:300px;
-}
-
-.pnl-bars canvas{
-  width:100%;
-  height:100%;
-}
-
-/* ---------------- SIGNALS ---------------- */
-.signal-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.signal-card{
-  padding:20px;
-  position:relative;
-  overflow:hidden;
-}
-
-.signal-card.long{
-  border-color:rgba(54,242,139,.18);
-}
-
-.signal-card.short{
-  border-color:rgba(255,82,107,.15);
-}
-
-.signal-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.signal-side{
-  padding:6px 9px;
-  border-radius:7px;
-  font-size:8px;
-  font-weight:900;
-}
-
-.long .signal-side{
-  background:rgba(54,242,139,.09);
-  color:var(--green);
-}
-
-.short .signal-side{
-  background:rgba(255,82,107,.09);
-  color:var(--red);
-}
-
-.signal-pair{
-  font:700 16px "JetBrains Mono",monospace;
-}
-
-.signal-data{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:18px;
-}
-
-.signal-data div{
-  background:#050705;
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:10px;
-}
-
-.signal-data small{
-  display:block;
-  color:#606b65;
-  font-size:7px;
-}
-
-.signal-data strong{
-  display:block;
-  margin-top:4px;
-  font:10px "JetBrains Mono",monospace;
-}
-
-/* ---------------- PRICING ---------------- */
-
-.pricing-wrap{
-  max-width:680px;
-  margin:auto;
-}
-
-.price-card{
-  padding:40px;
-  text-align:center;
-  position:relative;
-  border-color:rgba(215,173,66,.28);
-  background:
-    radial-gradient(circle at top,rgba(215,173,66,.09),transparent 40%),
-    #080b09;
-}
-
-.price-badge{
-  display:inline-block;
-  padding:8px 12px;
-  border-radius:100px;
-  color:#171105;
-  background:var(--gold2);
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:.1em;
-}
-
-.price{
-  margin:18px 0 5px;
-  font:900 60px "JetBrains Mono",monospace;
-  letter-spacing:-.08em;
-}
-
-.price small{
-  font-size:13px;
-  color:#7d867f;
-  letter-spacing:0;
-}
-
-.price-note{
-  color:#69736d;
-  font-size:10px;
-  margin-bottom:28px;
-}
-
-.benefits{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  text-align:left;
-  gap:10px;
-  margin-bottom:28px;
-}
-
-.benefit{
-  color:#a9b2ad;
-  font-size:10px;
-  padding:10px;
-  border-bottom:1px solid rgba(255,255,255,.045);
-}
-
-.benefit i{
-  color:var(--green);
-  margin-right:7px;
-}
-
-/* ---------------- GOOGLE FORM ---------------- */
-
-.form-container{
-  max-width:950px;
-  margin:auto;
-  overflow:hidden;
-}
-
-.google-form{
-  width:100%;
-  min-height:720px;
-  border:0;
-  display:block;
-  background:white;
-}
-
-/* ---------------- FAQ ---------------- */
-.faq{
-  max-width:900px;
-  margin:auto;
-}
-
-.faq-item{
-  border-bottom:1px solid var(--line);
-}
-
-.faq-question{
-  width:100%;
-  background:none;
-  border:0;
-  color:#e4e9e6;
-  text-align:left;
-  padding:20px 0;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  font-size:13px;
-  font-weight:700;
-  cursor: pointer;
-}
-
-.faq-answer{
-  color:#737d77;
-  font-size:10px;
-  line-height:1.8;
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .3s ease,padding .3s ease;
-}
-
-.faq-item.open .faq-answer{
-  max-height:200px;
-  padding-bottom:20px;
-}
-
-.faq-item.open .faq-question i{
-  transform:rotate(45deg);
-  transition: transform 0.3s ease;
-}
-.faq-item .faq-question i{
-    transition: transform 0.3s ease;
-}
-
-/* ---------------- FOOTER ---------------- */
-
-footer{
-  border-top:1px solid var(--line);
-  padding:50px 0;
-  background:#020302;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.5fr 1fr 1fr 1fr;
-  gap:30px;
-}
-
-.footer-brand p{
-  color:#647069;
-  font-size:10px;
-  line-height:1.7;
-  max-width:400px;
-  margin-top:13px;
-}
-
-.footer-col h4{
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  margin-bottom:14px;
-}
-
-.footer-col a{
-  display:block;
-  color:#657069;
-  font-size:9px;
-  margin:9px 0;
-}
-
-.footer-col a:hover{
-  color:var(--green);
-}
-
-.disclaimer{
-  border-top:1px solid var(--line);
-  margin-top:40px;
-  padding-top:20px;
-  color:#4f5953;
-  font-size:8px;
-  line-height:1.7;
-}
-
-/* ---------------- PAYMENT MODAL ---------------- */
-
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:1000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  background:rgba(0,0,0,.82);
-  backdrop-filter:blur(15px);
-}
-
-.modal.open{
-  display:flex;
-}
-
-.modal-box{
-  width:min(620px,100%);
-  max-height:92vh;
-  overflow:auto;
-  border:1px solid rgba(215,173,66,.25);
-  border-radius:22px;
-  background:
-    radial-gradient(circle at top,rgba(215,173,66,.08),transparent 38%),
-    #080b09;
-  box-shadow:0 40px 130px rgba(0,0,0,.8);
-  animation:modalIn .25s ease;
-}
-
-@keyframes modalIn{
-  from{
-    opacity:0;
-    transform:translateY(15px) scale(.97);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.modal-head{
-  padding:20px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid var(--line);
-}
-
-.modal-head h3{
-  font-size:14px;
-}
-
-.close-modal{
-  width:35px;
-  height:35px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  background:#0c100d;
-  color:#a7b0aa;
-}
-.close-modal:hover{
-    background:#151d18;
-    color:#fff;
-}
-
-.modal-body{
-  padding:22px;
-}
-
-.payment-copy{
-  white-space:pre-line;
-  color:#c0c8c3;
-  font-size:11px;
-  line-height:1.8;
-  padding:17px;
-  background:#050705;
-  border:1px solid var(--line);
-  border-radius:13px;
-  font-family:Inter,sans-serif;
-}
-
-.payment-copy strong{
-  color:var(--gold2);
-}
-
-.receipt-box{
-  margin-top:15px;
-  padding:16px;
-  border:1px dashed rgba(54,242,139,.25);
-  background:rgba(54,242,139,.025);
-  border-radius:13px;
-}
-
-.receipt-box label{
-  display:block;
-  color:#909b94;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  margin-bottom:8px;
-}
-
-.file-input{
-  width:100%;
-  color:#87928b;
-  font-size:10px;
-}
-
-.file-name{
-  margin-top:9px;
-  color:var(--green);
-  font:9px "JetBrains Mono",monospace;
-  word-break:break-all;
-}
-
-.submit-receipt{
-  width:100%;
-  margin-top:14px;
-}
-
-.modal-status{
-  display:none;
-  margin-top:12px;
-  padding:12px;
-  border-radius:9px;
-  font-size:9px;
-  line-height:1.6;
-}
-
-.modal-status.show{
-  display:block;
-}
-
-.modal-status.info{
-  color:#9edfff;
-  background:rgba(64,217,255,.06);
-  border:1px solid rgba(64,217,255,.15);
-}
-
-.modal-status.success{
-  color:var(--green);
-  background:rgba(54,242,139,.06);
-  border:1px solid rgba(54,242,139,.15);
-}
-
-.modal-status.error{
-  color:#ff9aaa;
-  background:rgba(255,82,107,.06);
-  border:1px solid rgba(255,82,107,.15);
-}
-
-/* ---------------- TOAST ---------------- */
-
-.toast{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  z-index:2000;
-  transform:translateY(100px);
-  opacity:0;
-  transition:.3s;
-  padding:13px 17px;
-  border:1px solid var(--line);
-  background:#0b100d;
-  border-radius:10px;
-  color:#cbd3ce;
-  font-size:10px;
-  box-shadow:var(--shadow);
-}
-
-.toast.show{
-  transform:none;
-  opacity:1;
-}
-
-/* ---------------- RESPONSIVE ---------------- */
-@media(max-width:1150px){
-  .feature-grid{
-    grid-template-columns:repeat(4,1fr);
+  
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
   }
 
-  .tools-grid{
-    grid-template-columns:repeat(2,1fr);
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Background Effects */
+  .market-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    background: radial-gradient(circle at 50% 0%, #151e18 0%, var(--bg) 60%);
+  }
+  
+  .market-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.15;
+    mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
   }
 
-  .hero-layout{
-    grid-template-columns:1fr;
+  /* Header & Brand */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    background: rgba(5, 7, 6, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
   }
 
-  .terminal{
-    max-width:800px;
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    max-w: 1400px;
+    margin: 0 auto;
   }
 
-  .dashboard-layout{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:850px){
-  .nav-links{
-    display:none;
-    position:absolute;
-    top:76px;
-    left:15px;
-    right:15px;
-    padding:15px;
-    border:1px solid var(--line);
-    background:#070a08;
-    border-radius:13px;
-    flex-direction:column;
-    align-items:stretch;
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
   }
 
-  .nav-links.open{
-    display:flex;
+  .logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid var(--brand-dark);
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.2);
   }
 
-  .mobile-menu{
-    display:block;
+  .brand-name {
+    font-weight: 900;
+    font-size: 1.25rem;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    color: var(--text);
   }
 
-  .nav-cta{
-    display:none;
+  .brand-sub {
+    font-size: 0.65rem;
+    color: var(--brand);
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 
-  .feature-grid{
-    grid-template-columns:repeat(3,1fr);
+  .nav-links {
+    display: none;
   }
 
-  .widget-grid,
-  .pnl-layout{
-    grid-template-columns:1fr;
+  @media (min-width: 768px) {
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
   }
 
-  .signal-grid{
-    grid-template-columns:1fr 1fr;
+  .nav-link {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  
+  .nav-link:hover { color: var(--brand); }
+
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+    color: #000;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(234, 179, 8, 0.4);
   }
 
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
+  .btn-outline {
+    border: 1px solid var(--border-glow);
+    color: var(--text);
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    background: rgba(255,255,255,0.02);
   }
-}
-
-@media(max-width:620px){
-  section{
-    padding:75px 0;
-  }
-
-  .container{
-    width:min(100% - 24px,1420px);
-  }
-
-  .hero h1{
-    font-size:52px;
+  .btn-outline:hover {
+    border-color: var(--brand);
+    background: rgba(234, 179, 8, 0.05);
   }
 
-  .hero-stats{
-    grid-template-columns:1fr;
+  /* Ticker */
+  .ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+    margin-top: 76px; /* Offset for header */
   }
 
-  .terminal{
-    transform:none;
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
-  .feature-grid{
-    grid-template-columns:1fr 1fr;
+  #tickerTrack {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: ticker 30s linear infinite;
+  }
+  
+  #tickerTrack:hover { animation-play-state: paused; }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 2rem;
+    font-size: 0.875rem;
+    border-right: 1px solid var(--border);
   }
 
-  .tools-grid,
-  .signal-grid{
-    grid-template-columns:1fr;
+  /* Typography Elements */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brand);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    padding: 0.375rem 1rem;
+    background: rgba(234, 179, 8, 0.1);
+    border-radius: 999px;
+    border: 1px solid rgba(234, 179, 8, 0.2);
   }
 
-  .benefits{
-    grid-template-columns:1fr;
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 1rem;
   }
 
-  .footer-grid{
-    grid-template-columns:1fr;
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    max-w: 2xl;
+    line-height: 1.6;
+    margin-bottom: 3rem;
   }
 
-  .chart-area{
-    height:470px;
+  /* Core Layouts & Grids */
+  .section-container {
+    padding: 6rem 2rem;
+    max-w: 1280px;
+    margin: 0 auto;
   }
 
-  .mini-market{
-    grid-template-columns:1fr;
+  .widget-grid, .feature-grid, .signal-grid {
+    display: grid;
+    gap: 1.5rem;
   }
 
-  .mini-coin{
-    border-right:0;
-    border-bottom:1px solid var(--line);
+  .widget-grid { grid-template-columns: 1fr; }
+  @media (min-width: 1024px) {
+    .widget-grid { grid-template-columns: 3fr 1fr; }
   }
 
-  .terminal-bottom{
-    grid-template-columns:1fr 1fr;
+  .feature-grid { grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .feature-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .signal-grid { grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .signal-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Cards */
+  .widget-box, .feature-card, .pnl-card, .signal-card, .price-card, .form-container, .faq-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
   }
-}
+
+  .widget-box::before, .feature-card::before, .signal-card::before, .price-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  }
+
+  .feature-card:hover {
+    border-color: var(--brand-dark);
+    background: var(--surface-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+
+  .price-card {
+    border: 1px solid var(--brand);
+    box-shadow: 0 0 30px rgba(234, 179, 8, 0.1);
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+  
+  .price-card:hover {
+    box-shadow: 0 0 50px rgba(234, 179, 8, 0.2);
+  }
+
+  /* PNL Tool */
+  .pnl-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 896px) {
+    .pnl-layout { grid-template-columns: 1fr 1fr; }
+  }
+
+  .input-row {
+    margin-bottom: 1rem;
+  }
+  
+  .input-row label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .input-row input, .input-row select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border-glow);
+    color: var(--text);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: border-color 0.2s;
+  }
+  
+  .input-row input:focus, .input-row select:focus {
+    outline: none;
+    border-color: var(--brand);
+  }
+
+  .pnl-bars {
+    width: 100%;
+    height: 300px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  /* FAQ */
+  .faq {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .faq-item { padding: 0; cursor: pointer; }
+  .faq-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+  }
+  .faq-content {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .faq-item.active .faq-content {
+    padding-bottom: 1.5rem;
+    max-height: 200px;
+  }
+  .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+  /* Footer */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 4rem 2rem 2rem;
+    border-top: 1px solid var(--border);
+    max-w: 1280px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+  }
+  
+  .disclaimer {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  /* Utilities */
+  .text-up { color: var(--up); }
+  .text-down { color: var(--down); }
+  .bg-up { background: var(--up-bg); color: var(--up); }
+  .bg-down { background: var(--down-bg); color: var(--down); }
+
+  /* Modal */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-content {
+    background: var(--surface);
+    border: 1px solid var(--brand);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 90%;
+    max-w: 500px;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+  }
+  .modal.active .modal-content { transform: translateY(0); }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--up);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 200;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+  }
+  .toast.active { transform: translateY(0); opacity: 1; }
+
+  /* Falling Candles Animation */
+  #candles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .candle {
+    position: absolute;
+    width: 2px;
+    border-radius: 2px;
+    opacity: 0.15;
+  }
+  @keyframes fall {
+    0% { transform: translateY(-10vh); opacity: 0; }
+    10% { opacity: 0.2; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(110vh); opacity: 0; }
+  }
 </style>
 </head>
 
@@ -1450,1285 +472,673 @@ footer{
 <header>
   <div class="navbar">
     <a href="#home" class="brand">
-      <div class="logo"><i class="fa-solid fa-chart-line"></i></div>
+      <div class="logo" style="overflow: hidden;">
+        <img src="https://placehold.co/100x100/eab308/000000?text=SM" alt="Signal Master LK Logo" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
       <div>
         <div class="brand-name">SIGNAL MASTER LK</div>
         <span class="brand-sub">CEYLONCOINHUB • MARKET INTELLIGENCE</span>
       </div>
     </a>
-
-    <nav class="nav-links" id="navLinks">
-      <a href="#terminal">Terminal</a>
-      <a href="#intelligence">Intelligence</a>
-      <a href="#ecosystem">Ecosystem</a>
-      <a href="#tools">Tools</a>
-      <a href="#vip">VIP</a>
-      <a href="#registration">Registration</a>
+    
+    <nav class="nav-links">
+      <a href="#intelligence" class="nav-link">Intelligence</a>
+      <a href="#ecosystem" class="nav-link">Ecosystem</a>
+      <a href="#tools" class="nav-link">Tools</a>
+      <a href="#faq" class="nav-link">FAQ</a>
     </nav>
 
-    <button class="nav-cta cta-btn" onclick="openModal()">
-      <i class="fa-solid fa-crown"></i>
-      GET VIP ACCESS
-    </button>
-
-    <button class="mobile-menu" id="mobileMenu">
+    <div class="hidden md:flex gap-4">
+      <a href="#registration" class="btn-outline">Join Free</a>
+      <button onclick="openModal()" class="btn-primary">Get VIP</button>
+    </div>
+    
+    <!-- Mobile Menu Toggle -->
+    <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-400 hover:text-white">
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>
+  
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobileMenu" class="hidden bg-black border-t border-gray-800 p-4 flex-col gap-4 text-center">
+    <a href="#intelligence" class="nav-link block py-2">Intelligence</a>
+    <a href="#ecosystem" class="nav-link block py-2">Ecosystem</a>
+    <a href="#tools" class="nav-link block py-2">Tools</a>
+    <a href="#faq" class="nav-link block py-2">FAQ</a>
+    <button onclick="openModal()" class="btn-primary w-full mt-2">Get VIP</button>
+  </div>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="container hero-layout">
-
-    <div class="reveal">
-      <div class="eyebrow">
-        <i class="fa-solid fa-signal"></i>
-        Advanced Digital Asset Intelligence
-      </div>
-
-      <h1>
-        Trade With
-        <span class="gold">Intelligence.</span>
-      </h1>
-
-      <p class="hero-copy">
-        SIGNAL MASTER LK / CeylonCoinHub combines market visualization,
-        technical analysis, risk tooling, signal infrastructure,
-        wallet intelligence, scanners and portfolio analytics into one
-        unified crypto intelligence interface.
-      </p>
-
-      <div class="hero-actions">
-        <button class="cta cta-btn" onclick="openModal()">
-          <i class="fa-solid fa-crown"></i>
-          BUY VIP LIFETIME
-        </button>
-
-        <a href="#ecosystem" class="cta secondary cta-btn">
-          <i class="fa-solid fa-rocket"></i>
-          EXPLORE ECOSYSTEM
-        </a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat">
-          <strong class="green">500+</strong>
-          <span>Intelligence Modules</span>
-        </div>
-        <div class="stat">
-          <strong>24/7</strong>
-          <span>Market Monitoring</span>
-        </div>
-        <div class="stat">
-          <strong class="gold">Multi-Market</strong>
-          <span>Analytics Stack</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="terminal reveal">
-      <div class="terminal-top">
-        <div class="terminal-dots">
-          <i></i><i></i><i></i>
-        </div>
-        <div class="terminal-title">
-          SMLK // MARKET COMMAND CENTER
-        </div>
-        <span class="green mono" style="font-size:9px">
-          ● LIVE
-        </span>
-      </div>
-
-      <div class="mini-market">
-        <div class="mini-coin">
-          <small>BTC / USDT</small>
-          <div class="mini-price" id="heroBTC">$--</div>
-          <div class="mini-change" id="heroBTCChange">--</div>
-        </div>
-
-        <div class="mini-coin">
-          <small>ETH / USDT</small>
-          <div class="mini-price" id="heroETH">$--</div>
-          <div class="mini-change" id="heroETHChange">--</div>
-        </div>
-
-        <div class="mini-coin">
-          <small>SOL / USDT</small>
-          <div class="mini-price" id="heroSOL">$--</div>
-          <div class="mini-change" id="heroSOLChange">--</div>
-        </div>
-      </div>
-
-      <div class="fake-chart">
-        <div class="fake-line"></div>
-      </div>
-
-      <div class="terminal-bottom">
-        <div class="t-metric">
-          <small>MARKET MODE</small>
-          <strong class="green">ACTIVE</strong>
-        </div>
-        <div class="t-metric">
-          <small>VOLATILITY</small>
-          <strong>MEDIUM</strong>
-        </div>
-        <div class="t-metric">
-          <small>LIQUIDITY</small>
-          <strong>HIGH</strong>
-        </div>
-        <div class="t-metric">
-          <small>ENGINE</small>
-          <strong>SMLK-AI</strong>
-        </div>
-      </div>
-    </div>
-
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div id="tickerTrack">
+    <!-- Populated by JS -->
+    <div class="ticker-item font-mono text-muted">Loading live market data...</div>
   </div>
-</section>
-
-<!-- LIVE TICKER -->
-<div class="ticker">
-  <div class="ticker-track" id="tickerTrack"></div>
 </div>
 
-<!-- TRADINGVIEW -->
-<section id="terminal">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">
-        <i class="fa-solid fa-chart-candlestick"></i>
-        Professional Trading Terminal
+<!-- HERO SECTION -->
+<section id="home" class="relative pt-12 pb-24 px-6 max-w-7xl mx-auto flex flex-col items-center text-center mt-8">
+  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-bold tracking-widest uppercase mb-6">
+    <span class="relative flex h-2 w-2">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+    </span>
+    V 2.0 Live Network
+  </div>
+  
+  <h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-6">
+    DOMINATE THE <br class="hidden md:block"/>
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-200">CRYPTO MARKETS</span>
+  </h1>
+  
+  <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+    Join Sri Lanka's most advanced cryptocurrency intelligence platform. Leverage institutional-grade signals, automated trading bots, and precise market analytics.
+  </p>
+  
+  <div class="flex flex-col sm:flex-row gap-4 mb-16">
+    <button onclick="openModal()" class="btn-primary text-lg px-8 py-4">Upgrade to VIP</button>
+    <a href="#ecosystem" class="btn-outline text-lg px-8 py-4 inline-flex items-center justify-center gap-2">
+      Explore Ecosystem <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+  
+  <!-- Hero Market Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-4xl" id="heroCards">
+    <div class="widget-box flex justify-between items-center" id="heroBTC">
+      <div>
+        <div class="flex items-center gap-2 mb-1"><i class="fa-brands fa-bitcoin text-yellow-500 text-xl"></i><span class="font-bold">BTC/USDT</span></div>
+        <div class="font-mono text-2xl font-bold price">---</div>
       </div>
-
-      <h2>
-        One Interface.
-        <span class="gold">Multiple Markets.</span>
-      </h2>
-
-      <p>
-        Advanced TradingView market visualization with symbol switching,
-        technical studies, timeframes, drawing tools and market research
-        capabilities.
-      </p>
+      <div class="mini-change font-mono font-bold bg-gray-800 px-2 py-1 rounded">--%</div>
     </div>
-
-    <div class="dashboard-layout reveal">
-
-      <div class="panel chart-panel">
-        <div class="panel-head">
-          <div>
-            <div class="panel-title">
-              <i class="fa-solid fa-wave-square green"></i>
-              ADVANCED CHART TERMINAL
-            </div>
-            <span class="panel-sub">
-              TradingView • Technical Analysis • Multi-Timeframe
-            </span>
-          </div>
-
-          <span class="green mono" style="font-size:8px">
-            LIVE MARKET DATA
-          </span>
-        </div>
-
-        <div class="chart-area">
-          <div class="tradingview-widget-container"
-               style="height:100%;width:100%">
-            <div class="tradingview-widget-container__widget"
-                 style="height:calc(100% - 32px);width:100%">
-            </div>
-            <script
-              type="text/javascript"
-              src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
-              async>
-            {
-              "autosize": true,
-              "symbol": "BINANCE:BTCUSDT",
-              "interval": "15",
-              "timezone": "Etc/UTC",
-              "theme": "dark",
-              "style": "1",
-              "withdateranges": true,
-              "hide_side_toolbar": false,
-              "allow_symbol_change": true,
-              "save_image": false,
-              "studies": [
-                "RSI@tv-basicstudies",
-                "MACD@tv-basicstudies",
-                "EMA@tv-basicstudies"
-              ],
-              "watchlist": [
-                "BINANCE:BTCUSDT",
-                "BINANCE:ETHUSDT",
-                "BINANCE:BNBUSDT",
-                "BINANCE:SOLUSDT",
-                "BINANCE:XRPUSDT",
-                "BINANCE:ADAUSDT",
-                "BINANCE:DOGEUSDT"
-              ],
-              "locale": "en",
-              "calendar": false,
-              "support_host": "https://www.tradingview.com"
-            }
-            </script>
-          </div>
-        </div>
+    <div class="widget-box flex justify-between items-center" id="heroETH">
+      <div>
+        <div class="flex items-center gap-2 mb-1"><i class="fa-brands fa-ethereum text-blue-400 text-xl"></i><span class="font-bold">ETH/USDT</span></div>
+        <div class="font-mono text-2xl font-bold price">---</div>
       </div>
-
-      <div class="side-stack">
-
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <div class="panel-title">MARKET WATCH</div>
-              <span class="panel-sub">Live public market data</span>
-            </div>
-            <i class="fa-solid fa-satellite-dish green"></i>
-          </div>
-
-          <div class="market-list" id="marketList">
-            <div style="padding: 20px; text-align: center; color: var(--muted); font-size: 10px;">
-                <i class="fa-solid fa-spinner fa-spin"></i> Loading live data...
-            </div>
-          </div>
-        </div>
-
-        <div class="panel" style="padding:20px">
-          <div class="panel-title">MARKET ENGINE</div>
-
-          <div style="margin-top:18px">
-
-            <div style="display:flex;justify-content:space-between;font-size:9px;color:#68736c;margin-bottom:7px">
-              <span>Liquidity</span>
-              <span class="green">HIGH</span>
-            </div>
-
-            <div style="height:5px;background:#101511;border-radius:10px;overflow:hidden">
-              <div style="height:100%;width:88%;background:var(--green);border-radius:10px"></div>
-            </div>
-
-            <div style="display:flex;justify-content:space-between;font-size:9px;color:#68736c;margin:18px 0 7px">
-              <span>Volatility</span>
-              <span class="gold">MEDIUM</span>
-            </div>
-
-            <div style="height:5px;background:#101511;border-radius:10px;overflow:hidden">
-              <div style="height:100%;width:56%;background:var(--gold);border-radius:10px"></div>
-            </div>
-
-            <div style="display:flex;justify-content:space-between;font-size:9px;color:#68736c;margin:18px 0 7px">
-              <span>Market Breadth</span>
-              <span class="green">POSITIVE</span>
-            </div>
-
-            <div style="height:5px;background:#101511;border-radius:10px;overflow:hidden">
-              <div style="height:100%;width:69%;background:var(--green);border-radius:10px"></div>
-            </div>
-
-          </div>
-        </div>
-
+      <div class="mini-change font-mono font-bold bg-gray-800 px-2 py-1 rounded">--%</div>
+    </div>
+    <div class="widget-box flex justify-between items-center" id="heroSOL">
+      <div>
+        <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-coins text-purple-400 text-xl"></i><span class="font-bold">SOL/USDT</span></div>
+        <div class="font-mono text-2xl font-bold price">---</div>
       </div>
-
+      <div class="mini-change font-mono font-bold bg-gray-800 px-2 py-1 rounded">--%</div>
     </div>
   </div>
 </section>
 
-<!-- WIDGET INTELLIGENCE -->
-<section id="intelligence">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">
-        <i class="fa-solid fa-brain"></i>
-        Advanced Widget Intelligence
+<section id="intelligence" class="section-container">
+  <div class="eyebrow"><i class="fa-solid fa-brain"></i> MARKET INTELLIGENCE</div>
+  <h2 class="section-title">Real-Time Market Data</h2>
+  <p class="section-desc">Track global cryptocurrency movements with our advanced screener. Identify volume spikes, trend reversals, and breakout opportunities instantly.</p>
+  
+  <div class="widget-grid">
+    <div class="widget-box p-0 overflow-hidden h-[600px] border border-gray-800 rounded-xl relative">
+      <!-- TradingView Screener Widget -->
+      <div class="tradingview-widget-container" style="height:100%; width:100%;">
+        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px); width:100%;"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+        {
+          "width": "100%",
+          "height": "100%",
+          "defaultColumn": "overview",
+          "screener_type": "crypto_mkt",
+          "displayCurrency": "USD",
+          "colorTheme": "dark",
+          "locale": "en",
+          "isTransparent": true
+        }
+        </script>
       </div>
-      <h2>Market Heatmaps & <span class="gold">Live Screener.</span></h2>
-      <p>Multi-dimensional market data feeds and visual heatmaps powered by TradingView embedded intelligence.</p>
     </div>
-
-    <div class="widget-grid reveal">
-      <div class="panel widget-box">
-        <div class="panel-head">
-          <div class="panel-title"><i class="fa-solid fa-fire text-amber-400 mr-2"></i> CRYPTO HEATMAP</div>
-          <span class="green mono" style="font-size:8px">REAL-TIME</span>
+    
+    <div class="flex flex-col gap-4">
+      <div class="widget-box flex-1">
+        <h3 class="font-bold text-gray-300 mb-4 border-b border-gray-800 pb-2"><i class="fa-solid fa-fire text-orange-500 mr-2"></i>Top Volume 24H</h3>
+        <div id="marketList" class="flex flex-col gap-3 font-mono text-sm">
+          <div class="text-gray-500 text-center py-4">Loading Data...</div>
         </div>
-        <div class="tradingview-widget-container widget-frame">
-          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-          {
-            "dataSource": "Crypto",
-            "blockSize": "market_cap_calc",
-            "blockColor": "24h_change_col",
-            "locale": "en",
-            "symbolUrl": "",
-            "colorTheme": "dark",
-            "hasTopBar": false,
-            "isDataSetEnabled": false,
-            "isZoomEnabled": true,
-            "hasSymbolTooltip": true,
-            "width": "100%",
-            "height": "100%"
-          }
-          </script>
-        </div>
-        <div class="widget-note">Live sector capitalization and 24h price action heatmap overview.</div>
       </div>
-
-      <div class="panel widget-box">
-        <div class="panel-head">
-          <div class="panel-title"><i class="fa-solid fa-chart-pie text-cyan-400 mr-2"></i> TECHNICAL SUMMARY</div>
-          <span class="green mono" style="font-size:8px">AI ANALYTICS</span>
-        </div>
-        <div class="tradingview-widget-container widget-frame">
-          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-          {
-            "interval": "1h",
-            "width": "100%",
-            "isTransparent": true,
-            "height": "100%",
-            "symbol": "BINANCE:BTCUSDT",
-            "showIntervalTabs": true,
-            "locale": "en",
-            "colorTheme": "dark"
-          }
-          </script>
-        </div>
-        <div class="widget-note">Automated oscillator and moving average multi-timeframe evaluation.</div>
+      <div class="widget-box bg-gradient-to-br from-yellow-500/10 to-transparent border-yellow-500/20">
+        <h3 class="font-bold text-yellow-500 mb-2">Alpha Insight</h3>
+        <p class="text-sm text-gray-400">Bitcoin dominance is currently holding critical support. Watch for altcoin bleeds if BTC breaks below key MAs.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ECOSYSTEM & FEATURES -->
-<section id="ecosystem" style="background:rgba(0,0,0,.3)">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">
-        <i class="fa-solid fa-layer-group"></i>
-        CeylonCoinHub Platform Suite
+<section id="ecosystem" class="section-container bg-black/40">
+  <div class="eyebrow"><i class="fa-solid fa-network-wired"></i> THE ECOSYSTEM</div>
+  <h2 class="section-title">Professional Trading Arsenal</h2>
+  <p class="section-desc">We don't just provide signals. We provide a complete technological infrastructure for modern crypto traders.</p>
+  
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 text-2xl mb-4">
+        <i class="fa-brands fa-telegram"></i>
       </div>
-      <h2>Complete Crypto <span class="green">Ecosystem.</span></h2>
-      <p>Designed for Sri Lankan and global traders seeking unmatched precision, automated indicators, and verified market intelligence.</p>
+      <h3 class="text-lg font-bold mb-2 text-white">Telegram Signals</h3>
+      <p class="text-sm text-gray-400 leading-relaxed">Instant delivery of Long/Short setups, exact entry zones, multiple take profit targets, and dynamic stop losses.</p>
     </div>
-
-    <div class="feature-toolbar reveal">
-      <button class="filter-btn active" onclick="filterFeatures('all', this)">All Features</button>
-      <button class="filter-btn" onclick="filterFeatures('signals', this)">AI Signals</button>
-      <button class="filter-btn" onclick="filterFeatures('analytics', this)">Analytics</button>
-      <button class="filter-btn" onclick="filterFeatures('risk', this)">Risk & Tools</button>
-      <button class="filter-btn" onclick="filterFeatures('community', this)">Community & VIP</button>
+    
+    <div class="feature-card">
+      <div class="w-12 h-12 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-500 text-2xl mb-4">
+        <i class="fa-solid fa-robot"></i>
+      </div>
+      <h3 class="text-lg font-bold mb-2 text-white">Ceylon VIP Bot Manager</h3>
+      <p class="text-sm text-gray-400 leading-relaxed">Automate your trades via Cornix integration. Connect your exchange API and let our signals trade for you 24/7.</p>
     </div>
-
-    <div class="feature-grid reveal">
-      <div class="feature-card" data-category="signals">
-        <span class="tag">01</span>
-        <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-        <h3>High-Win Signals</h3>
-        <p>Real-time Telegram & web alerts with exact entry zones, multiple take-profits, and stop-loss parameters.</p>
+    
+    <div class="feature-card">
+      <div class="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center text-green-500 text-2xl mb-4">
+        <i class="fa-brands fa-whatsapp"></i>
       </div>
-
-      <div class="feature-card" data-category="analytics">
-        <span class="tag">02</span>
-        <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
-        <h3>Smart Scanners</h3>
-        <p>Instant volume spike, breakout, and RSI divergence detection across 300+ crypto pairs.</p>
+      <h3 class="text-lg font-bold mb-2 text-white">WhatsApp Alerts</h3>
+      <p class="text-sm text-gray-400 leading-relaxed">Never miss a critical market update. Receive priority notifications directly to your phone for extreme market volatility.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 text-2xl mb-4">
+        <i class="fa-solid fa-code"></i>
       </div>
-
-      <div class="feature-card" data-category="risk">
-        <span class="tag">03</span>
-        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3>Position Sizing</h3>
-        <p>Advanced risk calculators designed to protect capital and eliminate emotional over-leveraging.</p>
-      </div>
-
-      <div class="feature-card" data-category="community">
-        <span class="tag">04</span>
-        <div class="feature-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
-        <h3>CeylonCoinHub VIP</h3>
-        <p>Exclusive community of elite Sri Lankan traders sharing strategies, setups, and daily market reviews.</p>
-      </div>
-
-      <div class="feature-card" data-category="analytics">
-        <span class="tag">05</span>
-        <div class="feature-icon"><i class="fa-solid fa-wallet"></i></div>
-        <h3>Wallet Tracking</h3>
-        <p>Whale transaction monitoring and exchange inflow/outflow analytics for early market trend spotting.</p>
-      </div>
-
-      <div class="feature-card" data-category="signals">
-        <span class="tag">06</span>
-        <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
-        <h3>AI Trend Engine</h3>
-        <p>Proprietary machine learning algorithm forecasting support/resistance levels and market sentiment.</p>
-      </div>
-
-      <div class="feature-card" data-category="risk">
-        <span class="tag">07</span>
-        <div class="feature-icon"><i class="fa-solid fa-calculator"></i></div>
-        <h3>Compound Growth</h3>
-        <p>Interactive calculators to simulate daily and monthly crypto compounding returns with disciplined trading.</p>
-      </div>
-
-      <div class="feature-card" data-category="community">
-        <span class="tag">08</span>
-        <div class="feature-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-        <h3>Masterclass Vault</h3>
-        <p>Comprehensive video tutorials covering price action, liquidity pools, futures trading, and risk management.</p>
-      </div>
-
-      <div class="feature-card" data-category="analytics">
-        <span class="tag">09</span>
-        <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
-        <h3>Global Macro Data</h3>
-        <p>Economic calendar integration tracking CPI, Fed rate decisions, and global liquidity indexes.</p>
-      </div>
-
-      <div class="feature-card" data-category="signals">
-        <span class="tag">10</span>
-        <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
-        <h3>Instant Web Alerts</h3>
-        <p>Browser notification system ensuring you never miss critical market shifts or signal updates.</p>
-      </div>
+      <h3 class="text-lg font-bold mb-2 text-white">API Integrations</h3>
+      <p class="text-sm text-gray-400 leading-relaxed">Connect directly to Binance, Bybit, and OKX. Secure webhook integrations for advanced programmatic trading setups.</p>
     </div>
   </div>
 </section>
 
-<!-- TOOLS & CALCULATORS -->
-<section id="tools">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">
-        <i class="fa-solid fa-toolbox"></i>
-        Interactive Trading Calculators
-      </div>
-      <h2>Precision Risk & <span class="gold">Position Tools.</span></h2>
-      <p>Calculate your exact position size, risk-to-reward ratio, and estimated liquidation points instantly before placing any trade.</p>
-    </div>
-
-    <div class="tools-grid reveal">
-      <!-- Tool 1: Position Size Calculator -->
-      <div class="panel tool-card">
-        <h3>Position Sizer</h3>
-        <p>Calculate optimal trade size based on account risk tolerance.</p>
-        
-        <div class="field">
-          <label>Account Balance ($)</label>
-          <input type="number" id="posBalance" value="1000" oninput="calcPosition()">
-        </div>
-        <div class="input-row">
-          <div class="field">
-            <label>Risk (%)</label>
-            <input type="number" id="posRisk" value="2" oninput="calcPosition()">
+<section id="tools" class="section-container">
+  <div class="eyebrow"><i class="fa-solid fa-wrench"></i> TRADER TOOLS</div>
+  <h2 class="section-title">Risk & Reward Architecture</h2>
+  
+  <div class="pnl-layout mt-10">
+    <div class="pnl-card">
+      <h3 class="text-xl font-bold mb-6 border-b border-gray-800 pb-4">PNL & Position Calculator</h3>
+      <form id="pnlForm">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="input-row">
+            <label>Trade Direction</label>
+            <select id="pnlType">
+              <option value="long">Long (Buy)</option>
+              <option value="short">Short (Sell)</option>
+            </select>
           </div>
-          <div class="field">
-            <label>Stop Loss (%)</label>
-            <input type="number" id="posSL" value="3" oninput="calcPosition()">
-          </div>
-        </div>
-        <div class="field" style="margin-top:10px">
-          <label>Recommended Position Size</label>
-          <div class="tool-result" id="posResult">$666.67</div>
-        </div>
-      </div>
-
-      <!-- Tool 2: Risk / Reward Calculator -->
-      <div class="panel tool-card">
-        <h3>Risk / Reward Ratio</h3>
-        <p>Evaluate trade profitability relative to potential loss.</p>
-        
-        <div class="input-row">
-          <div class="field">
-            <label>Entry Price</label>
-            <input type="number" id="rrEntry" value="65000" oninput="calcRR()">
-          </div>
-          <div class="field">
-            <label>Stop Loss</label>
-            <input type="number" id="rrSL" value="63500" oninput="calcRR()">
-          </div>
-        </div>
-        <div class="field">
-          <label>Take Profit Target</label>
-          <input type="number" id="rrTP" value="69500" oninput="calcRR()">
-        </div>
-        <div class="field" style="margin-top:10px">
-          <label>Risk : Reward Ratio</label>
-          <div class="tool-result" id="rrResult">1 : 3.00</div>
-        </div>
-      </div>
-
-      <!-- Tool 3: Liquidation Price Calculator -->
-      <div class="panel tool-card">
-        <h3>Liquidation Calculator</h3>
-        <p>Estimate futures liquidation threshold based on leverage.</p>
-        
-        <div class="input-row">
-          <div class="field">
-            <label>Entry Price</label>
-            <input type="number" id="liqEntry" value="65000" oninput="calcLiq()">
-          </div>
-          <div class="field">
+          <div class="input-row">
             <label>Leverage (x)</label>
-            <input type="number" id="liqLev" value="20" oninput="calcLiq()">
+            <input type="number" id="pnlLev" value="10" min="1" max="125">
           </div>
         </div>
-        <div class="field">
-          <label>Position Type</label>
-          <select id="liqSide" onchange="calcLiq()">
-            <option value="long">LONG</option>
-            <option value="short">SHORT</option>
-          </select>
-        </div>
-        <div class="field" style="margin-top:10px">
-          <label>Estimated Liquidation Price</label>
-          <div class="tool-result" id="liqResult">$61,925.00</div>
-        </div>
-      </div>
-
-      <!-- Tool 4: Compound Growth Calculator -->
-      <div class="panel tool-card">
-        <h3>Compound Growth</h3>
-        <p>Project portfolio growth over consistent winning cycles.</p>
         
         <div class="input-row">
-          <div class="field">
-            <label>Initial Capital ($)</label>
-            <input type="number" id="compStart" value="500" oninput="calcComp()">
-          </div>
-          <div class="field">
-            <label>Monthly Gain (%)</label>
-            <input type="number" id="compRate" value="15" oninput="calcComp()">
-          </div>
+          <label>Entry Price ($)</label>
+          <input type="number" id="pnlEntry" value="65000" step="0.01">
         </div>
-        <div class="field">
-          <label>Duration (Months)</label>
-          <input type="number" id="compMonths" value="12" oninput="calcComp()">
+        <div class="input-row">
+          <label>Exit Price ($)</label>
+          <input type="number" id="pnlExit" value="68000" step="0.01">
         </div>
-        <div class="field" style="margin-top:10px">
-          <label>Projected Final Balance</label>
-          <div class="tool-result" id="compResult">$2,675.30</div>
+        <div class="input-row">
+          <label>Margin USDT</label>
+          <input type="number" id="pnlMargin" value="100" min="1">
         </div>
+      </form>
+    </div>
+    
+    <div class="widget-box flex flex-col justify-center items-center text-center">
+      <h3 class="text-gray-400 font-bold mb-2">Projected Result</h3>
+      <div id="pnlResultUsd" class="font-mono text-5xl font-black text-up mb-2">+$46.15</div>
+      <div id="pnlResultPct" class="font-mono text-xl font-bold bg-up px-4 py-1 rounded-full mb-8">+46.15% ROE</div>
+      
+      <!-- Visual Canvas for PNL -->
+      <canvas id="pnlCanvas" class="pnl-bars w-full h-[150px]"></canvas>
+      <p class="text-xs text-gray-500 mt-4">*Excludes exchange trading fees and funding rates.</p>
+    </div>
+  </div>
+
+  <h3 class="text-2xl font-bold mt-16 mb-6">Recent Signal Performances</h3>
+  <div class="signal-grid">
+    <div class="signal-card border-l-4 border-l-green-500">
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <span class="bg-green-500/20 text-green-500 text-xs font-bold px-2 py-1 rounded uppercase">Long</span>
+          <h4 class="font-bold text-xl mt-1">BTC/USDT</h4>
+        </div>
+        <span class="text-green-500 font-mono font-bold text-xl">+125%</span>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-sm font-mono text-gray-400">
+        <div>Entry: 61,200</div>
+        <div>Target: 63,500 <i class="fa-solid fa-check text-green-500"></i></div>
+        <div>Leverage: 50x</div>
+        <div>Duration: 4h 12m</div>
+      </div>
+    </div>
+    
+    <div class="signal-card border-l-4 border-l-red-500">
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <span class="bg-red-500/20 text-red-500 text-xs font-bold px-2 py-1 rounded uppercase">Short</span>
+          <h4 class="font-bold text-xl mt-1">ETH/USDT</h4>
+        </div>
+        <span class="text-green-500 font-mono font-bold text-xl">+88%</span>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-sm font-mono text-gray-400">
+        <div>Entry: 3,450</div>
+        <div>Target: 3,380 <i class="fa-solid fa-check text-green-500"></i></div>
+        <div>Leverage: 30x</div>
+        <div>Duration: 1h 45m</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PNL SIMULATOR -->
-<section style="background:rgba(0,0,0,.2)">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">
-        <i class="fa-solid fa-chart-column"></i>
-        Portfolio Performance Simulator
+<section id="vip" class="section-container relative">
+  <!-- Glow behind VIP -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+  
+  <div class="max-w-3xl mx-auto">
+    <div class="price-card">
+      <div class="inline-flex items-center gap-2 text-yellow-500 font-bold mb-4 uppercase tracking-widest text-sm">
+        <i class="fa-solid fa-crown"></i> Elite Tier
       </div>
-      <h2>Simulate Your <span class="green">Trading Returns.</span></h2>
-      <p>Test simulated outcomes based on win-rate percentages and risk management parameters.</p>
+      <h2 class="text-4xl md:text-5xl font-black mb-2">Lifetime VIP Access</h2>
+      <div class="flex items-baseline justify-center gap-2 mb-8">
+        <span class="text-5xl font-mono font-bold text-white">$150</span>
+        <span class="text-gray-500 line-through text-xl">$300</span>
+        <span class="text-sm text-gray-400">/ one-time</span>
+      </div>
+      
+      <ul class="text-left max-w-sm mx-auto flex flex-col gap-4 mb-10 text-gray-300">
+        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-yellow-500"></i> Lifetime VIP Signals Channel</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-yellow-500"></i> Cornix Auto-Trading Bot Setup</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-yellow-500"></i> Direct Mentorship Access</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-yellow-500"></i> Daily Market Video Analysis</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-yellow-500"></i> Exclusive Altcoin Spot Gems</li>
+      </ul>
+      
+      <button onclick="openModal()" class="btn-primary w-full max-w-sm text-lg py-4">Upgrade Now (USDT)</button>
+    </div>
+  </div>
+</section>
+
+<section id="registration" class="section-container bg-black/40">
+  <div class="eyebrow"><i class="fa-solid fa-user-plus"></i> ONBOARDING</div>
+  <h2 class="section-title">Join the Free Community</h2>
+  <p class="section-desc mb-10">Fill out the form below to receive your invite link to our public trading floor and get weekly free signals.</p>
+  
+  <div class="form-container w-full max-w-4xl mx-auto h-[600px] p-0 overflow-hidden">
+    <!-- Embedded Google Form (Placeholder URL, using an iframe structurally correct) -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe-dummy-form-url/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading Community Form...</iframe>
+    
+    <!-- Fallback if iframe fails to load visually for the demo -->
+    <div class="absolute inset-0 bg-surface flex flex-col items-center justify-center -z-10 text-center p-8">
+      <i class="fa-solid fa-file-signature text-4xl text-gray-600 mb-4"></i>
+      <h3 class="text-xl font-bold">Google Form Integration Area</h3>
+      <p class="text-gray-500 mt-2">The Google Form will render here seamlessly within the .form-container.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section-container">
+  <h2 class="section-title text-center mb-10">Frequently Asked Questions</h2>
+  
+  <div class="faq max-w-3xl mx-auto">
+    <div class="faq-item">
+      <div class="faq-header">
+        What exchange do you recommend?
+        <i class="fa-solid fa-plus faq-icon transition-transform"></i>
+      </div>
+      <div class="faq-content">
+        We primarily trade on Binance and Bybit due to their deep liquidity and comprehensive API support which works flawlessly with our automated bot setups.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-header">
+        How much capital do I need to start?
+        <i class="fa-solid fa-plus faq-icon transition-transform"></i>
+      </div>
+      <div class="faq-content">
+        While you can start with any amount, we recommend a minimum of $200-$500 to properly manage risk and cover the VIP membership cost efficiently over time.
+      </div>
     </div>
 
-    <div class="pnl-layout reveal">
-      <div class="panel pnl-card">
-        <span class="panel-title">SIMULATION PARAMETERS</span>
-        <div style="margin-top:20px">
-          <div class="field">
-            <label>Starting Capital ($)</label>
-            <input type="number" id="simCap" value="1000" oninput="updateSimulation()">
-          </div>
-          <div class="field">
-            <label>Win Rate (%)</label>
-            <input type="number" id="simWin" value="65" oninput="updateSimulation()">
-          </div>
-          <div class="field">
-            <label>Average Risk-Reward (1 : X)</label>
-            <input type="number" id="simRR" value="2" oninput="updateSimulation()">
-          </div>
-          <div class="field">
-            <label>Total Trades</label>
-            <input type="number" id="simTrades" value="50" oninput="updateSimulation()">
-          </div>
-          <div style="margin-top:20px">
-            <span style="font-size:9px; color:var(--muted);">ESTIMATED NET PROFIT / LOSS</span>
-            <div class="pnl-big" id="simProfit">+$1,300.00</div>
-          </div>
-        </div>
+    <div class="faq-item">
+      <div class="faq-header">
+        Do I need prior trading experience?
+        <i class="fa-solid fa-plus faq-icon transition-transform"></i>
       </div>
-
-      <div class="panel pnl-card" style="display:flex; flex-direction:column; justify-content:space-between;">
-        <div class="panel-head" style="padding:0; border:0; margin-bottom:15px;">
-          <div>
-            <div class="panel-title">PERFORMANCE VISUALIZATION</div>
-            <span class="panel-sub">Simulated equity curve over trade sequence</span>
-          </div>
-          <span class="green mono" style="font-size:8px">SMLK-SIMULATOR v2.4</span>
-        </div>
-        <div class="pnl-bars" style="display:flex; align-items:flex-end; gap:6px; padding:20px; background:#050705; border:1px solid var(--line); border-radius:12px;" id="simBars">
-          <!-- Bars generated via JS -->
-        </div>
+      <div class="faq-content">
+        No! Our signals include precise entry zones, stop losses, and take profits. Furthermore, with our Cornix Auto-Trading setup, the bot handles the execution automatically for you.
       </div>
     </div>
   </div>
 </section>
 
-<!-- VIP SIGNALS FEED -->
-<section id="vip-signals">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">
-        <i class="fa-solid fa-satellite-dish"></i>
-        Live Signal Infrastructure
-      </div>
-      <h2>Recent VIP <span class="gold">Signal Feed.</span></h2>
-      <p>Examples of high-probability setup alerts dispatched directly to Signal Master LK VIP members.</p>
-    </div>
-
-    <div class="signal-grid reveal">
-      <div class="panel signal-card long">
-        <div class="signal-header">
-          <span class="signal-pair">BTC / USDT</span>
-          <span class="signal-side">LONG ● SPOT / FUTURES</span>
-        </div>
-        <div class="signal-data">
-          <div>
-            <small>ENTRY ZONE</small>
-            <strong>$63,200 - $63,800</strong>
-          </div>
-          <div>
-            <small>LEVERAGE</small>
-            <strong>10x - 20x</strong>
-          </div>
-          <div>
-            <small>TAKE PROFIT</small>
-            <strong class="green">$68,500 (TP2)</strong>
-          </div>
-          <div>
-            <small>STOP LOSS</small>
-            <strong class="red">$61,900</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel signal-card short">
-        <div class="signal-header">
-          <span class="signal-pair">ETH / USDT</span>
-          <span class="signal-side">SHORT ● FUTURES</span>
-        </div>
-        <div class="signal-data">
-          <div>
-            <small>ENTRY ZONE</small>
-            <strong>$3,520 - $3,560</strong>
-          </div>
-          <div>
-            <small>LEVERAGE</small>
-            <strong>15x</strong>
-          </div>
-          <div>
-            <small>TAKE PROFIT</small>
-            <strong class="green">$3,300 (TP1)</strong>
-          </div>
-          <div>
-            <small>STOP LOSS</small>
-            <strong class="red">$3,640</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel signal-card long">
-        <div class="signal-header">
-          <span class="signal-pair">SOL / USDT</span>
-          <span class="signal-side">LONG ● BREAKOUT</span>
-        </div>
-        <div class="signal-data">
-          <div>
-            <small>ENTRY ZONE</small>
-            <strong>$142.50 - $145.00</strong>
-          </div>
-          <div>
-            <small>LEVERAGE</small>
-            <strong>10x</strong>
-          </div>
-          <div>
-            <small>TAKE PROFIT</small>
-            <strong class="green">$168.00 (TP3)</strong>
-          </div>
-          <div>
-            <small>STOP LOSS</small>
-            <strong class="red">$137.20</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VIP MEMBERSHIP PRICING -->
-<section id="vip" style="background:rgba(0,0,0,.3)">
-  <div class="container">
-    <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
-      <div class="eyebrow" style="margin-left:auto; margin-right:auto;">
-        <i class="fa-solid fa-crown"></i>
-        Exclusive Lifetime Access
-      </div>
-      <h2>Unlock Ultimate <span class="gold">VIP Membership.</span></h2>
-      <p style="margin-left:auto; margin-right:auto;">Get lifetime access to all advanced intelligence modules, VIP Telegram signal channels, and CeylonCoinHub masterclasses.</p>
-    </div>
-
-    <div class="pricing-wrap reveal">
-      <div class="panel price-card">
-        <div class="price-badge">LIFETIME VIP ACCESS</div>
-        <div class="price">$15 <small>USD / one-time</small></div>
-        <div class="price-note">Special Sri Lankan local community pricing & crypto payment options available.</div>
-
-        <div class="benefits">
-          <div class="benefit"><i class="fa-solid fa-check"></i> VIP Telegram Signal Channel</div>
-          <div class="benefit"><i class="fa-solid fa-check"></i> Advanced TradingView Scanners</div>
-          <div class="benefit"><i class="fa-solid fa-check"></i> 24/7 Market Liquidity Bot</div>
-          <div class="benefit"><i class="fa-solid fa-check"></i> Risk Management Suite</div>
-          <div class="benefit"><i class="fa-solid fa-check"></i> Masterclass Video Vault</div>
-          <div class="benefit"><i class="fa-solid fa-check"></i> Lifetime Updates & Support</div>
-        </div>
-
-        <button class="cta cta-btn" style="width:100%; padding:18px; font-size:14px;" onclick="openModal()">
-          <i class="fa-solid fa-crown"></i> GET VIP LIFETIME ACCESS NOW
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REGISTRATION / GOOGLE FORM EMBED -->
-<section id="registration">
-  <div class="container">
-    <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
-      <div class="eyebrow" style="margin-left:auto; margin-right:auto;">
-        <i class="fa-solid fa-file-lines"></i>
-        Member Registration
-      </div>
-      <h2>Official Onboarding <span class="green">Application.</span></h2>
-      <p style="margin-left:auto; margin-right:auto;">Fill out the registration form below to verify your membership and get connected to the Signal Master LK platform.</p>
-    </div>
-
-    <div class="panel form-container reveal">
-      <!-- Updated Google Form Embed Link -->
-      <iframe class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSemiKgZL1PvQ52R8Gyhv4Ycm4hpHBEcgoettEkcUKBE6TKECw/viewform?embedded=true" width="100%" height="850" frameborder="0" marginheight="0" marginwidth="0" title="Signal Master LK Registration Form">
-        Loading registration form...
-      </iframe>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ SECTION -->
-<section id="faq">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">
-        <i class="fa-solid fa-circle-question"></i>
-        Frequently Asked Questions
-      </div>
-      <h2>Everything You Need <span class="gold">To Know.</span></h2>
-      <p>Common questions about Signal Master LK, membership activation, trading signals, and platform access.</p>
-    </div>
-
-    <div class="faq reveal">
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>How do I access the VIP Signal Channel after payment?</span>
-          <i class="fa-solid fa-plus"></i>
-        </button>
-        <div class="faq-answer">
-          Once your payment is completed and your transaction receipt is verified through our payment modal or registration form, our team will instantly approve your access and send your secure VIP Telegram invitation link within 15–30 minutes.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>What payment methods are supported for Sri Lankan users?</span>
-          <i class="fa-solid fa-plus"></i>
-        </button>
-        <div class="faq-answer">
-          We accept USDT (TRC20 / BEP20), Binance Pay, direct bank transfers (SLIPS / EFT), and major cryptocurrency options. Check our secure payment modal for full deposit details.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Are the trading signals suitable for beginners?</span>
-          <i class="fa-solid fa-plus"></i>
-        </button>
-        <div class="faq-answer">
-          Yes! Every signal includes precise entry zones, leverage recommendations, take-profit targets, and stop-loss levels. We also provide comprehensive risk management guides to help beginners trade safely.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Is this a monthly subscription or lifetime access?</span>
-          <i class="fa-solid fa-plus"></i>
-        </button>
-        <div class="faq-answer">
-          The current VIP tier offers **Lifetime Access** with a single one-time payment of $49 USD. No recurring monthly fees or hidden charges ever.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="brand">
-          <div class="logo" style="width:34px;height:34px;border-radius:10px;"><i class="fa-solid fa-chart-line" style="font-size:14px;"></i></div>
-          <div class="brand-name" style="font-size:13px;">SIGNAL MASTER LK</div>
+  <div class="footer-grid">
+    <div>
+      <div class="brand mb-4">
+        <div class="logo flex items-center justify-center font-bold text-yellow-500 bg-black">SM</div>
+        <div>
+          <div class="brand-name">SIGNAL MASTER LK</div>
+          <span class="brand-sub">CEYLONCOINHUB</span>
         </div>
-        <p>
-          CeylonCoinHub advanced crypto intelligence, market analytics, risk tooling, and automated signal infrastructure platform serving traders worldwide.
-        </p>
       </div>
-
-      <div class="footer-col">
-        <h4>Platform</h4>
-        <a href="#terminal">Terminal</a>
-        <a href="#intelligence">Intelligence</a>
-        <a href="#ecosystem">Ecosystem</a>
-        <a href="#tools">Tools</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <a href="#vip">VIP Signals</a>
-        <a href="#registration">Registration</a>
-        <a href="#faq">FAQ & Support</a>
-        <a href="#">Masterclass Vault</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Community</h4>
-        <a href="#" onclick="openModal(); return false;"><i class="fa-brands fa-telegram mr-1"></i> Telegram VIP</a>
-        <a href="#"><i class="fa-brands fa-discord mr-1"></i> Discord Server</a>
-        <a href="#"><i class="fa-brands fa-youtube mr-1"></i> CeylonCoinHub YouTube</a>
-        <a href="#"><i class="fa-brands fa-twitter mr-1"></i> Twitter / X</a>
+      <p class="text-gray-400 text-sm mb-4 max-w-xs">Elevating Sri Lankan crypto traders with institutional tools and precision analytics.</p>
+      <div class="flex gap-4">
+        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"><i class="fa-brands fa-telegram"></i></a>
+        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"><i class="fa-brands fa-twitter"></i></a>
       </div>
     </div>
-
-    <div class="disclaimer">
-      <strong>DISCLAIMER:</strong> Cryptocurrency trading carries high risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade cryptocurrency, you should carefully consider your investment objectives, level of experience, and risk appetite. Signal Master LK / CeylonCoinHub provides analytical tools and educational signals for informational purposes only and does not provide financial or investment advice.
+    
+    <div>
+      <h4 class="font-bold mb-4 text-white">Platform</h4>
+      <ul class="flex flex-col gap-2 text-sm text-gray-400">
+        <li><a href="#intelligence" class="hover:text-yellow-500 transition">Market Intelligence</a></li>
+        <li><a href="#ecosystem" class="hover:text-yellow-500 transition">Ecosystem & Bots</a></li>
+        <li><a href="#tools" class="hover:text-yellow-500 transition">PNL Calculator</a></li>
+        <li><a href="#vip" class="hover:text-yellow-500 transition">VIP Access</a></li>
+      </ul>
     </div>
+    
+    <div>
+      <h4 class="font-bold mb-4 text-white">Support</h4>
+      <ul class="flex flex-col gap-2 text-sm text-gray-400">
+        <li><a href="#faq" class="hover:text-yellow-500 transition">FAQ</a></li>
+        <li><a href="#" class="hover:text-yellow-500 transition">Contact Admin</a></li>
+        <li><a href="#" class="hover:text-yellow-500 transition">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="disclaimer pb-8 px-4">
+    <p class="max-w-4xl mx-auto"><strong>DISCLAIMER:</strong> Cryptocurrency trading involves significant risk and may result in the loss of your invested capital. You should not invest more than you can afford to lose. Signal Master LK provides market analysis and trade setups for educational and informational purposes only. We do not provide financial advice. Past performance is not indicative of future results.</p>
+    <p class="mt-2 text-gray-600">© 2026 Signal Master LK | CeylonCoinHub. All rights reserved.</p>
   </div>
 </footer>
 
-<!-- PAYMENT MODAL -->
-<div class="modal" id="paymentModal">
-  <div class="modal-box">
-    <div class="modal-head">
-      <h3><i class="fa-solid fa-crown text-amber-400 mr-2"></i> VIP Membership Checkout</h3>
-      <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+<!-- MODAL -->
+<div id="paymentModal" class="modal">
+  <div class="modal-content relative">
+    <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+    <h3 class="text-2xl font-bold mb-2">Upgrade to VIP</h3>
+    <p class="text-gray-400 text-sm mb-6">Send exactly <strong>$150 USDT</strong> on the <strong>TRC-20</strong> network to the address below.</p>
+    
+    <div class="bg-black border border-gray-800 rounded-lg p-4 flex justify-center mb-6">
+      <!-- Mock QR -->
+      <i class="fa-solid fa-qrcode text-8xl text-gray-600"></i>
     </div>
-    <div class="modal-body">
-      
-      <div class="payment-copy" style="font-size: 0.95rem; line-height: 1.6;">
-        <strong style="color: #FFD700; font-size: 1.1rem; display: block; margin-bottom: 10px;">🚀 VIP LIFETIME ACCESS — 5000 LKR / $15 USD</strong>
-        To activate your membership instantly, please transfer the equivalent amount via one of the methods below:
-
-        <div style="margin-top: 12px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 10px;">
-          • **USDT (TRC20 Address):**<br>
-          <code>TBfwQqneeE7NEchqa1JCszUerdbjcafjQs1</code><br>
-          <img src="image (2)_2.jpg" alt="USDT TRC20 QR" style="width: 100px; height: 100px; margin-top: 5px; border-radius: 6px; border: 1px solid #fff;">
-        </div>
-
-        <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 10px;">
-          • **USDT (BEP20 - BSC Address):**<br>
-          <code>0x012b6368629e4900497fa49dab73df1d50c3e305</code><br>
-          <img src="image (1)_2.jpg" alt="USDT BEP20 QR" style="width: 100px; height: 100px; margin-top: 5px; border-radius: 6px; border: 1px solid #fff;">
-        </div>
-
-        <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 10px;">
-          • **Binance Pay ID:**<br>
-          <code>776930522</code> (SIGNAL MASTER LK)
-        </div>
-
-        <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 10px;">
-          • **Sri Lankan Bank Transfers:**<br>
-          - Bank: People's Bank | Acc: 133200190039741 | Name: SIGNAL MASTER LK<br>
-          <img src="image (3)_2.jpg" alt="People's Bank QR" style="width: 90px; height: 90px; margin-top: 5px; border-radius: 6px; border: 1px solid #fff;"><br><br>
-          - Bank: BOC (Bank of Ceylon) | Acc: 96707729 | Name: SIGNAL MASTER LK<br><br>
-          - LankaQR:<br>
-          <img src="image (4)_2.jpg" alt="LankaQR" style="width: 90px; height: 90px; margin-top: 5px; border-radius: 6px; border: 1px solid #fff;">
-        </div>
+    
+    <div class="mb-6">
+      <label class="text-xs text-gray-500 font-bold uppercase block mb-2">USDT (TRC-20) Deposit Address</label>
+      <div class="flex border border-gray-700 rounded-lg overflow-hidden">
+        <input type="text" readonly value="TPrVxyzMockAddressCeylonCoinHub999" class="w-full bg-black text-white font-mono text-sm px-4 py-3 outline-none" id="walletAddress">
+        <button onclick="copyAddress()" class="bg-gray-800 hover:bg-yellow-500 hover:text-black px-4 transition-colors font-bold">
+          <i class="fa-regular fa-copy"></i>
+        </button>
       </div>
-
-      <div class="receipt-box" style="margin-top: 15px;">
-        <label>Upload Payment Receipt / Screenshot</label>
-        <input type="file" class="file-input" id="receiptFile" accept="image/*" onchange="handleFileSelect(event)">
-        <div class="file-name" id="fileNameDisplay">No file selected</div>
-      </div>
-
-      <div class="modal-status" id="modalStatus"></div>
-
-      <button class="cta submit-receipt" onclick="submitReceipt()" style="margin-top: 15px; width: 100%;">
-        <i class="fa-solid fa-paper-plane"></i> SUBMIT PAYMENT RECEIPT FOR APPROVAL
-      </button>
     </div>
+    
+    <p class="text-xs text-center text-gray-500 mb-4">After payment, send the transaction hash (TxID) to our Telegram Admin to activate your lifetime access.</p>
+    
+    <a href="#" class="btn-primary w-full text-center block py-3"><i class="fa-brands fa-telegram mr-2"></i> Contact Admin</a>
   </div>
 </div>
 
-<!-- TOAST NOTIFICATION -->
-<div class="toast" id="toast">Action completed successfully.</div>
+<!-- TOAST -->
+<div id="toast" class="toast">
+  <i class="fa-solid fa-circle-check mr-2"></i> <span id="toastMsg">Address Copied!</span>
+</div>
 
-<!-- JAVASCRIPT -->
 <script>
-// 1. BACKGROUND FLOATING CANDLES GENERATOR
-const candlesContainer = document.getElementById('candles');
-if (candlesContainer) {
-  for (let i = 0; i < 22; i++) {
-    const c = document.createElement('div');
-    c.className = `candle ${Math.random() > 0.45 ? 'green' : 'red'}`;
-    c.style.left = `${Math.random() * 100}%`;
-    c.style.top = `${Math.random() * 100}vh`;
-    c.style.animationDuration = `${12 + Math.random() * 20}s`;
-    c.style.animationDelay = `${Math.random() * 10}s`;
-    candlesContainer.appendChild(c);
-  }
-}
-
-// 2. MOBILE MENU TOGGLE
-const mobileMenuBtn = document.getElementById('mobileMenu');
-const navLinks = document.getElementById('navLinks');
-if (mobileMenuBtn && navLinks) {
+  // 1. Mobile Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
   mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
   });
-}
 
-// 3. SCROLL REVEAL OBSERVER
-const observerOptions = { threshold: 0.1 };
-const observer = new IntersectionObserver((entries, obs) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.reveal').forEach(el => {
-  observer.observe(el);
-});
-
-// 4. LIVE COIN PRICES & MARKET WATCH FETCH (CoinGecko API with fallback)
-async function fetchLiveMarketData() {
-  try {
-    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple,binancecoin,cardano,dogecoin&vs_currencies=usd&include_24hr_change=true');
-    const data = await res.json();
-    
-    if (data && data.bitcoin) {
-      updateCoinUI('BTC', data.bitcoin.usd, data.bitcoin.usd_24h_change);
-      updateCoinUI('ETH', data.ethereum.usd, data.ethereum.usd_24h_change);
-      updateCoinUI('SOL', data.solana.usd, data.solana.usd_24h_change);
-      
-      populateMarketWatch([
-        { name: 'Bitcoin', symbol: 'BTC', price: data.bitcoin.usd, change: data.bitcoin.usd_24h_change, icon: '₿' },
-        { name: 'Ethereum', symbol: 'ETH', price: data.ethereum.usd, change: data.ethereum.usd_24h_change, icon: 'Ξ' },
-        { name: 'Solana', symbol: 'SOL', price: data.solana.usd, change: data.solana.usd_24h_change, icon: '◎' },
-        { name: 'BNB', symbol: 'BNB', price: data.binancecoin.usd, change: data.binancecoin.usd_24h_change, icon: 'B' },
-        { name: 'XRP', symbol: 'XRP', price: data.ripple.usd, change: data.ripple.usd_24h_change, icon: '✕' },
-        { name: 'Cardano', symbol: 'ADA', price: data.cardano.usd, change: data.cardano.usd_24h_change, icon: '₳' },
-        { name: 'Dogecoin', symbol: 'DOGE', price: data.dogecoin.usd, change: data.dogecoin.usd_24h_change, icon: 'Ð' }
-      ]);
-      
-      populateTicker([
-        { symbol: 'BTC/USDT', price: data.bitcoin.usd, change: data.bitcoin.usd_24h_change },
-        { symbol: 'ETH/USDT', price: data.ethereum.usd, change: data.ethereum.usd_24h_change },
-        { symbol: 'SOL/USDT', price: data.solana.usd, change: data.solana.usd_24h_change },
-        { symbol: 'BNB/USDT', price: data.binancecoin.usd, change: data.binancecoin.usd_24h_change },
-        { symbol: 'XRP/USDT', price: data.ripple.usd, change: data.ripple.usd_24h_change }
-      ]);
-    }
-  } catch (err) {
-    // Fallback mock data if API rate-limited or offline
-    const fallbackData = [
-      { name: 'Bitcoin', symbol: 'BTC', price: 65420.50, change: 3.42, icon: '₿' },
-      { name: 'Ethereum', symbol: 'ETH', price: 3510.20, change: 2.15, icon: 'Ξ' },
-      { name: 'Solana', symbol: 'SOL', price: 145.80, change: -1.24, icon: '◎' },
-      { name: 'BNB', symbol: 'BNB', price: 585.10, change: 1.05, icon: 'B' },
-      { name: 'XRP', symbol: 'XRP', price: 0.582, change: 4.12, icon: '✕' }
-    ];
-    updateCoinUI('BTC', 65420.50, 3.42);
-    updateCoinUI('ETH', 3510.20, 2.15);
-    updateCoinUI('SOL', 145.80, -1.24);
-    populateMarketWatch(fallbackData);
-    populateTicker(fallbackData);
-  }
-}
-
-function updateCoinUI(symbol, price, change) {
-  const priceEl = document.getElementById(`hero${symbol}`);
-  const changeEl = document.getElementById(`hero${symbol}Change`);
-  if (priceEl) priceEl.innerText = `$${price.toLocaleString()}`;
-  if (changeEl) {
-    const isUp = change >= 0;
-    changeEl.innerText = `${isUp ? '+' : ''}${change.toFixed(2)}%`;
-    changeEl.style.color = isUp ? 'var(--green)' : 'var(--red)';
-  }
-}
-
-function populateMarketWatch(coins) {
-  const list = document.getElementById('marketList');
-  if (!list) return;
-  list.innerHTML = '';
-  coins.forEach(coin => {
-    const isUp = coin.change >= 0;
-    const row = document.createElement('div');
-    row.className = 'market-row';
-    row.innerHTML = `
-      <div class="coin-name">
-        <div class="coin-icon">${coin.icon}</div>
-        <div>
-          <strong>${coin.symbol}</strong>
-          <small>${coin.name}</small>
-        </div>
-      </div>
-      <div class="market-value">$${coin.price.toLocaleString()}</div>
-      <div class="market-change" style="color:${isUp ? 'var(--green)' : 'var(--red)'}">
-        ${isUp ? '+' : ''}${coin.change.toFixed(2)}%
-      </div>
-    `;
-    list.appendChild(row);
-  });
-}
-
-function populateTicker(coins) {
-  const track = document.getElementById('tickerTrack');
-  if (!track) return;
-  let html = '';
-  // Double for infinite scroll effect
-  for (let i = 0; i < 2; i++) {
-    coins.forEach(c => {
-      const isUp = c.change >= 0;
-      html += `
-        <div class="ticker-item">
-          <span>${c.symbol}</span>
-          <span class="mono">$${Number(c.price).toLocaleString()}</span>
-          <span class="${isUp ? 'up' : 'down'}">${isUp ? '+' : ''}${Number(c.change).toFixed(2)}%</span>
-        </div>
-      `;
+  // Close mobile menu on link click
+  document.querySelectorAll('#mobileMenu .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('flex');
     });
-  }
-  track.innerHTML = html;
-}
-
-fetchLiveMarketData();
-setInterval(fetchLiveMarketData, 60000);
-
-// 5. FEATURE FILTER BUTTONS
-function filterFeatures(category, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  
-  document.querySelectorAll('.feature-card').forEach(card => {
-    if (category === 'all' || card.getAttribute('data-category') === category) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
   });
-}
 
-// 6. TRADING CALCULATORS LOGIC
-function calcPosition() {
-  const bal = parseFloat(document.getElementById('posBalance').value) || 0;
-  const risk = parseFloat(document.getElementById('posRisk').value) || 0;
-  const sl = parseFloat(document.getElementById('posSL').value) || 0;
-  
-  if (sl <= 0) {
-    document.getElementById('posResult').innerText = 'Invalid SL';
-    return;
-  }
-  const riskAmount = bal * (risk / 100);
-  const posSize = riskAmount / (sl / 100);
-  document.getElementById('posResult').innerText = `$${posSize.toFixed(2)}`;
-}
+  // 2. FAQ Accordion Logic
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      faqItems.forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    });
+  });
 
-function calcRR() {
-  const entry = parseFloat(document.getElementById('rrEntry').value) || 0;
-  const sl = parseFloat(document.getElementById('rrSL').value) || 0;
-  const tp = parseFloat(document.getElementById('rrTP').value) || 0;
-  
-  const risk = Math.abs(entry - sl);
-  const reward = Math.abs(tp - entry);
-  
-  if (risk <= 0) {
-    document.getElementById('rrResult').innerText = 'Invalid Risk';
-    return;
-  }
-  const ratio = reward / risk;
-  document.getElementById('rrResult').innerText = `1 : ${ratio.toFixed(2)}`;
-}
-
-function calcLiq() {
-  const entry = parseFloat(document.getElementById('liqEntry').value) || 0;
-  const lev = parseFloat(document.getElementById('liqLev').value) || 1;
-  const side = document.getElementById('liqSide').value;
-  
-  if (lev <= 0) return;
-  let liq = 0;
-  // Simplified maintenance margin approximation
-  const mm = 0.005; 
-  if (side === 'long') {
-    liq = entry * (1 - (1 / lev) + mm);
-  } else {
-    liq = entry * (1 + (1 / lev) - mm);
-  }
-  document.getElementById('liqResult').innerText = `$${liq.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-}
-
-function calcComp() {
-  const start = parseFloat(document.getElementById('compStart').value) || 0;
-  const rate = parseFloat(document.getElementById('compRate').value) || 0;
-  const months = parseInt(document.getElementById('compMonths').value) || 0;
-  
-  let total = start;
-  for (let i = 0; i < months; i++) {
-    total += total * (rate / 100);
-  }
-  document.getElementById('compResult').innerText = `$${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-}
-
-// 7. PNL SIMULATOR LOGIC
-function updateSimulation() {
-  const cap = parseFloat(document.getElementById('simCap').value) || 0;
-  const win = parseFloat(document.getElementById('simWin').value) || 0;
-  const rr = parseFloat(document.getElementById('simRR').value) || 0;
-  const trades = parseInt(document.getElementById('simTrades').value) || 0;
-  
-  let currentCap = cap;
-  let barsHTML = '';
-  let maxVal = cap;
-  
-  const winCount = Math.round(trades * (win / 100));
-  const lossCount = trades - winCount;
-  
-  // Risk per trade e.g., 2% of capital
-  const riskPerTrade = 0.02;
-  
-  let equityCurve = [cap];
-  for (let i = 0; i < trades; i++) {
-    const isWin = i < winCount; // Simplified sequence distribution
-    const riskedAmount = currentCap * riskPerTrade;
-    if (isWin) {
-      currentCap += riskedAmount * rr;
-    } else {
-      currentCap -= riskedAmount;
-    }
-    equityCurve.push(currentCap);
-    if (currentCap > maxVal) maxVal = currentCap;
-  }
-  
-  const netProfit = currentCap - cap;
-  const profitEl = document.getElementById('simProfit');
-  if (profitEl) {
-    profitEl.innerText = `${netProfit >= '0' ? '+' : ''}$${netProfit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-    profitEl.style.color = netProfit >= 0 ? 'var(--green)' : 'var(--red)';
-  }
-  
-  // Render simulated equity bars
-  const barsContainer = document.getElementById('simBars');
-  if (barsContainer) {
-    barsContainer.innerHTML = '';
-    // Take up to 25 sample points for bar visualization
-    const step = Math.max(1, Math.floor(equityCurve.length / 25));
-    for (let i = 0; i < equityCurve.length; i += step) {
-      const val = equityCurve[i];
-      const heightPercent = Math.max(10, Math.min(100, (val / maxVal) * 100));
-      const bar = document.createElement('div');
-      bar.style.flex = '1';
-      bar.style.height = `${heightPercent}%`;
-      bar.style.background = val >= cap ? 'var(--green)' : 'var(--red)';
-      bar.style.borderRadius = '3px 3px 0 0';
-      bar.title = `Trade Step: $${val.toFixed(2)}`;
-      barsContainer.appendChild(bar);
-    }
-  }
-}
-
-// Initial calculation run
-calcPosition();
-calcRR();
-calcLiq();
-calcComp();
-updateSimulation();
-
-// 8. FAQ ACCORDION TOGGLE
-function toggleFaq(btn) {
-  const item = btn.parentElement;
-  const wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
-  if (!wasOpen) {
-    item.classList.add('open');
-  }
-}
-
-// 9. PAYMENT MODAL FUNCTIONS
-const modal = document.getElementById('paymentModal');
-function openModal() {
-  if (modal) modal.classList.add('open');
-  document.body.classList.add('modal-open');
-}
-
-function closeModal() {
-  if (modal) modal.classList.remove('open');
-  document.body.classList.remove('modal-open');
-}
-
-window.addEventListener('click', (e) => {
-  if (e.target === modal) closeModal();
-});
-
-function handleFileSelect(e) {
-  const file = e.target.files[0];
-  const display = document.getElementById('fileNameDisplay');
-  if (file && display) {
-    display.innerText = `Selected: ${file.name}`;
-  }
-}
-
-function submitReceipt() {
-  const fileInput = document.getElementById('receiptFile');
-  const statusEl = document.getElementById('modalStatus');
-  
-  if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
-    if (statusEl) {
-      statusEl.className = 'modal-status show error';
-      statusEl.innerText = 'Please upload your payment receipt screenshot before submitting.';
-    }
-    return;
-  }
-  
-  if (statusEl) {
-    statusEl.className = 'modal-status show info';
-    statusEl.innerText = 'Uploading receipt and verifying transaction hash...';
-  }
-  
-  setTimeout(() => {
-    if (statusEl) {
-      statusEl.className = 'modal-status show success';
-      statusEl.innerText = 'Receipt submitted successfully! Our verification team will approve your VIP access within 15 minutes.';
-    }
-    showToast('Payment receipt successfully uploaded!');
-    setTimeout(closeModal, 3000);
-  }, 2000);
-}
-
-// 10. TOAST NOTIFICATION
-function showToast(msg) {
+  // 3. Modal & Toast Logic
+  const modal = document.getElementById('paymentModal');
   const toast = document.getElementById('toast');
-  if (toast) {
-    toast.innerText = msg;
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 3500);
+  const toastMsg = document.getElementById('toastMsg');
+
+  function openModal() { modal.classList.add('active'); }
+  function closeModal() { modal.classList.remove('active'); }
+  
+  function showToast(msg) {
+    toastMsg.innerText = msg;
+    toast.classList.add('active');
+    setTimeout(() => toast.classList.remove('active'), 3000);
   }
-}
+
+  function copyAddress() {
+    const addr = document.getElementById('walletAddress');
+    addr.select();
+    document.execCommand('copy');
+    showToast('TRC-20 Address Copied!');
+  }
+
+  // Close modal on outside click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // 4. Background Candles Animation Generator
+  const candlesContainer = document.getElementById('candles');
+  function createCandle() {
+    const candle = document.createElement('div');
+    candle.className = 'candle';
+    candle.style.left = Math.random() * 100 + 'vw';
+    candle.style.height = (Math.random() * 40 + 20) + 'px';
+    const isGreen = Math.random() > 0.5;
+    candle.style.backgroundColor = isGreen ? 'var(--up)' : 'var(--down)';
+    candle.style.animation = `fall ${Math.random() * 10 + 5}s linear infinite`;
+    candlesContainer.appendChild(candle);
+    
+    // Remove after animation to prevent DOM bloat
+    setTimeout(() => candle.remove(), 15000);
+  }
+  
+  // Initial fill
+  for(let i = 0; i < 30; i++) createCandle();
+  // Continuous generation
+  setInterval(createCandle, 500);
+
+  // 5. Binance API Data Fetching
+  const formatPrice = (price) => {
+    const p = parseFloat(price);
+    return p >= 1 ? p.toFixed(2) : p.toFixed(5);
+  };
+  
+  const formatChange = (change) => {
+    const c = parseFloat(change);
+    const sign = c >= 0 ? '+' : '';
+    return `${sign}${c.toFixed(2)}%`;
+  };
+
+  async function fetchMarketData() {
+    try {
+      // Using Binance 24hr ticker API. It returns an array of all symbols.
+      const res = await fetch('https://api.binance.com/api/v3/ticker/24hr');
+      const data = await res.json();
+      
+      // Target specific symbols for hero
+      const targets = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
+      const heroMap = { 'BTCUSDT': 'heroBTC', 'ETHUSDT': 'heroETH', 'SOLUSDT': 'heroSOL' };
+      
+      const tickerTrack = document.getElementById('tickerTrack');
+      let tickerHtml = '';
+
+      // Array for Top Volume
+      const usdtPairs = data.filter(d => d.symbol.endsWith('USDT'));
+      usdtPairs.sort((a, b) => parseFloat(b.quoteVolume) - parseFloat(a.quoteVolume));
+      
+      // Update Hero Cards
+      targets.forEach(symbol => {
+        const coin = usdtPairs.find(d => d.symbol === symbol);
+        if (coin) {
+          const el = document.getElementById(heroMap[symbol]);
+          if(el) {
+            const priceEl = el.querySelector('.price');
+            const changeEl = el.querySelector('.mini-change');
+            
+            priceEl.innerText = `$${formatPrice(coin.lastPrice)}`;
+            const change = parseFloat(coin.priceChangePercent);
+            changeEl.innerText = formatChange(change);
+            
+            if (change >= 0) {
+              changeEl.className = 'mini-change font-mono font-bold bg-up px-2 py-1 rounded text-xs';
+            } else {
+              changeEl.className = 'mini-change font-mono font-bold bg-down px-2 py-1 rounded text-xs';
+            }
+          }
+        }
+      });
+
+      // Update Ticker Track (Top 15 coins by volume)
+      const top15 = usdtPairs.slice(0, 15);
+      top15.forEach(coin => {
+        const change = parseFloat(coin.priceChangePercent);
+        const colorClass = change >= 0 ? 'text-up' : 'text-down';
+        const icon = change >= 0 ? '▲' : '▼';
+        tickerHtml += `<div class="ticker-item font-mono"><span class="font-bold text-white">${coin.symbol.replace('USDT', '')}</span> <span>$${formatPrice(coin.lastPrice)}</span> <span class="${colorClass}">${icon} ${Math.abs(change).toFixed(2)}%</span></div>`;
+      });
+      // Duplicate for smooth infinite scroll
+      tickerTrack.innerHTML = tickerHtml + tickerHtml;
+
+      // Update Market List (Top 5 Volume in Intelligence section)
+      const marketList = document.getElementById('marketList');
+      let listHtml = '';
+      usdtPairs.slice(0, 5).forEach(coin => {
+        const change = parseFloat(coin.priceChangePercent);
+        const colorClass = change >= 0 ? 'text-up' : 'text-down';
+        const vol = (parseFloat(coin.quoteVolume) / 1000000).toFixed(2) + 'M';
+        listHtml += `
+          <div class="flex justify-between items-center border-b border-gray-800/50 pb-2 last:border-0">
+            <div class="flex items-center gap-2"><span class="font-bold text-white">${coin.symbol.replace('USDT', '')}</span></div>
+            <div class="text-right">
+              <div>$${formatPrice(coin.lastPrice)}</div>
+              <div class="text-xs text-gray-500">Vol: $${vol} <span class="${colorClass} ml-2">${formatChange(change)}</span></div>
+            </div>
+          </div>
+        `;
+      });
+      marketList.innerHTML = listHtml;
+
+    } catch (err) {
+      console.error('Failed to fetch Binance data:', err);
+    }
+  }
+
+  // Initial fetch and set interval
+  fetchMarketData();
+  setInterval(fetchMarketData, 10000); // Update every 10 seconds
+
+  // 6. PNL Calculator Logic & Canvas Rendering
+  const pnlForm = document.getElementById('pnlForm');
+  const inputs = ['pnlType', 'pnlLev', 'pnlEntry', 'pnlExit', 'pnlMargin'].map(id => document.getElementById(id));
+  const resUsd = document.getElementById('pnlResultUsd');
+  const resPct = document.getElementById('pnlResultPct');
+  const canvas = document.getElementById('pnlCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function calculatePNL() {
+    const isLong = document.getElementById('pnlType').value === 'long';
+    const lev = parseFloat(document.getElementById('pnlLev').value) || 1;
+    const entry = parseFloat(document.getElementById('pnlEntry').value) || 0;
+    const exit = parseFloat(document.getElementById('pnlExit').value) || 0;
+    const margin = parseFloat(document.getElementById('pnlMargin').value) || 0;
+
+    if (entry === 0) return;
+
+    // Standard PNL math (simplified)
+    const positionSize = margin * lev;
+    const priceChangePct = (exit - entry) / entry;
+    const pnlMultiplier = isLong ? priceChangePct : -priceChangePct;
+    
+    const pnlUsd = positionSize * pnlMultiplier;
+    const roe = (pnlUsd / margin) * 100;
+
+    const sign = pnlUsd >= 0 ? '+' : '';
+    resUsd.innerText = `${sign}$${pnlUsd.toFixed(2)}`;
+    resPct.innerText = `${sign}${roe.toFixed(2)}% ROE`;
+
+    if (pnlUsd >= 0) {
+      resUsd.className = 'font-mono text-5xl font-black text-up mb-2';
+      resPct.className = 'font-mono text-xl font-bold bg-up px-4 py-1 rounded-full mb-8';
+    } else {
+      resUsd.className = 'font-mono text-5xl font-black text-down mb-2';
+      resPct.className = 'font-mono text-xl font-bold bg-down px-4 py-1 rounded-full mb-8';
+    }
+
+    drawCanvas(roe);
+  }
+
+  function drawCanvas(roe) {
+    // Resize canvas to match display size
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    const midY = canvas.height / 2;
+    
+    // Draw center line
+    ctx.beginPath();
+    ctx.moveTo(0, midY);
+    ctx.lineTo(canvas.width, midY);
+    ctx.strokeStyle = '#232724'; // border color
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Map ROE to bar height. Let's cap visual max at 200% ROE for drawing
+    const maxDrawRoe = 200;
+    let visualRoe = Math.max(Math.min(roe, maxDrawRoe), -maxDrawRoe);
+    
+    const barHeight = (Math.abs(visualRoe) / maxDrawRoe) * (canvas.height / 2);
+    const barWidth = 60;
+    const barX = (canvas.width / 2) - (barWidth / 2);
+    
+    ctx.fillStyle = roe >= 0 ? '#10b981' : '#ef4444'; // up / down colors
+    
+    if (roe >= 0) {
+      ctx.fillRect(barX, midY - barHeight, barWidth, barHeight);
+    } else {
+      ctx.fillRect(barX, midY, barWidth, barHeight);
+    }
+  }
+
+  // Attach events
+  inputs.forEach(el => el.addEventListener('input', calculatePNL));
+  
+  // Handle resize for canvas
+  window.addEventListener('resize', calculatePNL);
+
+  // Initial draw
+  calculatePNL();
 </script>
 </body>
 </html>
